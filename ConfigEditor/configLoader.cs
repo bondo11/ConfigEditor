@@ -13,15 +13,39 @@ namespace ConfigEditor
 
         XmlDocument objDoc = new XmlDocument();
 
-        public static List<string> matchArray(string path)
+        public List<string> matchArray(string path, string folder)
         {
-            var doc = XDocument.Load(path);
-
-            var services = from service in doc.Descendants("folder")
-                           select (string)service.Attribute("matchsetname");
-
-            return services.ToList();
+            List<string> matchArray = new List<string>();
+            objDoc.Load(path);
+            XmlNodeList elemList = objDoc.GetElementsByTagName("folder");
+            foreach (XmlNode element in elemList)
+            {
+                if (element.SelectSingleNode("path").InnerXml.Equals(folder))
+                {
+                    foreach (XmlNode ruleset in element.SelectSingleNode("rulesets").SelectNodes("ruleset"))
+                    {
+                        matchArray.Add(ruleset.SelectSingleNode("matchsetname").InnerXml);
+                    }
+                }
+            }
+            return matchArray;
         }
+        public List<string> matchArray(string path)
+        {
+            List<string> matchArray = new List<string>();
+            objDoc.Load(path);
+            XmlNodeList elemList = objDoc.GetElementsByTagName("folder");
+            foreach (XmlNode element in elemList)
+            {
+                foreach (XmlNode ruleset in element.SelectNodes("rulesets"))
+                {
+                    matchArray.Add(ruleset.SelectSingleNode("ruleset").SelectSingleNode("matchsetname").InnerXml);
+                }
+                //matchArray.Add(element.SelectSingleNode("rulesets").SelectSingleNode("ruleset").SelectSingleNode("matchsetname").InnerXml);
+            }
+            return matchArray;
+        }
+
 
         public RulesCollection getRules(string path)
         {
@@ -31,11 +55,16 @@ namespace ConfigEditor
             foreach (XmlNode element in elemList)
             {
                 collection.folderCollection.Add(element.SelectSingleNode("path").InnerXml);
-                    foreach (XmlNode child in element.SelectSingleNode("rulesets"))
-                    {
-                        collection.matchsetCollection.Add(child.SelectSingleNode("matchsetname").InnerXml);
-                        collection.actionsetCollection.Add(child.SelectSingleNode("actionsetname").InnerXml);
-                    }
+            }
+            elemList = objDoc.GetElementsByTagName("match");
+            foreach (XmlNode element in elemList)
+            {
+                collection.matchsetCollection.Add(element.SelectSingleNode("name").InnerXml);
+            }
+            elemList = objDoc.GetElementsByTagName("actionset");
+            foreach (XmlNode element in elemList)
+            {
+                collection.actionsetCollection.Add(element.SelectSingleNode("name").InnerXml);
             }
             return collection;
             

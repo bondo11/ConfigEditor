@@ -111,7 +111,7 @@
                 </ControlTemplate>
             </ListBox.Template>
         </ListBox>
-        <ListBox x:Name="listActiveMatches"  HorizontalAlignment="Left" Height="212" Margin="371,46,0,0" VerticalAlignment="Top" Width="137" Background="#A5FFFFFF">
+        <ListBox x:Name="listActiveMatches"  HorizontalAlignment="Left" Height="212" Margin="371,46,0,0" VerticalAlignment="Top" Width="137" Background="#A5FFFFFF" SelectionChanged="listActiveMatches_SelectionChanged">
             <ListBox.Template>
                 <ControlTemplate TargetType="{x:Type ListBox}">
                     <Border x:Name="Bd" SnapsToDevicePixels="true"

@@ -27,7 +27,7 @@ namespace ConfigEditor
         RulesCollection rulesCollection;
         public MainWindow()
         {
-            rulesCollection = cl.getRules(@"C:\config\config.xml");
+            rulesCollection = cl.getRules(ConfigHandler.getSource());
             InitializeComponent();
         }
 
@@ -38,10 +38,19 @@ namespace ConfigEditor
 
         private void RuleList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            listMatches.Items.Clear();
-            foreach (string match in configLoader.matchArray(ConfigHandler.getSource())){
-                listMatches.Items.Add(match);
+            listActiveMatches.Items.Clear();
+            foreach (string match in cl.matchArray(ConfigHandler.getSource(), (Convert.ToString(RuleList.SelectedItem))))
+            {
+                listActiveMatches.Items.Add(match);
             }
+            foreach (string match in listMatches.Items)
+            {
+                foreach(string active in listActiveMatches.Items){
+                    if (match == active)
+                        listMatches.Items.Remove("match");
+                }
+            }
+
         }
 
         private void RuleList_Initialized(object sender, EventArgs e)
@@ -65,6 +74,11 @@ namespace ConfigEditor
             {
                 listMatches.Items.Add(match);
             }
+        }
+
+        private void listActiveMatches_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
 
