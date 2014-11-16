@@ -7,10 +7,13 @@ namespace ConfigEditor
 {
     public class match
     {
+        #region Properties
         public string Name { get; set; }
         public string Kind { get; set; }
-        public string Value { get; set; }
+        public string Value { get; set; } 
+        #endregion
 
+        #region Constructors
         public match();
         public match(string name)
         {
@@ -27,6 +30,8 @@ namespace ConfigEditor
             this.Name = name;
             this.Kind = kind;
             this.Value = value;
-        }
+        } 
+        #endregion
+
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConfigEditor
 {
-    class ruleset
+    public class ruleset
     {
         public match matchSet { get; set; }
         List<Action> actions;

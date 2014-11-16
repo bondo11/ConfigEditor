@@ -24,7 +24,7 @@ namespace ConfigEditor
     {
 
         configLoader cl = new configLoader();
-        RulesCollection rulesCollection;
+        //RulesCollection rulesCollection;
         public MainWindow()
         {
             cl.getConfig();
@@ -37,21 +37,10 @@ namespace ConfigEditor
            
         }
 
-        private void RuleList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            listActiveMatches.Items.Clear();
-            /*
-            foreach (string match in cl.matchArray(ConfigHandler.getSource(), (Convert.ToString(RuleList.SelectedItem))))
-            {
-                listActiveMatches.Items.Add(match);
-            }
-            */
-
-        }
-
+        #region Initialized functions
         private void RuleList_Initialized(object sender, EventArgs e)
         {
-            foreach(Folder f in RulesCollection.Folders)
+            foreach (Folder f in RulesCollection.Folders)
                 RuleList.Items.Add(f.Path);
             /*
             foreach (string folder in rulesCollection.folderCollection)
@@ -61,11 +50,6 @@ namespace ConfigEditor
              * */
         }
 
-        private void btnSettings_Click(object sender, RoutedEventArgs e)
-        {
-            var newW = new settings();
-            newW.Show(); 
-        }
 
         private void listMatches_Initialized(object sender, EventArgs e)
         {
@@ -77,13 +61,35 @@ namespace ConfigEditor
                 listMatches.Items.Add(match);
             }
              * */
-        }
+        } 
+        #endregion
 
+        #region Selection changed functions
+        private void RuleList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            listActiveMatches.Items.Clear();
+            /*
+            foreach (string match in cl.matchArray(ConfigHandler.getSource(), (Convert.ToString(RuleList.SelectedItem))))
+            {
+                listActiveMatches.Items.Add(match);
+            }
+            */
+
+        }
         private void listActiveMatches_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-        }
+        } 
+        #endregion
 
+        #region Button Functions
+        private void btnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            var newW = new settings();
+            newW.Show();
+        }
+        
+        #endregion
 
         #region Button MouseEnter and MouseLeave
 

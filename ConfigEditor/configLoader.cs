@@ -12,7 +12,7 @@ namespace ConfigEditor
     {
 
         XmlDocument objDoc = new XmlDocument();
-        public void getConfig ()
+        public void getConfig()
         {
             //List<string> matchArray = new List<string>();
             objDoc.Load(ConfigHandler.getSource());
@@ -71,6 +71,8 @@ namespace ConfigEditor
         }
 
 
+        [ObsoleteAttribute("This method is not in use anymore.", true)] 
+        
         public List<string> matchArray(string path, Folder folder)
         {
             List<string> matchArray = new List<string>();
@@ -88,6 +90,9 @@ namespace ConfigEditor
             }
             return matchArray;
         }
+
+
+        [ObsoleteAttribute("This method is not in use anymore.", true)] 
         public List<string> matchArray()
         {
             List<string> matchArray = new List<string>();
@@ -103,7 +108,11 @@ namespace ConfigEditor
             return matchArray;
         }
 
+
         /*
+         * 
+        [ObsoleteAttribute("This method is not in use anymore.", true)] 
+         * 
         public RulesCollection getRules(string path)
         {
             RulesCollection collection = new RulesCollection();
@@ -125,6 +134,7 @@ namespace ConfigEditor
             }
             return collection;
             
-        }*/
+        }
+         * */
     }
 }
