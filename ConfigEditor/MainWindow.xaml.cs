@@ -27,7 +27,8 @@ namespace ConfigEditor
         RulesCollection rulesCollection;
         public MainWindow()
         {
-            rulesCollection = cl.getRules(ConfigHandler.getSource());
+            cl.getConfig();
+            //rulesCollection = cl.getRules(ConfigHandler.getSource());
             InitializeComponent();
         }
 
@@ -39,21 +40,25 @@ namespace ConfigEditor
         private void RuleList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             listActiveMatches.Items.Clear();
+            /*
             foreach (string match in cl.matchArray(ConfigHandler.getSource(), (Convert.ToString(RuleList.SelectedItem))))
             {
                 listActiveMatches.Items.Add(match);
             }
-
+            */
 
         }
 
         private void RuleList_Initialized(object sender, EventArgs e)
         {
-
+            foreach(Folder f in RulesCollection.Folders)
+                RuleList.Items.Add(f.Path);
+            /*
             foreach (string folder in rulesCollection.folderCollection)
             {
                 RuleList.Items.Add(folder);
             }
+             * */
         }
 
         private void btnSettings_Click(object sender, RoutedEventArgs e)
@@ -64,10 +69,14 @@ namespace ConfigEditor
 
         private void listMatches_Initialized(object sender, EventArgs e)
         {
+            foreach (match m in RulesCollection.matchSets)
+                RuleList.Items.Add(m.Name);
+            /*
             foreach (string match in rulesCollection.matchsetCollection)
             {
                 listMatches.Items.Add(match);
             }
+             * */
         }
 
         private void listActiveMatches_SelectionChanged(object sender, SelectionChangedEventArgs e)
