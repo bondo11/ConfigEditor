@@ -3,8 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Config editor" Height="350" Width="525"
         ResizeMode="NoResize">
+    
     <Grid RenderTransformOrigin="0.542,0.457">
-        <Image Source="Pictures/TEC_logo.jpg" Margin="326,0,16.4,239.8" />
+        
+        <Image Source="Pictures/TEC_logo.jpg" Margin="326,0,44,226" Visibility="Hidden" />
         <Label Content="Folders" FontSize="14" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.294,-0.171" Width="55" Height="31"/>
         <ListBox x:Name="RuleList" HorizontalAlignment="Left" Height="241" Margin="10,46,0,0" VerticalAlignment="Top" Width="196" SelectionChanged="RuleList_SelectionChanged" Initialized="RuleList_Initialized">
             <ListBox.Template>
@@ -41,39 +43,39 @@
                 </ControlTemplate>
             </ListBox.Template>
         </ListBox>
-        <Button x:Name="delFolder" BorderThickness="0" HorizontalAlignment="Left" Margin="185,292,0,0" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent">
+        <Button x:Name="delFolder" BorderThickness="0" HorizontalAlignment="Left" Margin="185,292,0,0" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent" MouseEnter="delFolder_MouseEnter" MouseLeave="delFolder_MouseLeave">
             <StackPanel>
-                <Image Source="Pictures/remove.png" Width="20" />
+                <Image x:Name="delFolderImage" Source="Pictures/remove.png" Width="20" Opacity="0.7" />
             </StackPanel>
         </Button>
-        <Button x:Name="addFolder" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="159,292,0,0" VerticalAlignment="Top" Width="20" Height="20">
+        <Button x:Name="addFolder" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="159,292,0,0" VerticalAlignment="Top" Width="20" Height="20" MouseEnter="addFolder_MouseEnter" MouseLeave="addFolder_MouseLeave">
             <StackPanel>
-                <Image Source="Pictures/new.png" Width="20" />
+                <Image x:Name="addFolderImage" Source="Pictures/new.png" Width="20" Opacity="0.7" />
             </StackPanel>
         </Button>
-        <Button x:Name="delRule" BorderThickness="0" HorizontalAlignment="Left" Margin="326,260,0,0" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent">
+        <Button x:Name="delRule" BorderThickness="0" HorizontalAlignment="Left" Margin="326,260,0,0" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent" MouseEnter="delRule_MouseEnter" MouseLeave="delRule_MouseLeave">
             <StackPanel>
-                <Image Source="Pictures/remove.png" Width="20" />
+                <Image x:Name="delRuleImage" Source="Pictures/remove.png" Width="20" Opacity="0.7" />
             </StackPanel>
         </Button>
-        <Button x:Name="addRule" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="301,260,0,0" VerticalAlignment="Top" Width="20" Height="20">
+        <Button x:Name="addRule" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="301,260,0,0" VerticalAlignment="Top" Width="20" Height="20" MouseEnter="addRule_MouseEnter" MouseLeave="addRule_MouseLeave">
             <StackPanel>
-                <Image Source="Pictures/new.png" Width="20" />
+                <Image x:Name="addRuleImage" Source="Pictures/new.png" Width="20" Opacity="0.7" />
             </StackPanel>
         </Button>
-        <Button x:Name="addMatch" BorderThickness="0" HorizontalAlignment="Left" Margin="350,238,0,0" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent">
+        <Button x:Name="addMatch" BorderThickness="0" HorizontalAlignment="Left" Margin="350,238,0,0" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent" MouseEnter="addMatch_MouseEnter" MouseLeave="addMatch_MouseLeave">
             <StackPanel>
-                <Image Source="Pictures/next_item.png" Width="20" />
+                <Image x:Name="addMatchImage" Source="Pictures/next_item.png" Width="20" Opacity="0.7" />
             </StackPanel>
         </Button>
-        <Button x:Name="removeMatch" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="350,213,0,0" VerticalAlignment="Top" Width="20" Height="20">
+        <Button x:Name="removeMatch" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="350,213,0,0" VerticalAlignment="Top" Width="20" Height="20" MouseEnter="removeMatch_MouseEnter" MouseLeave="removeMatch_MouseLeave">
             <StackPanel>
-                <Image Source="Pictures/previous_item.png" Width="20" />
+                <Image x:Name="removeMatchImage" Source="Pictures/previous_item.png" Width="20" Opacity="0.7" />
             </StackPanel>
         </Button>
-        <Button x:Name="btnSettings" Margin="475,0,10.4,286.8" BorderThickness="0" Background="Transparent" Click="btnSettings_Click">
+        <Button x:Name="btnSettings" Margin="475,0,10.4,286.8" BorderThickness="0" Background="Transparent" Click="btnSettings_Click" MouseEnter="btnSettings_MouseEnter" MouseLeave="btnSettings_MouseLeave">
             <StackPanel>
-                <Image Source="Pictures/settings.png" Width="25" />
+                <Image x:Name="settingsImage" Source="Pictures/settings.png" Width="25" Opacity="0.65" />
             </StackPanel>
         </Button>
         <ListBox x:Name="listMatches"  HorizontalAlignment="Left" Height="212" Margin="211,46,0,0" VerticalAlignment="Top" Width="137" Initialized="listMatches_Initialized" Background="#A5FFFFFF">
@@ -146,16 +148,17 @@
                 </ControlTemplate>
             </ListBox.Template>
         </ListBox>
-        <Button x:Name="btnSave" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" Margin="0,0,7.5,7.5">
+        <Button x:Name="btnSave" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" Margin="0,0,7.5,7.5" MouseEnter="btnSave_MouseEnter" MouseLeave="btnSave_MouseLeave">
+            
             <StackPanel>
-                <Image Source="Pictures/save-icon.png" Width="30" Opacity="0.75" />
+                <Image x:Name="btnSaveImage" Source="Pictures/save-icon.png" Width="30" Opacity="0.4" />
             </StackPanel>
         </Button>
-        <Button x:Name="btnReload" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" Margin="0,0,47,7.5">
+        <Button x:Name="btnReload" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" Margin="0,0,47,7.5" MouseEnter="btnReload_MouseEnter" MouseLeave="btnReload_MouseLeave">
             <StackPanel>
-                <Image Source="Pictures/refresh.png" Width="30" />
+                <Image x:Name="btnReloadImage" Source="Pictures/refresh.png" Width="30" Opacity="0.7" />
             </StackPanel>
         </Button>
-        <Label x:Name="lblMatches" FontSize="14" Content="Matches" HorizontalAlignment="Left" Margin="211,10,0,0" VerticalAlignment="Top" Height="31" Width="240"/>
+        <Label x:Name="lblMatches" FontSize="14" Content="Matches" HorizontalAlignment="Left" Margin="211,10,0,0" VerticalAlignment="Top" Height="31" Width="135"/>
     </Grid>
 </Window>

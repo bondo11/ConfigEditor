@@ -43,13 +43,7 @@ namespace ConfigEditor
             {
                 listActiveMatches.Items.Add(match);
             }
-            foreach (string match in listMatches.Items)
-            {
-                foreach(string active in listActiveMatches.Items){
-                    if (match == active)
-                        listMatches.Items.Remove("match");
-                }
-            }
+
 
         }
 
@@ -80,6 +74,106 @@ namespace ConfigEditor
         {
 
         }
+
+
+        #region Button MouseEnter and MouseLeave
+
+        private void btnSettings_MouseEnter(object sender, MouseEventArgs e)
+        {
+            settingsImage.Opacity = 1;
+        }
+
+        private void btnSettings_MouseLeave(object sender, MouseEventArgs e)
+        {
+            settingsImage.Opacity = 0.65;
+        }
+
+
+        private void btnSave_MouseEnter(object sender, MouseEventArgs e)
+        {
+            btnReloadImage.Opacity = 1;
+        }
+
+        private void btnSave_MouseLeave(object sender, MouseEventArgs e)
+        {
+            btnReloadImage.Opacity = 0.7;
+        }
+
+        private void btnReload_MouseEnter(object sender, MouseEventArgs e)
+        {
+            btnReloadImage.Opacity = 1;
+
+        }
+
+        private void btnReload_MouseLeave(object sender, MouseEventArgs e)
+        {
+            btnReloadImage.Opacity = 0.7;
+        }
+
+        private void delFolder_MouseEnter(object sender, MouseEventArgs e)
+        {
+            delFolderImage.Opacity = 1;
+        }
+
+        private void delFolder_MouseLeave(object sender, MouseEventArgs e)
+        {
+            delFolderImage.Opacity = 0.7;
+        }
+
+        private void addFolder_MouseEnter(object sender, MouseEventArgs e)
+        {
+            addFolderImage.Opacity = 1;
+
+        }
+
+        private void addFolder_MouseLeave(object sender, MouseEventArgs e)
+        {
+            addFolderImage.Opacity = 0.7;
+        }
+
+        private void delRule_MouseEnter(object sender, MouseEventArgs e)
+        {
+            delFolderImage.Opacity = 1;
+        }
+
+        private void delRule_MouseLeave(object sender, MouseEventArgs e)
+        {
+            delRuleImage.Opacity = 0.7;
+        }
+
+        private void addRule_MouseEnter(object sender, MouseEventArgs e)
+        {
+            addRuleImage.Opacity = 1;
+
+        }
+
+        private void addRule_MouseLeave(object sender, MouseEventArgs e)
+        {
+            addRuleImage.Opacity = 0.7;
+        }
+
+        private void addMatch_MouseEnter(object sender, MouseEventArgs e)
+        {
+            addMatchImage.Opacity = 1;
+        }
+
+        private void addMatch_MouseLeave(object sender, MouseEventArgs e)
+        {
+            addMatchImage.Opacity = 0.7;
+
+        }
+
+        private void removeMatch_MouseEnter(object sender, MouseEventArgs e)
+        {
+            removeMatchImage.Opacity = 1;
+            removeMatch.Background = null;
+        }
+
+        private void removeMatch_MouseLeave(object sender, MouseEventArgs e)
+        {
+            removeMatchImage.Opacity = 0.7;
+        } 
+        #endregion
 
 
     }

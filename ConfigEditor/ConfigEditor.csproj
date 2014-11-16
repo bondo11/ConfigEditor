@@ -80,10 +80,12 @@
     <Compile Include="ActionSets.xaml.cs">
       <DependentUpon>ActionSets.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Folder.cs" />
+    <Compile Include="match.cs" />
     <Compile Include="RulesCollection.cs" />
     <Compile Include="ConfigHandler.cs" />
-    <Compile Include="matches.cs" />
     <Compile Include="rules.cs" />
+    <Compile Include="ruleset.cs" />
     <Compile Include="settings.xaml.cs">
       <DependentUpon>settings.xaml</DependentUpon>
     </Compile>
@@ -221,6 +223,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

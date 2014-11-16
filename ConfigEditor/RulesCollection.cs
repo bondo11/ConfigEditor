@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ConfigEditor
 {
-    public class RulesCollection
+    public static class RulesCollection
     {
-        public List<string> folderCollection = new List<string>();
-        public List<string> matchsetCollection = new List<string>();
-        public List<string> actionsetCollection = new List<string>();
+        public static List<Folder> Folders = new List<Folder>();
+        public static List<ActionSet> actionSets = new List<ActionSet>();
+        public static List<match> matchSets = new List<match>();
     }
 }
