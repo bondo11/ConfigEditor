@@ -3,7 +3,23 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Config editor" Height="350" Width="525"
         ResizeMode="NoResize">
-    
+    <Window.Resources>
+        <Style x:Key="MyBtnStyle" TargetType="{x:Type Button}">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="Red" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Content" Value="X"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="BorderBrush" Value="#FF2B3C59"/>
+                    <Setter Property="Background" Value="Green"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid RenderTransformOrigin="0.542,0.457">
         
         <Image Source="Pictures/TEC_logo.jpg" Margin="326,0,44,226" Visibility="Hidden" />
@@ -113,7 +129,7 @@
                 </ControlTemplate>
             </ListBox.Template>
         </ListBox>
-        <ListBox x:Name="listActiveMatches"  HorizontalAlignment="Left" Height="212" Margin="371,46,0,0" VerticalAlignment="Top" Width="137" Background="#A5FFFFFF" SelectionChanged="listActiveMatches_SelectionChanged">
+        <ListBox x:Name="listActiveMatches"  HorizontalAlignment="Left" Height="212" Margin="371,46,0,0" VerticalAlignment="Top" Width="137" Background="#A5FFFFFF" SelectionChanged="listActiveMatches_SelectionChanged" Initialized="listActiveMatches_Initialized">
             <ListBox.Template>
                 <ControlTemplate TargetType="{x:Type ListBox}">
                     <Border x:Name="Bd" SnapsToDevicePixels="true"
@@ -148,8 +164,7 @@
                 </ControlTemplate>
             </ListBox.Template>
         </ListBox>
-        <Button x:Name="btnSave" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" Margin="0,0,7.5,7.5" MouseEnter="btnSave_MouseEnter" MouseLeave="btnSave_MouseLeave">
-            
+        <Button Style="{StaticResource MyBtnStyle}" x:Name="btnSave" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" Margin="0,0,7.5,7.5" MouseEnter="btnSave_MouseEnter" MouseLeave="btnSave_MouseLeave">
             <StackPanel>
                 <Image x:Name="btnSaveImage" Source="Pictures/save-icon.png" Width="30" Opacity="0.4" />
             </StackPanel>
@@ -162,3 +177,4 @@
         <Label x:Name="lblMatches" FontSize="14" Content="Matches" HorizontalAlignment="Left" Margin="211,10,0,0" VerticalAlignment="Top" Height="31" Width="135"/>
     </Grid>
 </Window>
+    

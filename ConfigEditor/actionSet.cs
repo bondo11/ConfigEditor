@@ -5,10 +5,19 @@ using System.Text;
 
 namespace ConfigEditor
 {
-    class ActionSet
+    public class ActionSet
     {
-        public List<string> actions = new List<string>();
+        public List<Action> actions = new List<Action>();
+        public string name;
 
+        public ActionSet(string name)
+        {
+            this.name = name;
+        }
 
+        internal void Add(Action action)
+        {
+            actions.Add(action);
+        }
     }
 }

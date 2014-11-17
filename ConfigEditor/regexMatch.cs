@@ -5,13 +5,13 @@ using System.Text;
 
 namespace ConfigEditor
 {
-    public class Match
+    class regexMatch: Match
     {
-        #region Constructors
-        public Match()
-            : base()
+        public String regex = "";
+
+        public regexMatch(String regex)
         {
+            this.regex = regex;
         }
-        #endregion
     }
 }

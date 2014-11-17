@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConfigEditor
 {
-    class Action
+    public class Action
     {
-        Dictionary<string, string> Elements =
-        new Dictionary<string, string>();
-	
     }
 }

@@ -76,12 +76,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Action.cs" />
+    <Compile Include="MatchSet.cs" />
     <Compile Include="ActionSet.cs" />
     <Compile Include="ActionSets.xaml.cs">
       <DependentUpon>ActionSets.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AndRule.cs" />
+    <Compile Include="cmdAction.cs" />
+    <Compile Include="copyAction.cs" />
+    <Compile Include="extensionMatch.cs" />
     <Compile Include="Folder.cs" />
-    <Compile Include="match.cs" />
+    <Compile Include="Match.cs" />
+    <Compile Include="moveAction.cs" />
+    <Compile Include="OrRule.cs" />
+    <Compile Include="regexMatch.cs" />
     <Compile Include="RulesCollection.cs" />
     <Compile Include="ConfigHandler.cs" />
     <Compile Include="rules.cs" />

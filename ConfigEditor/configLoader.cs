@@ -5,136 +5,115 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.XPath;
 
 namespace ConfigEditor
 {
     public class configLoader
     {
-
-        XmlDocument objDoc = new XmlDocument();
+        XmlDocument document = new XmlDocument();
         public void getConfig()
         {
-            //List<string> matchArray = new List<string>();
-            objDoc.Load(ConfigHandler.getSource());
-            XmlNodeList elemList = objDoc.GetElementsByTagName("folder");
-            
-            foreach (XmlNode element in elemList)
+            document.Load(ConfigHandler.getSource());
+            //document.Load(@"c:\config\config.xml");
+
+            XmlNodeList nodes = document.DocumentElement.SelectNodes("folders/folder/path");
+
+            foreach (XmlNode node in nodes)
             {
+                Folder f = new Folder(node.InnerText);
 
-                Folder f = new Folder(element.SelectSingleNode("path").InnerXml); 
-                foreach (XmlNode ruleset in element.SelectNodes("rulesets"))
+                XmlNodeList rulesets = document.DocumentElement.SelectNodes("folders/folder[path = '" + node.InnerText + "']/rulesets/ruleset");
+                foreach (XmlNode ruleset in rulesets)
                 {
-                    f.rules.Add(new ruleset(getMatchSet(ruleset.SelectSingleNode("ruleset").SelectSingleNode("matchsetname").InnerXml), 
-                        getActionSet(ruleset.SelectSingleNode("ruleset").SelectSingleNode("actionsetname").InnerXml)));
-                    
-                    
-                    //getMatchSet(ruleset.SelectSingleNode("ruleset").SelectSingleNode("matchsetname").InnerXml);
-                    //matchArray.Add(ruleset.SelectSingleNode("ruleset").SelectSingleNode("matchsetname").InnerXml);
-
-                    
+                    f.rules.Add(new ruleset(getMatchSet(ruleset.SelectSingleNode("matchsetname").InnerText), getActionSet(ruleset.SelectSingleNode("actionsetname").InnerText)));
                 }
                 RulesCollection.Folders.Add(f);
             }
         }
 
-        private match getMatchSet(string MatchSetName)
+        private MatchSet getMatchSet(string matchSetName)
         {
-            objDoc.Load(ConfigHandler.getSource());
-            XmlNodeList elemList = objDoc.GetElementsByTagName("matches");
-            match m = new match();
-            foreach (XmlNode element in elemList)
-            {
-                if(element.SelectSingleNode("match").SelectSingleNode("name").InnerXml.Equals(MatchSetName))
-                {
-                    m.Name = element.SelectSingleNode("match").SelectSingleNode("name").InnerXml;
-                }
-
-            }
-            return m;
+            MatchSet matchSet = new MatchSet(matchSetName, getMatch("matches/match[name = '" + matchSetName + "']"));
+            RulesCollection.AddMatchSet(matchSet);
+            return matchSet;
         }
 
-        private List<Action> getActionSet(string ActionName)
+        private Match getMatch(string xpath)
         {
-            objDoc.Load(ConfigHandler.getSource());
-            XmlNodeList elemList = objDoc.GetElementsByTagName("actionsets");
-            match m = new match();
-            foreach (XmlNode element in elemList)
+            string kind = document.DocumentElement.SelectSingleNode(xpath+ "/kind").InnerText;
+            XmlNodeList nodes;
+            int i;
+            switch (kind)
             {
-                if (element.SelectSingleNode("actionsets").SelectSingleNode("name").InnerXml.Equals(ActionName))
-                {
-
-                    m.Name = element.SelectSingleNode("match").SelectSingleNode("name").InnerXml;
-                }
-
-            }
-            return new List<Action>();
-        }
-
-
-        [ObsoleteAttribute("This method is not in use anymore.", true)] 
-        
-        public List<string> matchArray(string path, Folder folder)
-        {
-            List<string> matchArray = new List<string>();
-            objDoc.Load(path);
-            XmlNodeList elemList = objDoc.GetElementsByTagName("folder");
-            foreach (XmlNode element in elemList)
-            {
-                if (element.SelectSingleNode("path").InnerXml.Equals(folder.Path))
-                {
-                    foreach (XmlNode ruleset in element.SelectSingleNode("rulesets").SelectNodes("ruleset"))
+                case "and":
+                    AndRule andRule = new AndRule();
+                    
+                    nodes = document.DocumentElement.SelectNodes(xpath + "/matches/match");
+                    i = 1;
+                    foreach (XmlNode node in nodes)
                     {
-                        matchArray.Add(ruleset.SelectSingleNode("matchsetname").InnerXml);
+                        andRule.add(getMatch(xpath + "/matches/match["+i+"]"));
+                        i++;
                     }
-                }
+
+                    return andRule;
+
+                case "or":
+                    OrRule orRule = new OrRule();
+                    
+                    nodes = document.DocumentElement.SelectNodes(xpath + "/matches/match");
+                    i = 1;
+                    foreach (XmlNode node in nodes)
+                    {
+                        orRule.add(getMatch(xpath + "/matches/match[" + i + "]"));
+                        i++;
+                    }
+                    return orRule;
+
+                case "extension":
+                    return new extensionMatch(document.DocumentElement.SelectSingleNode(xpath + "/extension").InnerText);
+
+                case "regex":
+                    return new regexMatch(document.DocumentElement.SelectSingleNode(xpath + "/pattern").InnerText);
+
+                default:
+                    return new Match();
             }
-            return matchArray;
         }
 
-
-        [ObsoleteAttribute("This method is not in use anymore.", true)] 
-        public List<string> matchArray()
+        private ActionSet getActionSet(string actionSetName)
         {
-            List<string> matchArray = new List<string>();
-            objDoc.Load(ConfigHandler.getSource());
-            XmlNodeList elemList = objDoc.GetElementsByTagName("folder");
-            foreach (XmlNode element in elemList)
+            string xpath = "actionsets/actionset[name = '" + actionSetName + "']";
+            ActionSet actionSet = new ActionSet(actionSetName);
+            XmlNodeList nodes = document.DocumentElement.SelectNodes(xpath + "/actions/action");
+            int i = 1;
+            foreach (XmlNode node in nodes)
             {
-                foreach (XmlNode ruleset in element.SelectNodes("rulesets"))
-                {
-                    matchArray.Add(ruleset.SelectSingleNode("ruleset").SelectSingleNode("matchsetname").InnerXml);
-                }
+                actionSet.Add(getAction(xpath + "/actions/action[" + i + "]"));
+                i++;
             }
-            return matchArray;
+            RulesCollection.AddActionSet(actionSet);
+            return actionSet;
         }
-
-
-        /*
-         * 
-        [ObsoleteAttribute("This method is not in use anymore.", true)] 
-         * 
-        public RulesCollection getRules(string path)
+        private Action getAction(string xpath)
         {
-            RulesCollection collection = new RulesCollection();
-            objDoc.Load(path);
-            XmlNodeList elemList = objDoc.GetElementsByTagName("folder");
-            foreach (XmlNode element in elemList)
+            string kind = document.DocumentElement.SelectSingleNode(xpath + "/kind").InnerText;
+
+            switch (kind)
             {
-                collection.folderCollection.Add(element.SelectSingleNode("path").InnerXml);
+                case "copy":
+                    return new copyAction(document.DocumentElement.SelectSingleNode(xpath + "/destination").InnerText);
+
+                case "move":
+                    return new moveAction(document.DocumentElement.SelectSingleNode(xpath + "/destination").InnerText);
+
+                case "cmd":
+                    return new cmdAction(document.DocumentElement.SelectSingleNode(xpath + "/command").InnerText);
+
+                default:
+                    return new Action();
             }
-            elemList = objDoc.GetElementsByTagName("match");
-            foreach (XmlNode element in elemList)
-            {
-                collection.matchsetCollection.Add(element.SelectSingleNode("name").InnerXml);
-            }
-            elemList = objDoc.GetElementsByTagName("actionset");
-            foreach (XmlNode element in elemList)
-            {
-                collection.actionsetCollection.Add(element.SelectSingleNode("name").InnerXml);
-            }
-            return collection;
-            
         }
-         * */
     }
 }

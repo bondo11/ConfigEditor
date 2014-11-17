@@ -42,25 +42,19 @@ namespace ConfigEditor
         {
             foreach (Folder f in RulesCollection.Folders)
                 RuleList.Items.Add(f.Path);
-            /*
-            foreach (string folder in rulesCollection.folderCollection)
-            {
-                RuleList.Items.Add(folder);
-            }
-             * */
         }
 
 
         private void listMatches_Initialized(object sender, EventArgs e)
         {
-            foreach (match m in RulesCollection.matchSets)
-                RuleList.Items.Add(m.Name);
-            /*
-            foreach (string match in rulesCollection.matchsetCollection)
+            foreach (MatchSet ms in RulesCollection.getMatchSets())
             {
-                listMatches.Items.Add(match);
+                listMatches.Items.Add(ms.name);
             }
-             * */
+            
+
+
+
         } 
         #endregion
 
@@ -106,12 +100,12 @@ namespace ConfigEditor
 
         private void btnSave_MouseEnter(object sender, MouseEventArgs e)
         {
-            btnReloadImage.Opacity = 1;
+            btnSave.Opacity = 1;
         }
 
         private void btnSave_MouseLeave(object sender, MouseEventArgs e)
         {
-            btnReloadImage.Opacity = 0.7;
+            btnSave.Opacity = 0.7;
         }
 
         private void btnReload_MouseEnter(object sender, MouseEventArgs e)
@@ -189,6 +183,15 @@ namespace ConfigEditor
             removeMatchImage.Opacity = 0.7;
         } 
         #endregion
+
+        private void listActiveMatches_Initialized(object sender, EventArgs e)
+        {
+
+            foreach (ActionSet a in RulesCollection.getActionSets())
+            {
+                listActiveMatches.Items.Add(a.name);
+            }
+        }
 
 
     }

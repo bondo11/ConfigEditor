@@ -7,13 +7,13 @@ namespace ConfigEditor
 {
     public class ruleset
     {
-        public match matchSet { get; set; }
-        List<Action> actions;
+        public MatchSet matchSet { get; set; }
+        public ActionSet actionSet;
 
-        public ruleset(match matchSet, List<Action> actionSet)
+        public ruleset(MatchSet matchSet, ActionSet actionSet)
         {
             this.matchSet = matchSet;
-            this.actions = actionSet;
+            this.actionSet = actionSet;
         }
     }
 }

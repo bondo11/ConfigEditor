@@ -5,13 +5,13 @@ using System.Text;
 
 namespace ConfigEditor
 {
-    public class Match
+    class cmdAction : Action
     {
-        #region Constructors
-        public Match()
-            : base()
+        private string command;
+
+        public cmdAction(string command)
         {
+            this.command = command;
         }
-        #endregion
     }
 }
