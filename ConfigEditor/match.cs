@@ -11,6 +11,7 @@ namespace ConfigEditor
         public Match()
             : base()
         {
+
         }
         #endregion
     }

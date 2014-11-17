@@ -63,17 +63,17 @@ namespace ConfigEditor
 
         private void tbPath_Initialized(object sender, EventArgs e)
         {
-            tbPath.Text = ConfigHandler.getSource();
+            tbPath.Text = ConfigSettings.getSource();
         }
 
         private void tbUser_Initialized(object sender, EventArgs e)
         {
-            tbUser.Text = ConfigHandler.getUser();
+            tbUser.Text = ConfigSettings.getUser();
         }
 
         private void tbPort_Initialized(object sender, EventArgs e)
         {
-            tbPort.Text = ConfigHandler.getPort().ToString();
+            tbPort.Text = ConfigSettings.getPort().ToString();
         }
         
 

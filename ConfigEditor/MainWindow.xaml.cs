@@ -23,7 +23,7 @@ namespace ConfigEditor
     public partial class MainWindow : Window
     {
 
-        configLoader cl = new configLoader();
+        configHandler cl = new configHandler();
         //RulesCollection rulesCollection;
         public MainWindow()
         {
@@ -191,6 +191,11 @@ namespace ConfigEditor
             {
                 listActiveMatches.Items.Add(a.name);
             }
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            configHandler.saveConfig();
         }
 
 

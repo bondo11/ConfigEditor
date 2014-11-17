@@ -7,7 +7,7 @@ namespace ConfigEditor
 {
     class copyAction : Action
     {
-        private string destination;
+        public string destination;
 
         public copyAction(string destination)
         {

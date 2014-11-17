@@ -91,7 +91,7 @@
     <Compile Include="OrRule.cs" />
     <Compile Include="regexMatch.cs" />
     <Compile Include="RulesCollection.cs" />
-    <Compile Include="ConfigHandler.cs" />
+    <Compile Include="ConfigSettings.cs" />
     <Compile Include="rules.cs" />
     <Compile Include="ruleset.cs" />
     <Compile Include="settings.xaml.cs">
@@ -109,7 +109,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="configLoader.cs" />
+    <Compile Include="configHandler.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

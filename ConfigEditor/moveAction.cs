@@ -7,7 +7,7 @@ namespace ConfigEditor
 {
     class moveAction : Action
     {
-        private string destination;
+        public string destination;
 
         public moveAction(string destination)
         {

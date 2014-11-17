@@ -7,7 +7,7 @@ namespace ConfigEditor
 {
     class cmdAction : Action
     {
-        private string command;
+        public string command;
 
         public cmdAction(string command)
         {
