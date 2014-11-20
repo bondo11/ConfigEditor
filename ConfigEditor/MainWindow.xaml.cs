@@ -38,10 +38,10 @@ namespace ConfigEditor
         }
 
         #region Initialized functions
-        private void RuleList_Initialized(object sender, EventArgs e)
+        private void folderList_Initialized(object sender, EventArgs e)
         {
             foreach (Folder f in RulesCollection.Folders)
-                RuleList.Items.Add(f.Path);
+                folderList.Items.Add(f.Path);
         }
 
 
@@ -59,20 +59,58 @@ namespace ConfigEditor
         #endregion
 
         #region Selection changed functions
-        private void RuleList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void folderList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            listActiveMatches.Items.Clear();
-            /*
-            foreach (string match in cl.matchArray(ConfigHandler.getSource(), (Convert.ToString(RuleList.SelectedItem))))
+            rulesList.Items.Clear();
+            foreach (Folder f in RulesCollection.Folders)
+            {
+                if (f.Path.Equals(folderList.SelectedValue))
+                {
+                    foreach (ruleset rs in f.rules)
+                    {
+                        int msindex = 0;
+                        int asindex = 0;
+                        //ComboBox cbMatchset = new ComboBox();
+                        foreach (MatchSet ms in RulesCollection.getMatchSets())
+                        {
+                           
+                            if (!ms.name.Equals(rs.matchSet.name))
+                            {
+                                msindex++;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        ComboBox cbAction = new ComboBox();
+                        foreach (ActionSet a in RulesCollection.getActionSets())
+                        {
+                            if (!a.name.Equals(rs.actionSet.name))
+                            {
+                                asindex++;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+
+                        rulesList.Items.Add(new ucRuleSet(msindex, asindex));
+                        
+                    }
+                }
+            }/*
+            foreach (string match in cl.matchArray(ConfigHandler.getSource(), (Convert.ToString(folderList.SelectedItem))))
             {
                 listActiveMatches.Items.Add(match);
-            }
-            */
+            }*/
+            
 
         }
         private void listActiveMatches_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            
         } 
         #endregion
 
@@ -197,7 +235,6 @@ namespace ConfigEditor
         {
             configHandler.saveConfig();
         }
-
 
     }
 }

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace ConfigEditor
 {
+    /// <summary>
+    /// </summary>
+    /// <remarks></remarks>
     class copyAction : Action
     {
         public string destination;

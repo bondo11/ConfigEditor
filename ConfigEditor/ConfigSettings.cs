@@ -47,7 +47,9 @@ namespace ConfigEditor
         {
             if (password == null)
             {
-                user = ConfigurationManager.AppSettings["password"];
+
+                PasswordEncoder pe = new PasswordEncoder();
+                password = pe.DecryptWithByteArray();
             }
             return password;
         }
@@ -90,12 +92,14 @@ namespace ConfigEditor
         }
         public static void setUser(string User)
         {
+            PasswordEncoder pe = new PasswordEncoder();
                 ConfigurationManager.AppSettings["user"] = User;
                 user = User;
         }
         public static void setPassword(string newPassword)
         {
-            ConfigurationManager.AppSettings["password"] = newPassword;
+            PasswordEncoder pe = new PasswordEncoder();
+            ConfigurationManager.AppSettings["password"] = pe.EncryptWithByteArray(newPassword);
             password = newPassword;
         }
 

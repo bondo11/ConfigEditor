@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -12,8 +13,13 @@ namespace ConfigEditor
     public class configHandler
     {
         XmlDocument document = new XmlDocument();
+        //XmlUrlResolver resolver = new XmlUrlResolver();
         public void getConfig()
         {
+            //resolver.Credentials = CredentialCache.DefaultCredentials;
+            //document.XmlResolver = resolver;
+
+
             document.Load(ConfigSettings.getSource());
             //document.Load(@"c:\config\config.xml");
 

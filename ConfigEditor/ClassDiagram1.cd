@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ConfigEditor.Action">
+    <Position X="2.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Action.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.ActionSet">
+    <Position X="7.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAACAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ActionSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.ActionSets">
+    <Position X="7.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ActionSets.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.AndRule">
+    <Position X="5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACCAA=</HashCode>
+      <FileName>AndRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.App">
+    <Position X="7.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.cmdAction">
+    <Position X="0.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>cmdAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.configHandler">
+    <Position X="5.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAwAAAAAQAAAAAAAAIIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>configHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.ConfigSettings">
+    <Position X="0.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAACAAAAAIAAAAIAAAAAAAAAAgAAAAAAhAAA6A=</HashCode>
+      <FileName>ConfigSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.copyAction">
+    <Position X="2.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>copyAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.extensionMatch">
+    <Position X="7.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>extensionMatch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.Folder">
+    <Position X="0.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Folder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.MainWindow">
+    <Position X="4" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAIAIgoQAAQABEACQAAAAQgAAIAAABIAAsAAAAI4AAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.Match">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Match.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.MatchSet">
+    <Position X="9.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>MatchSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.moveAction">
+    <Position X="5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>moveAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.OrRule">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACCAA=</HashCode>
+      <FileName>OrRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.PasswordEncoder">
+    <Position X="2.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAICAAAAQAAAAAIAAAQAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PasswordEncoder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.regexMatch">
+    <Position X="2.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>regexMatch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.rules">
+    <Position X="7.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgA=</HashCode>
+      <FileName>rules.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.RulesCollection">
+    <Position X="5.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIQAAAAAAAAAAAAAAAhAAAACBAJAAAACAAA=</HashCode>
+      <FileName>RulesCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.ruleset">
+    <Position X="7.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ruleset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.settings">
+    <Position X="9.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAARAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>settings.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.Properties.Resources">
+    <Position X="2.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.Properties.Settings">
+    <Position X="9.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

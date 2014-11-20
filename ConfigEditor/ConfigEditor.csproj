@@ -89,6 +89,7 @@
     <Compile Include="Match.cs" />
     <Compile Include="moveAction.cs" />
     <Compile Include="OrRule.cs" />
+    <Compile Include="PasswordEncoder.cs" />
     <Compile Include="regexMatch.cs" />
     <Compile Include="RulesCollection.cs" />
     <Compile Include="ConfigSettings.cs" />
@@ -96,6 +97,15 @@
     <Compile Include="ruleset.cs" />
     <Compile Include="settings.xaml.cs">
       <DependentUpon>settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="test.xaml.cs">
+      <DependentUpon>test.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UCaction.xaml.cs">
+      <DependentUpon>UCaction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ucRuleSet.xaml.cs">
+      <DependentUpon>ucRuleSet.xaml</DependentUpon>
     </Compile>
     <Page Include="ActionSets.xaml">
       <SubType>Designer</SubType>
@@ -118,6 +128,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="test.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UCaction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ucRuleSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -137,6 +159,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

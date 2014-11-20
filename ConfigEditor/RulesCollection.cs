@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,13 @@ namespace ConfigEditor
 {
     public static class RulesCollection
     {
+
+        public static ObservableCollection<ActionSet> actionSets = new ObservableCollection<ActionSet>();
+        public static ObservableCollection<MatchSet> matchSets = new ObservableCollection<MatchSet>();
+
         public static List<Folder> Folders = new List<Folder>();
-        private static List<ActionSet> actionSets = new List<ActionSet>();
-        private static List<MatchSet> matchSets = new List<MatchSet>();
+        //private static List<ActionSet> actionSets = new List<ActionSet>();
+        //private static List<MatchSet> matchSets = new List<MatchSet>();
 
         public static bool AddActionSet(ActionSet actionSet)
         {
@@ -44,11 +49,11 @@ namespace ConfigEditor
         {
             matchSets.RemoveAt(index);
         }
-        public static List<MatchSet> getMatchSets()
+        public static ObservableCollection<MatchSet> getMatchSets()
         {
             return matchSets;
         }
-        public static List<ActionSet> getActionSets()
+        public static ObservableCollection<ActionSet> getActionSets()
         {
             return actionSets;
         }

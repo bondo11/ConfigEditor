@@ -14,6 +14,9 @@ using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.Configuration;
 using System.IO;
+using System.Security.Principal;
+using System.Security.AccessControl;
+
 
 namespace ConfigEditor
 {
@@ -26,16 +29,30 @@ namespace ConfigEditor
         {
             InitializeComponent();
         }
-
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-
             if (File.Exists(tbPath.Text))
             {
-                ConfigurationManager.AppSettings["source"] = tbPath.Text;
-                ConfigurationManager.AppSettings["port"] = tbPort.Text;
-                ConfigurationManager.AppSettings["user"] = tbUser.Text;
-                ConfigurationManager.AppSettings["password"] = pwdPassword.Password;
+                if (HasWritePermission(tbPath.Text))
+                {
+                    ConfigurationManager.AppSettings["source"] = tbPath.Text;
+                }
+                else
+                {
+                    MessageBoxResult result = System.Windows.MessageBox.Show("No permission to file!" + Environment.NewLine + "Insert crednetials?", "Config Error", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        ConfigurationManager.AppSettings["source"] = tbPath.Text;
+                        //ConfigurationManager.AppSettings["port"] = tbPort.Text;
+                        //ConfigurationManager.AppSettings["user"] = tbUser.Text;
+                        //ConfigurationManager.AppSettings["password"] = pwdPassword.Password;
+                        this.Close();
+                    }
+                }
+                //ConfigurationManager.AppSettings["port"] = tbPort.Text;
+                //ConfigurationManager.AppSettings["user"] = tbUser.Text;
+                //ConfigurationManager.AppSettings["password"] = pwdPassword.Password;
+                
                 this.Close();
             }
             else
@@ -44,9 +61,9 @@ namespace ConfigEditor
                 if (result == MessageBoxResult.Yes)
                 {
                     ConfigurationManager.AppSettings["source"] = tbPath.Text;
-                    ConfigurationManager.AppSettings["port"] = tbPort.Text;
-                    ConfigurationManager.AppSettings["user"] = tbUser.Text;
-                    ConfigurationManager.AppSettings["password"] = pwdPassword.Password;
+                    //ConfigurationManager.AppSettings["port"] = tbPort.Text;
+                    //ConfigurationManager.AppSettings["user"] = tbUser.Text;
+                    //ConfigurationManager.AppSettings["password"] = pwdPassword.Password;
                     this.Close();
                 }
                 else
@@ -58,24 +75,65 @@ namespace ConfigEditor
                     tbPath.Background = myBrush;
                 }
             }
-
         }
-
         private void tbPath_Initialized(object sender, EventArgs e)
         {
             tbPath.Text = ConfigSettings.getSource();
         }
-
-        private void tbUser_Initialized(object sender, EventArgs e)
+        private static bool HasWritePermission(string FilePath)
         {
-            tbUser.Text = ConfigSettings.getUser();
-        }
+            try
+            {
+                FileSystemSecurity security;
+                if (File.Exists(FilePath))
+                {
+                    security = File.GetAccessControl(FilePath);
+                }
+                else
+                {
+                    security = Directory.GetAccessControl(System.IO.Path.GetDirectoryName(FilePath));
+                }
+                var rules = security.GetAccessRules(true, true, typeof(NTAccount));
 
-        private void tbPort_Initialized(object sender, EventArgs e)
-        {
-            tbPort.Text = ConfigSettings.getPort().ToString();
+                var currentuser = new WindowsPrincipal(WindowsIdentity.GetCurrent());
+                bool result = false;
+                foreach (FileSystemAccessRule rule in rules)
+                {
+                    if (0 == (rule.FileSystemRights &
+                        (FileSystemRights.WriteData | FileSystemRights.Write)))
+                    {
+                        continue;
+                    }
+
+                    if (rule.IdentityReference.Value.StartsWith("S-1-"))
+                    {
+                        var sid = new SecurityIdentifier(rule.IdentityReference.Value);
+                        if (!currentuser.IsInRole(sid))
+                        {
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        if (!currentuser.IsInRole(rule.IdentityReference.Value))
+                        {
+                            continue;
+                        }
+                    }
+
+                    if (rule.AccessControlType == AccessControlType.Deny)
+                        return false;
+                    if (rule.AccessControlType == AccessControlType.Allow)
+                        result = true;
+                }
+                return result;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
-        
 
     }
 }
