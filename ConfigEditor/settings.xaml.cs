@@ -23,7 +23,7 @@ namespace ConfigEditor
     /// <summary>
     /// Interaction logic for settings.xaml
     /// </summary>
-    public partial class settings : Window 
+    public partial class settings : Window
     {
         public settings()
         {
@@ -52,7 +52,7 @@ namespace ConfigEditor
                 //ConfigurationManager.AppSettings["port"] = tbPort.Text;
                 //ConfigurationManager.AppSettings["user"] = tbUser.Text;
                 //ConfigurationManager.AppSettings["password"] = pwdPassword.Password;
-                
+
                 this.Close();
             }
             else
@@ -133,6 +133,28 @@ namespace ConfigEditor
                 return false;
             }
 
+        }
+
+        private void browseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
+                ofd.Filter = "Config Files|config.xml";
+                ofd.Title = "Open Config Dialog";
+                ofd.RestoreDirectory = true;
+                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    string Path = ofd.FileName;
+                    string FolderName = System.IO.Path.GetFullPath(Path);
+                    tbPath.Text = FolderName;
+                }
+                else { tbPath.Text = "No permission"; }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
     }

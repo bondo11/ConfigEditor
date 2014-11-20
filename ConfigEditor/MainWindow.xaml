@@ -61,7 +61,7 @@
         </ListBox>
         <Button x:Name="delFolder" BorderThickness="0" HorizontalAlignment="Left" Margin="37,291,0,0" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent" MouseEnter="delFolder_MouseEnter" MouseLeave="delFolder_MouseLeave">
             <StackPanel>
-                <Image x:Name="delFolderImage" Source="Pictures/remove.png" Width="20" Opacity="0.7" />
+                <Image x:Name="delFolderImage" Source="Pictures/discard.png" Width="20" Opacity="0.7" />
             </StackPanel>
         </Button>
         <Button x:Name="addFolder" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="11,291,0,0" VerticalAlignment="Top" Width="20" Height="20" MouseEnter="addFolder_MouseEnter" MouseLeave="addFolder_MouseLeave">
@@ -71,7 +71,7 @@
         </Button>
         <Button x:Name="delRule" BorderThickness="0" HorizontalAlignment="Left" Margin="236,292,0,0" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent" MouseEnter="delRule_MouseEnter" MouseLeave="delRule_MouseLeave" RenderTransformOrigin="-10.45,2">
             <StackPanel>
-                <Image x:Name="delRuleImage" Source="Pictures/remove.png" Width="20" Opacity="0.7" />
+                <Image x:Name="delRuleImage" Source="Pictures/discard.png" Width="20" Opacity="0.7" />
             </StackPanel>
         </Button>
         <Button x:Name="addRule" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="211,292,0,0" VerticalAlignment="Top" Width="20" Height="20" MouseEnter="addRule_MouseEnter" MouseLeave="addRule_MouseLeave">
