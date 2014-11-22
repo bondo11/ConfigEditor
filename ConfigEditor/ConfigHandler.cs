@@ -112,7 +112,7 @@ namespace ConfigEditor
                     return new copyAction(document.DocumentElement.SelectSingleNode(xpath + "/destination").InnerText);
 
                 case "move":
-                    return new moveAction(document.DocumentElement.SelectSingleNode(xpath + "/destination").InnerText);
+                    return new MoveAction(document.DocumentElement.SelectSingleNode(xpath + "/destination").InnerText);
 
                 case "cmd":
                     return new cmdAction(document.DocumentElement.SelectSingleNode(xpath + "/command").InnerText);
@@ -206,7 +206,7 @@ namespace ConfigEditor
                         writer.WriteValue(((copyAction)action).destination);
                         writer.WriteEndElement();
                     }
-                    else if (action is moveAction)
+                    else if (action is MoveAction)
                     {
                         //kind
                         writer.WriteStartElement("kind");
@@ -215,7 +215,7 @@ namespace ConfigEditor
 
                         //destination
                         writer.WriteStartElement("destination");
-                        writer.WriteValue(((moveAction)action).destination);
+                        writer.WriteValue(((MoveAction)action).destination);
                         writer.WriteEndElement();
                     }
                     else if (action is cmdAction)

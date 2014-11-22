@@ -31,12 +31,23 @@ namespace ConfigEditor
             {
                 cbActionSet.Items.Add(a.name);
             }
-
         }
         public ucRuleSet(int matchSetIndex, int actionSetIndex) : this()
         {
             cbMatchSet.SelectedIndex = matchSetIndex;
             cbActionSet.SelectedIndex = actionSetIndex;
+        }
+
+        private void editMatchSet_Click(object sender, RoutedEventArgs e)
+        {
+            var newW = new EditMatchSets(cbMatchSet.SelectedIndex);
+            newW.Show();
+        }
+
+        private void editActionSet_Click(object sender, RoutedEventArgs e)
+        {
+            var newW = new EditActionSets(cbActionSet.SelectedIndex);
+            newW.Show();
         }
     }
 }

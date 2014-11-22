@@ -18,21 +18,22 @@ namespace ConfigEditor
     /// <summary>
     /// Interaction logic for UCaction.xaml
     /// </summary>
-    public partial class ucAction : UserControl
+    public partial class ucMatch : UserControl
     {
-        private Action act;
+        private Match match;
 
 
-        public ucAction()
+        public ucMatch()
         {
             InitializeComponent();
         }
 
-        public ucAction(Action act) : this()
+        public ucMatch(Match match)
+            : this()
         {
 
             // TODO: Complete member initialization
-            this.act = act;
+            this.match = match;
         }
     }
 }

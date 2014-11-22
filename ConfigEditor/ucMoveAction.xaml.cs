@@ -16,23 +16,13 @@ using System.Windows.Shapes;
 namespace ConfigEditor
 {
     /// <summary>
-    /// Interaction logic for UCaction.xaml
+    /// Interaction logic for moveAction.xaml
     /// </summary>
-    public partial class ucAction : UserControl
+    public partial class ucMoveAction : UserControl
     {
-        private Action act;
-
-
-        public ucAction()
+        public ucMoveAction()
         {
             InitializeComponent();
-        }
-
-        public ucAction(Action act) : this()
-        {
-
-            // TODO: Complete member initialization
-            this.act = act;
         }
     }
 }

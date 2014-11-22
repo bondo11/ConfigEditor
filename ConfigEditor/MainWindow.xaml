@@ -14,8 +14,8 @@
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="BorderThickness" Value="1"/>
-                    <Setter Property="BorderBrush" Value="#FF2B3C59"/>
-                    <Setter Property="Background" Value="Green"/>
+                    <Setter Property="BorderBrush" Value="#002B3C59"/>
+                    <Setter Property="Background" Value="#00008000"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -180,7 +180,7 @@
                 </ControlTemplate>
             </ListBox.Template>
         </ListBox>
-        <Button Style="{StaticResource MyBtnStyle}" x:Name="btnSave" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" Margin="0,0,5,5" MouseEnter="btnSave_MouseEnter" MouseLeave="btnSave_MouseLeave" Click="btnSave_Click">
+        <Button x:Name="btnSave" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" Margin="0,0,5,5" MouseEnter="btnSave_MouseEnter" MouseLeave="btnSave_MouseLeave" Click="btnSave_Click">
             <StackPanel>
                 <Image x:Name="btnSaveImage" Source="Pictures/save-icon.png" Width="30" Opacity="0.4" />
             </StackPanel>

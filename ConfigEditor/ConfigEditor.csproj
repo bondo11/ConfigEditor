@@ -76,10 +76,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Action.cs" />
+    <Compile Include="EditMatchSets.xaml.cs">
+      <DependentUpon>EditMatchSets.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ucMatch.xaml.cs">
+      <DependentUpon>ucMatch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ucCopyAction.xaml.cs">
+      <DependentUpon>ucCopyAction.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MatchSet.cs" />
     <Compile Include="ActionSet.cs" />
-    <Compile Include="ActionSets.xaml.cs">
-      <DependentUpon>ActionSets.xaml</DependentUpon>
+    <Compile Include="EditActionSets.xaml.cs">
+      <DependentUpon>EditActionSets.xaml</DependentUpon>
     </Compile>
     <Compile Include="AndRule.cs" />
     <Compile Include="cmdAction.cs" />
@@ -88,6 +97,9 @@
     <Compile Include="Folder.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="moveAction.cs" />
+    <Compile Include="ucMoveAction.xaml.cs">
+      <DependentUpon>ucMoveAction.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OrRule.cs" />
     <Compile Include="PasswordEncoder.cs" />
     <Compile Include="regexMatch.cs" />
@@ -101,13 +113,25 @@
     <Compile Include="test.xaml.cs">
       <DependentUpon>test.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UCaction.xaml.cs">
-      <DependentUpon>UCaction.xaml</DependentUpon>
+    <Compile Include="ucAction.xaml.cs">
+      <DependentUpon>ucAction.xaml</DependentUpon>
     </Compile>
     <Compile Include="ucRuleSet.xaml.cs">
       <DependentUpon>ucRuleSet.xaml</DependentUpon>
     </Compile>
-    <Page Include="ActionSets.xaml">
+    <Page Include="EditMatchSets.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EditActionSets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ucMatch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ucCopyAction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,6 +148,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ucMoveAction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -132,7 +160,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UCaction.xaml">
+    <Page Include="ucAction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ConfigEditor
 {
     /// <summary>
-    /// Interaction logic for ActionSets.xaml
+    /// Interaction logic for copyAction.xaml
     /// </summary>
-    public partial class ActionSets : Window
+    public partial class ucCopyAction : UserControl
     {
-        public ActionSets()
+        public ucCopyAction()
         {
             InitializeComponent();
         }

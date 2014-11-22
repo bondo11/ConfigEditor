@@ -9,7 +9,7 @@
         Height="Auto">
         <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch" 
         Height="Auto" Width="208">
-            <Button x:Name="editMatchSet" DockPanel.Dock="right" BorderThickness="0" Background="Transparent" Width="25" Height="25">
+            <Button x:Name="editMatchSet" DockPanel.Dock="right" BorderThickness="0" Background="Transparent" Width="25" Height="25" Click="editMatchSet_Click">
                 <StackPanel Width="25">
                     <Image Source="Pictures/edit.png" Width="25" Opacity="0.65" />
                 </StackPanel>
@@ -18,7 +18,7 @@
         </DockPanel>
         <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch" 
         Height="Auto" Width="208">
-            <Button x:Name="editActionSet"  DockPanel.Dock="right" BorderThickness="0" Background="Transparent" Width="25" Height="25">
+            <Button x:Name="editActionSet"  DockPanel.Dock="right" BorderThickness="0" Background="Transparent" Width="25" Height="25" Click="editActionSet_Click">
                 <StackPanel Width="25">
                     <Image Source="Pictures/edit.png" Width="25" Opacity="0.65" />
                 </StackPanel>

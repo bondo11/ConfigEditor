@@ -5,11 +5,15 @@ using System.Text;
 
 namespace ConfigEditor
 {
-    class moveAction : Action
+    class MoveAction : Action
     {
         public string destination;
 
-        public moveAction(string destination)
+        public MoveAction()
+        {
+
+        }
+        public MoveAction(string destination)
         {
             // TODO: Complete member initialization
             this.destination = destination;
