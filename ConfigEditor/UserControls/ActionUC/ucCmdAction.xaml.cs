@@ -16,13 +16,23 @@ using System.Windows.Shapes;
 namespace ConfigEditor
 {
     /// <summary>
-    /// Interaction logic for copyAction.xaml
+    /// Interaction logic for cmdAction.xaml
     /// </summary>
-    public partial class ucCopyAction : UserControl
+    public partial class ucCmdAction : UserControl
     {
-        public ucCopyAction()
+        private cmdAction act;
+
+        public ucCmdAction()
         {
             InitializeComponent();
+        }
+
+        public ucCmdAction(cmdAction Action)
+            : this()
+        {
+            this.act = Action;
+            // TODO: Complete member initialization
+            tbCmd.Text = act.command;
         }
     }
 }

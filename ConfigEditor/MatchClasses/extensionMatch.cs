@@ -9,8 +9,11 @@ namespace ConfigEditor
     class extensionMatch : Match
     {
         public String extension = "";
-
-        public extensionMatch(String extension)
+        private extensionMatch()
+        {
+            this.kind = RulesCollection.MatchKinds.extensionMatch;
+        }
+        public extensionMatch(String extension) : this()
         {
             this.extension = extension;
         }

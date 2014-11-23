@@ -5,11 +5,15 @@ using System.Text;
 
 namespace ConfigEditor
 {
-    class cmdAction : Action
+    public class cmdAction : Action
     {
         public string command;
 
-        public cmdAction(string command)
+        private cmdAction()
+        {
+            this.kind = RulesCollection.ActionKinds.cmdAction;
+        }
+        public cmdAction(string command) :this()
         {
             this.command = command;
         }

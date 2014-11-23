@@ -26,13 +26,23 @@ namespace ConfigEditor
         public ucAction()
         {
             InitializeComponent();
+            foreach (RulesCollection.ActionKinds kind in (RulesCollection.ActionKinds[])Enum.GetValues(typeof(RulesCollection.ActionKinds)))
+            {
+                cBox.Items.Add(kind);
+            }
         }
 
         public ucAction(Action act) : this()
         {
-
-            // TODO: Complete member initialization
+            cBox.SelectedIndex = (int)act.kind;
             this.act = act;
+        }
+        public ucAction(Action act, UserControl uc)
+            : this()
+        {
+            cBox.SelectedIndex = (int)act.kind;
+            this.act = act;
+            container.Children.Add(uc);
         }
     }
 }

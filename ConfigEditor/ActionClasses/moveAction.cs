@@ -5,14 +5,14 @@ using System.Text;
 
 namespace ConfigEditor
 {
-    class MoveAction : Action
+    public class MoveAction : Action
     {
         public string destination;
-
-        public MoveAction()
+        private MoveAction()
         {
-
+            this.kind = RulesCollection.ActionKinds.moveAction;
         }
+
         public MoveAction(string destination)
         {
             // TODO: Complete member initialization

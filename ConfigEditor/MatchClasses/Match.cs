@@ -7,6 +7,8 @@ namespace ConfigEditor
 {
     public class Match
     {
+
+        public RulesCollection.MatchKinds kind;
         #region Constructors
         public Match()
             : base()

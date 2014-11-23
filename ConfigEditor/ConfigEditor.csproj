@@ -75,39 +75,57 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Action.cs" />
-    <Compile Include="EditMatchSets.xaml.cs">
+    <Compile Include="ActionClasses\Action.cs" />
+    <Compile Include="Windows\EditMatchSets.xaml.cs">
       <DependentUpon>EditMatchSets.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MatchUC\ucMatchAnd.xaml.cs">
+      <DependentUpon>ucMatchAnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MatchUC\ucRegexMatch.xaml.cs">
+      <DependentUpon>ucRegexMatch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MatchUC\ucExtensionMatch.xaml.cs">
+      <DependentUpon>ucExtensionMatch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MatchUC\ucMatchOr.xaml.cs">
+      <DependentUpon>ucMatchOr.xaml</DependentUpon>
     </Compile>
     <Compile Include="ucMatch.xaml.cs">
       <DependentUpon>ucMatch.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ucCopyAction.xaml.cs">
+    <Compile Include="UserControls\ActionUC\ucCopyAction.xaml.cs">
       <DependentUpon>ucCopyAction.xaml</DependentUpon>
     </Compile>
     <Compile Include="MatchSet.cs" />
     <Compile Include="ActionSet.cs" />
-    <Compile Include="EditActionSets.xaml.cs">
+    <Compile Include="Windows\EditActionSets.xaml.cs">
       <DependentUpon>EditActionSets.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AndRule.cs" />
-    <Compile Include="cmdAction.cs" />
-    <Compile Include="copyAction.cs" />
-    <Compile Include="extensionMatch.cs" />
+    <Compile Include="MatchClasses\AndRule.cs" />
+    <Compile Include="ActionClasses\cmdAction.cs" />
+    <Compile Include="ActionClasses\copyAction.cs" />
+    <Compile Include="MatchClasses\extensionMatch.cs" />
     <Compile Include="Folder.cs" />
-    <Compile Include="Match.cs" />
-    <Compile Include="moveAction.cs" />
-    <Compile Include="ucMoveAction.xaml.cs">
+    <Compile Include="MatchClasses\Match.cs" />
+    <Compile Include="ActionClasses\moveAction.cs" />
+    <Compile Include="UserControls\ActionUC\ucCmdAction.xaml.cs">
+      <DependentUpon>ucCmdAction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ActionUC\ucDeleteAction.xaml.cs">
+      <DependentUpon>ucDeleteAction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ActionUC\ucMoveAction.xaml.cs">
       <DependentUpon>ucMoveAction.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OrRule.cs" />
+    <Compile Include="MatchClasses\OrRule.cs" />
     <Compile Include="PasswordEncoder.cs" />
-    <Compile Include="regexMatch.cs" />
+    <Compile Include="MatchClasses\regexMatch.cs" />
     <Compile Include="RulesCollection.cs" />
     <Compile Include="ConfigSettings.cs" />
     <Compile Include="rules.cs" />
     <Compile Include="ruleset.cs" />
-    <Compile Include="settings.xaml.cs">
+    <Compile Include="Windows\settings.xaml.cs">
       <DependentUpon>settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="test.xaml.cs">
@@ -119,11 +137,27 @@
     <Compile Include="ucRuleSet.xaml.cs">
       <DependentUpon>ucRuleSet.xaml</DependentUpon>
     </Compile>
-    <Page Include="EditMatchSets.xaml">
+    <Page Include="Windows\EditMatchSets.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EditActionSets.xaml">
+    <Page Include="Windows\EditActionSets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\MatchUC\ucMatchAnd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\MatchUC\ucRegexMatch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\MatchUC\ucExtensionMatch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\MatchUC\ucMatchOr.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,7 +165,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ucCopyAction.xaml">
+    <Page Include="UserControls\ActionUC\ucCopyAction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,11 +182,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ucMoveAction.xaml">
+    <Page Include="UserControls\ActionUC\ucCmdAction.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ActionUC\ucDeleteAction.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ActionUC\ucMoveAction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="settings.xaml">
+    <Page Include="Windows\settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

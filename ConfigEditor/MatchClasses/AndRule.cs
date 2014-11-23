@@ -5,10 +5,13 @@ using System.Text;
 
 namespace ConfigEditor
 {
-    class OrRule : Match
+    class AndRule : Match
     {
-        List<Match> matchRules = new List<Match>();
-
+        public List<Match> matchRules = new List<Match>();
+        public AndRule()
+        {
+            this.kind = RulesCollection.MatchKinds.And;
+        }
         public void add(Match matchRule)
         {
             matchRules.Add(matchRule);

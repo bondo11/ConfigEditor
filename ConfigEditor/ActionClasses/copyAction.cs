@@ -8,12 +8,16 @@ namespace ConfigEditor
     /// <summary>
     /// </summary>
     /// <remarks></remarks>
-    class copyAction : Action
+    public class copyAction : Action
     {
         public string destination;
-
-        public copyAction(string destination)
+        private copyAction()
         {
+            this.kind = RulesCollection.ActionKinds.copyAction;
+        }
+
+        public copyAction(string destination) : this()
+        { 
             this.destination = destination;
         }
     }

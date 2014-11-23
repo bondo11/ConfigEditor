@@ -8,5 +8,6 @@ namespace ConfigEditor
 {
     public class Action
     {
+        public RulesCollection.ActionKinds kind;
     }
 }

@@ -13,16 +13,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ConfigEditor
+namespace ConfigEditor.MatchClasses
 {
     /// <summary>
-    /// Interaction logic for moveAction.xaml
+    /// Interaction logic for ucRegexMatch.xaml
     /// </summary>
-    public partial class ucMoveAction : UserControl
+    public partial class ucRegexMatch : UserControl
     {
-        public ucMoveAction()
+        public ucRegexMatch()
         {
             InitializeComponent();
+        }
+        public ucRegexMatch(string regex) : this()
+        {
+            tbRegex.Text = regex;
         }
     }
 }

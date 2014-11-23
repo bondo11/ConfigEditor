@@ -21,19 +21,82 @@ namespace ConfigEditor
     public partial class ucMatch : UserControl
     {
         private Match match;
+        private UserControl UCmatch;
+        //private RulesCollection.MatchKinds kind;
 
 
         public ucMatch()
         {
             InitializeComponent();
+            foreach (RulesCollection.MatchKinds kind in (RulesCollection.MatchKinds[])Enum.GetValues(typeof(RulesCollection.MatchKinds)))
+            {
+                cbMatch.Items.Add(kind);
+            }
         }
-
-        public ucMatch(Match match)
+        public ucMatch(Match match, UserControl UC)
             : this()
         {
+            cbMatch.SelectedIndex = (int)match.kind;
+            this.UCmatch = UC;
+            container.Children.Add(UCmatch);
+        }
 
+        public ucMatch(Match match) : this()
+        {
             // TODO: Complete member initialization
             this.match = match;
+            switch (match.kind)
+            {
+                case RulesCollection.MatchKinds.And:
+                    addAndUC((AndRule)match);
+                    break;
+                case RulesCollection.MatchKinds.Or:
+                    addOrUC((OrRule)match);
+                    break;
+                default:
+                    break;
+            }
         }
+
+        private void addAndUC(AndRule match)
+        {
+            foreach (Match m in match.matchRules)
+            {
+                switch (m.kind)
+                {
+                    case RulesCollection.MatchKinds.And:
+                        break;
+                    case RulesCollection.MatchKinds.Or:
+                        break;
+                    case RulesCollection.MatchKinds.extensionMatch:
+                        break;
+                    case RulesCollection.MatchKinds.regexMatch:
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private void addOrUC(OrRule match)
+        {
+            foreach (Match m in match.matchRules)
+            {
+                switch (m.kind)
+                {
+                    case RulesCollection.MatchKinds.And:
+                        break;
+                    case RulesCollection.MatchKinds.Or:
+                        break;
+                    case RulesCollection.MatchKinds.extensionMatch:
+                        break;
+                    case RulesCollection.MatchKinds.regexMatch:
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
     }
 }
