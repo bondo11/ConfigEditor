@@ -27,6 +27,7 @@ namespace ConfigEditor
             InitializeComponent();
         }
 
+
         public ucCmdAction(cmdAction Action)
             : this()
         {
