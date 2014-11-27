@@ -40,7 +40,7 @@ namespace ConfigEditor
 
         private MatchSet getMatchSet(string matchSetName)
         {
-            MatchSet matchSet = new MatchSet(matchSetName, getMatch("matches/match[name = '" + matchSetName + "']"));
+            MatchSet matchSet = new MatchSet(matchSetName, getMatch("matchsets/matchset[name = '" + matchSetName + "']/match"));
             RulesCollection.AddMatchSet(matchSet);
             return matchSet;
         }
