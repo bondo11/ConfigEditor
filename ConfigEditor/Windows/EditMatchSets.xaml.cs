@@ -78,14 +78,15 @@ namespace ConfigEditor
 
         private void delMatchsets_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < RulesCollection.matchSets.Count; i++)
-            {
-                if (RulesCollection.matchSets[i].name.Equals(listMatchsets.SelectedIndex))
-                    RulesCollection.matchSets.RemoveAt(i);
-            }
-
+          
             if (listMatchsets.SelectedIndex > -1)
             {
+                for (int i = 0; i < RulesCollection.matchSets.Count; i++)
+                {
+                    if (RulesCollection.matchSets[i].name.Equals(listMatchsets.SelectedIndex))
+                        RulesCollection.matchSets.RemoveAt(i);
+                }
+
                 listMatchsets.Items.RemoveAt(listMatchsets.SelectedIndex);
             }
         }

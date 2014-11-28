@@ -88,14 +88,13 @@ namespace ConfigEditor
 
         private void delActionsets_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < RulesCollection.actionSets.Count; i++)
-            {
-                if (RulesCollection.actionSets[i].name.Equals(listActionsets.SelectedIndex))
-                    RulesCollection.actionSets.RemoveAt(i);
-            }
-            
             if (listActionsets.SelectedIndex > -1)
             {
+                for (int i = 0; i < RulesCollection.actionSets.Count; i++)
+                {
+                    if (RulesCollection.actionSets[i].name.Equals(listActionsets.SelectedIndex))
+                        RulesCollection.actionSets.RemoveAt(i);
+                }
                 listActionsets.Items.RemoveAt(listActionsets.SelectedIndex);
             }
         }

@@ -77,6 +77,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ActionClasses\Action.cs" />
+    <Compile Include="Windows\EditFolder.xaml.cs">
+      <DependentUpon>EditFolder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\EditMatchSets.xaml.cs">
       <DependentUpon>EditMatchSets.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,10 @@
     <Compile Include="ucRuleSet.xaml.cs">
       <DependentUpon>ucRuleSet.xaml</DependentUpon>
     </Compile>
+    <Page Include="Windows\EditFolder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\EditMatchSets.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -40,8 +40,10 @@ namespace ConfigEditor
         #region Initialized functions
         private void folderList_Initialized(object sender, EventArgs e)
         {
+            //folderList.ItemsSource = RulesCollection.Folders;
             foreach (Folder f in RulesCollection.Folders)
                 folderList.Items.Add(f.Path);
+             
         }
 
 
@@ -235,6 +237,25 @@ namespace ConfigEditor
         {
             configHandler.saveConfig();
         }
+
+        private void delRule_Click(object sender, RoutedEventArgs e)
+        {
+            if (rulesList.SelectedIndex > -1)
+                rulesList.Items.RemoveAt(rulesList.SelectedIndex);
+        }
+
+        private void addRule_Click(object sender, RoutedEventArgs e)
+        {
+            rulesList.Items.Add(new ucRuleSet());
+        }
+
+        private void folderList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var newW = new Windows.EditFolder((Folder)folderList.SelectedItem);
+            newW.Show();
+        }
+
+        
 
 
     }

@@ -12,7 +12,8 @@ namespace ConfigEditor
 
         public static ObservableCollection<ActionSet> actionSets = new ObservableCollection<ActionSet>();
         public static ObservableCollection<MatchSet> matchSets = new ObservableCollection<MatchSet>();
-        public static List<Folder> Folders = new List<Folder>();
+        public static ObservableCollection<Folder> Folders = new ObservableCollection<Folder>();
+
 
         #region Set enums
         public enum ActionKinds
