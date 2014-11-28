@@ -14,7 +14,7 @@ namespace ConfigEditor
             this.kind = RulesCollection.ActionKinds.moveAction;
         }
 
-        public MoveAction(string destination)
+        public MoveAction(string destination) : this()
         {
             // TODO: Complete member initialization
             this.destination = destination;
