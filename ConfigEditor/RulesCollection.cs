@@ -12,7 +12,8 @@ namespace ConfigEditor
 
         public static ObservableCollection<ActionSet> actionSets = new ObservableCollection<ActionSet>();
         public static ObservableCollection<MatchSet> matchSets = new ObservableCollection<MatchSet>();
-        public static ObservableCollection<Folder> Folders = new ObservableCollection<Folder>();
+        private static ObservableCollection<Folder> _Folders = new ObservableCollection<Folder>();
+        public static ObservableCollection<Folder> Folders { get { return _Folders; } }
 
 
         #region Set enums
@@ -34,8 +35,6 @@ namespace ConfigEditor
             regexMatch = 4
         } 
         #endregion
-        //private static List<ActionSet> actionSets = new List<ActionSet>();
-        //private static List<MatchSet> matchSets = new List<MatchSet>();
 
         public static bool AddActionSet(ActionSet actionSet)
         {

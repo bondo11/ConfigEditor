@@ -25,15 +25,14 @@ namespace ConfigEditor.Windows
         public EditFolder()
         {
             InitializeComponent();
-            tbFolder.Text = f.Path;
         }
 
 
-        public EditFolder(Folder f)
-            : this()
+        public EditFolder(Folder f) : this()
         {
             // TODO: Complete member initialization
             this.f = f;
+            tbFolder.Text = f.Path;
         }
 
 
@@ -60,6 +59,7 @@ namespace ConfigEditor.Windows
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
             f.Path = tbFolder.Text;
+            this.Close();
         }
     }
 }

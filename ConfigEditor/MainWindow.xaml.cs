@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -30,35 +31,8 @@ namespace ConfigEditor
             cl.getConfig();
             //rulesCollection = cl.getRules(ConfigHandler.getSource());
             InitializeComponent();
+            folderList.ItemsSource = RulesCollection.Folders;
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
-        #region Initialized functions
-        private void folderList_Initialized(object sender, EventArgs e)
-        {
-            //folderList.ItemsSource = RulesCollection.Folders;
-            foreach (Folder f in RulesCollection.Folders)
-                folderList.Items.Add(f.Path);
-             
-        }
-
-
-        private void listMatches_Initialized(object sender, EventArgs e)
-        {
-            foreach (MatchSet ms in RulesCollection.getMatchSets())
-            {
-                listMatches.Items.Add(ms.name);
-            }
-            
-
-
-
-        } 
-        #endregion
 
         #region Selection changed functions
         private void folderList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -66,7 +40,7 @@ namespace ConfigEditor
             rulesList.Items.Clear();
             foreach (Folder f in RulesCollection.Folders)
             {
-                if (f.Path.Equals(folderList.SelectedValue))
+                if (f.Equals(folderList.SelectedValue))
                 {
                     foreach (ruleset rs in f.rules)
                     {
@@ -102,13 +76,7 @@ namespace ConfigEditor
                         
                     }
                 }
-            }/*
-            foreach (string match in cl.matchArray(ConfigHandler.getSource(), (Convert.ToString(folderList.SelectedItem))))
-            {
-                listActiveMatches.Items.Add(match);
-            }*/
-            
-
+            }
         }
         private void listActiveMatches_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -251,7 +219,7 @@ namespace ConfigEditor
 
         private void folderList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var newW = new Windows.EditFolder((Folder)folderList.SelectedItem);
+            var newW = new Windows.EditFolder(RulesCollection.Folders[folderList.SelectedIndex]);
             newW.Show();
         }
 
