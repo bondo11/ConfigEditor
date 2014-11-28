@@ -45,10 +45,10 @@ namespace ConfigEditor
                     switch (ms.match.kind)
                     {
                         case RulesCollection.MatchKinds.And:
-                            listMatch.Items.Add(new ucMatch(ms.match));
+                            listMatch.Items.Add(new ucMatch(ms.match, new ucMatchAnd(((AndRule)ms.match).matchRules)));
                             break;
                         case RulesCollection.MatchKinds.Or:
-                            listMatch.Items.Add(new ucMatch(ms.match));
+                            listMatch.Items.Add(new ucMatch(ms.match, new ucMatchOr(((OrRule)ms.match).matchRules)));
                             break;
                         case RulesCollection.MatchKinds.extensionMatch:
                             listMatch.Items.Add(new ucMatch(ms.match, new ucExtentionMatch(((extensionMatch)ms.match).extension)));

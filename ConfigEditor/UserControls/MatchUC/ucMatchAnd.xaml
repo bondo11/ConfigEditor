@@ -4,12 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" >
-    <DockPanel
-        VerticalAlignment="Stretch" Height="Auto" Width="198">
-        <ComboBox x:Name="cbMatch" DockPanel.Dock="Top" VerticalAlignment="Stretch" Height="Auto">
-        </ComboBox>
-        <StackPanel x:Name="container" DockPanel.Dock="Top" VerticalAlignment="Stretch" Height="Auto">
-
-        </StackPanel>
+    <DockPanel VerticalAlignment="Stretch" Height="Auto" Width="198">
+        <ListBox x:Name="listMatch" VerticalAlignment="Top"/>
     </DockPanel>
 </UserControl>
