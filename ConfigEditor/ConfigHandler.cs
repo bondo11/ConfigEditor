@@ -13,6 +13,7 @@ namespace ConfigEditor
     public class configHandler
     {
         XmlDocument document = new XmlDocument();
+
         //XmlUrlResolver resolver = new XmlUrlResolver();
         public void getConfig()
         {
@@ -131,8 +132,30 @@ namespace ConfigEditor
 
             writer.WriteStartDocument();
             writer.WriteStartElement("config");
-            #region folders
+
+            // Folders
             writer.WriteStartElement("folders");
+            writeFolders(writer);
+            writer.WriteEndElement();
+
+            // Matches
+            writer.WriteStartElement("matchsets");
+            writeMatchSets(writer);
+            writer.WriteEndElement();
+
+            // ActionSets
+            writer.WriteStartElement("actionsets");
+            writeActionSets(writer);
+            writer.WriteEndElement();
+
+            writer.WriteEndElement();
+            writer.WriteEndDocument();
+            writer.Flush();
+
+        }
+
+        private static void writeFolders(XmlWriter writer)
+        {
             foreach (Folder f in RulesCollection.Folders)
             {
                 writer.WriteStartElement("folder");
@@ -142,7 +165,6 @@ namespace ConfigEditor
                 writer.WriteValue(f.Path);
                 writer.WriteEndElement();
 
-                #region rulesets
                 writer.WriteStartElement("rulesets");
                 foreach (ruleset rs in f.rules)
                 {
@@ -161,23 +183,82 @@ namespace ConfigEditor
                     writer.WriteEndElement();
                 }
                 writer.WriteEndElement();
-                #endregion
 
                 writer.WriteEndElement();
             }
-            writer.WriteEndElement();
-            #endregion
+        }
 
-            // Matches
-            writer.WriteStartElement("matches");
+        private static void writeMatchSets(XmlWriter writer)
+        {
             foreach (MatchSet ms in RulesCollection.getMatchSets())
             {
+                writer.WriteStartElement("matchset");
+
+                writer.WriteStartElement("name");
+                writer.WriteValue(ms.name);
+                writer.WriteEndElement();
+
+                writeMatch(writer, ms.match);
+                writer.WriteEndElement();
+            }
+        }
+
+        private static void writeMatch(XmlWriter writer, Match match)
+        {
+            writer.WriteStartElement("match");
+            switch (match.kind)
+            {
+                case RulesCollection.MatchKinds.And:
+                    writer.WriteStartElement("kind");
+                    writer.WriteValue("and");
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("matches");
+                    foreach (Match m in ((AndRule)match).matchRules)
+                    {
+                        writeMatch(writer, m);
+                    }
+                    writer.WriteEndElement();
+                    break;
+
+                case RulesCollection.MatchKinds.Or:
+                    writer.WriteStartElement("kind");
+                    writer.WriteValue("or");
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("matches");
+                    foreach (Match m in ((OrRule)match).matchRules)
+                    {
+                        writeMatch(writer, m);
+                    }
+                    writer.WriteEndElement();
+                    break;
+                case RulesCollection.MatchKinds.extensionMatch:
+                    writer.WriteStartElement("kind");
+                    writer.WriteValue("or");
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("extension");
+                    writer.WriteValue(((extensionMatch)match).extension);
+                    writer.WriteEndElement();
+                    break;
+                case RulesCollection.MatchKinds.regexMatch:
+                    writer.WriteStartElement("kind");
+                    writer.WriteValue("regex");
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("extension");
+                    writer.WriteValue(((regexMatch)match).regex);
+                    writer.WriteEndElement();
+                    break;
+                default:
+                    break;
             }
             writer.WriteEndElement();
-            // ActionSets
+        }
 
-            #region actionsets
-            writer.WriteStartElement("actionsets");
+        private static void writeActionSets(XmlWriter writer)
+        {
             foreach (ActionSet a in RulesCollection.getActionSets())
             {
                 writer.WriteStartElement("actionset");
@@ -187,72 +268,49 @@ namespace ConfigEditor
                 writer.WriteValue(a.name);
                 writer.WriteEndElement();
 
-
-                #region actions
                 writer.WriteStartElement("actions");
                 foreach (Action action in a.actions)
                 {
                     writer.WriteStartElement("action");
-
-                    if (action is copyAction)
+                    switch (action.kind)
                     {
-                        //kind
-                        writer.WriteStartElement("kind");
-                        writer.WriteValue("copy");
-                        writer.WriteEndElement();
+                        case RulesCollection.ActionKinds.moveAction:
+                            writer.WriteStartElement("kind");
+                            writer.WriteValue("move");
+                            writer.WriteEndElement();
 
-                        //destination
-                        writer.WriteStartElement("destination");
-                        writer.WriteValue(((copyAction)action).destination);
-                        writer.WriteEndElement();
-                    }
-                    else if (action is MoveAction)
-                    {
-                        //kind
-                        writer.WriteStartElement("kind");
-                        writer.WriteValue("move");
-                        writer.WriteEndElement();
+                            writer.WriteStartElement("destination");
+                            writer.WriteValue(((MoveAction)action).destination);
+                            writer.WriteEndElement();
+                            break;
+                        case RulesCollection.ActionKinds.copyAction:
+                            writer.WriteStartElement("kind");
+                            writer.WriteValue("copy");
+                            writer.WriteEndElement();
 
-                        //destination
-                        writer.WriteStartElement("destination");
-                        writer.WriteValue(((MoveAction)action).destination);
-                        writer.WriteEndElement();
-                    }
-                    else if (action is cmdAction)
-                    {
-                        //kind
-                        writer.WriteStartElement("kind");
-                        writer.WriteValue("cmd");
-                        writer.WriteEndElement();
+                            writer.WriteStartElement("destination");
+                            writer.WriteValue(((copyAction)action).destination);
+                            writer.WriteEndElement();
+                            break;
+                        case RulesCollection.ActionKinds.cmdAction:
+                            writer.WriteStartElement("kind");
+                            writer.WriteValue("cmd");
+                            writer.WriteEndElement();
 
-                        //destination
-                        writer.WriteStartElement("command");
-                        writer.WriteValue(((cmdAction)action).command);
-                        writer.WriteEndElement();
+                            writer.WriteStartElement("command");
+                            writer.WriteValue(((cmdAction)action).command);
+                            writer.WriteEndElement();
+                            break;
+                        default:
+                            break;
                     }
 
                     writer.WriteEndElement();
                 }
                 writer.WriteEndElement();
-                #endregion
 
                 writer.WriteEndElement();
             }
-            writer.WriteEndElement();
-            #endregion
-
-            //writer.WriteStartElement("Person");
-            //writer.WriteAttributeString("Name", "Nick");
-            //writer.WriteEndElement();
-
-            //writer.WriteStartAttribute("Name");
-            //writer.WriteValue("Nick");
-            //writer.WriteEndAttribute();
-
-            writer.WriteEndElement();
-            writer.WriteEndDocument();
-            writer.Flush();
-
         }
     }
 }
