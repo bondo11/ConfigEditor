@@ -93,7 +93,11 @@ namespace ConfigEditor
                 if (RulesCollection.actionSets[i].name.Equals(listActionsets.SelectedIndex))
                     RulesCollection.actionSets.RemoveAt(i);
             }
-            listActionsets.Items.RemoveAt(listActionsets.SelectedIndex);
+            
+            if (listActionsets.SelectedIndex > -1)
+            {
+                listActionsets.Items.RemoveAt(listActionsets.SelectedIndex);
+            }
         }
 
     }

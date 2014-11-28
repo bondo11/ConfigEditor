@@ -4,7 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" >
-    <DockPanel VerticalAlignment="Stretch" Height="Auto" Width="198">
-        <ListBox x:Name="listMatch" VerticalAlignment="Top"/>
+        <DockPanel
+        VerticalAlignment="Stretch" 
+        Height="Auto">
+            <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch" 
+        Height="Auto" Width="208">
+            <ListBox x:Name="listMatch" VerticalAlignment="Top" />
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch" 
+        Height="Auto" Width="208">
+            <Button x:Name="addMatch" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Width="20" Height="20">
+                <StackPanel>
+                    <Image x:Name="addmatchImage" Source="Pictures/new.png" Width="20" Opacity="0.7" />
+                </StackPanel>
+            </Button>
+            <Button x:Name="delMatch" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Width="20" Height="20" >
+                <StackPanel>
+                    <Image x:Name="delmatchImage" Source="Pictures/discard.png" Width="20" Opacity="0.7" />
+                </StackPanel>
+            </Button>
+        </DockPanel>
     </DockPanel>
 </UserControl>

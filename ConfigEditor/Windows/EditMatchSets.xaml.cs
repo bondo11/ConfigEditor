@@ -83,7 +83,11 @@ namespace ConfigEditor
                 if (RulesCollection.matchSets[i].name.Equals(listMatchsets.SelectedIndex))
                     RulesCollection.matchSets.RemoveAt(i);
             }
-            listMatchsets.Items.RemoveAt(listMatchsets.SelectedIndex);
+
+            if (listMatchsets.SelectedIndex > -1)
+            {
+                listMatchsets.Items.RemoveAt(listMatchsets.SelectedIndex);
+            }
         }
 
     }

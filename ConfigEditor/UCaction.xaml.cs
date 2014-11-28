@@ -46,6 +46,8 @@ namespace ConfigEditor
             {
                 switch (cBox.SelectedIndex)
                 {
+                    case (int)RulesCollection.ActionKinds.onSet:
+                        break;
                     case (int)RulesCollection.ActionKinds.moveAction:
                         act = new MoveAction();
                         break;
@@ -64,6 +66,8 @@ namespace ConfigEditor
 
             switch (act.kind)
             {
+                case RulesCollection.ActionKinds.onSet:
+                    break;
                 case RulesCollection.ActionKinds.moveAction:
                     container.Children.Add(((MoveAction)act).GetUC());
                     break;
