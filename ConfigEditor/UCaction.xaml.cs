@@ -55,11 +55,13 @@ namespace ConfigEditor
                         act = new copyAction();
                         break;
                     case (int)RulesCollection.ActionKinds.deleteAction:
+                        act = new Action();
                         break;
                     case (int)RulesCollection.ActionKinds.cmdAction:
                         act = new cmdAction();
                         break;
                     default:
+                        act = new Action();
                         break;
                 }
             }
