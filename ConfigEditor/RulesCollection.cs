@@ -12,11 +12,27 @@ namespace ConfigEditor
 
         public static ObservableCollection<ActionSet> actionSets = new ObservableCollection<ActionSet>();
         public static ObservableCollection<MatchSet> matchSets = new ObservableCollection<MatchSet>();
-
         public static List<Folder> Folders = new List<Folder>();
 
-        public enum ActionKinds{moveAction=0, copyAction=1, deleteAction=2, cmdAction=3}
-        public enum MatchKinds{And=0, Or=1, extensionMatch=2, regexMatch=3}
+        #region Set enums
+        public enum ActionKinds
+        {
+            onSet = 0,
+            moveAction = 1,
+            copyAction = 2,
+            deleteAction = 3,
+            cmdAction = 4
+        }
+
+        public enum MatchKinds
+        {
+            onSet = 0,
+            And = 1,
+            Or = 2,
+            extensionMatch = 3,
+            regexMatch = 4
+        } 
+        #endregion
         //private static List<ActionSet> actionSets = new List<ActionSet>();
         //private static List<MatchSet> matchSets = new List<MatchSet>();
 
