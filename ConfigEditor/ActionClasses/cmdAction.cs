@@ -10,7 +10,7 @@ namespace ConfigEditor
     {
         public string command;
 
-        private cmdAction()
+        public cmdAction()
         {
             this.kind = RulesCollection.ActionKinds.cmdAction;
         }

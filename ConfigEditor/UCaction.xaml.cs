@@ -42,6 +42,26 @@ namespace ConfigEditor
         {
             container.Children.Clear();
 
+            if ((int)act.kind != cBox.SelectedIndex)
+            {
+                switch (cBox.SelectedIndex)
+                {
+                    case (int)RulesCollection.ActionKinds.moveAction:
+                        act = new MoveAction();
+                        break;
+                    case (int)RulesCollection.ActionKinds.copyAction:
+                        act = new copyAction();
+                        break;
+                    case (int)RulesCollection.ActionKinds.deleteAction:
+                        break;
+                    case (int)RulesCollection.ActionKinds.cmdAction:
+                        act = new cmdAction();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
             switch (act.kind)
             {
                 case RulesCollection.ActionKinds.moveAction:

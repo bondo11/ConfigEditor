@@ -12,7 +12,7 @@ namespace ConfigEditor
     public class copyAction : Action
     {
         public string destination;
-        private copyAction()
+        public copyAction()
         {
             this.kind = RulesCollection.ActionKinds.copyAction;
         }

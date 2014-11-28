@@ -9,7 +9,7 @@ namespace ConfigEditor
     public class MoveAction : Action
     {
         public string destination;
-        private MoveAction()
+        public MoveAction()
         {
             this.kind = RulesCollection.ActionKinds.moveAction;
         }
