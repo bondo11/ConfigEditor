@@ -20,7 +20,7 @@ namespace ConfigEditor
     /// </summary>
     public partial class ucCmdAction : UserControl
     {
-        private cmdAction act;
+        private cmdAction cmdAction;
 
         public ucCmdAction()
         {
@@ -28,12 +28,12 @@ namespace ConfigEditor
         }
 
 
-        public ucCmdAction(cmdAction Action)
+        public ucCmdAction(cmdAction cmdAction)
             : this()
         {
-            this.act = Action;
+            this.cmdAction = cmdAction;
             // TODO: Complete member initialization
-            tbCmd.Text = act.command;
+            tbCmd.Text = cmdAction.command;
         }
     }
 }

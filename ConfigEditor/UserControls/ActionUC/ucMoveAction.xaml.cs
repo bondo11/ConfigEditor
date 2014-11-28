@@ -20,6 +20,7 @@ namespace ConfigEditor
     /// </summary>
     public partial class ucMoveAction : UserControl
     {
+        private MoveAction moveAction;
 
         public ucMoveAction()
         {
@@ -29,6 +30,7 @@ namespace ConfigEditor
         public ucMoveAction(MoveAction moveAction): this()
         {
             // TODO: Complete member initialization
+            this.moveAction = moveAction;
             tbPath.Text= moveAction.destination;
         }
     }

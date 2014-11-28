@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Controls;
 
 namespace ConfigEditor
 {
@@ -17,6 +18,11 @@ namespace ConfigEditor
         {
             // TODO: Complete member initialization
             this.destination = destination;
+        }
+
+        public new UserControl GetUC()
+        {
+            return new ucMoveAction(this);
         }
     }
 }

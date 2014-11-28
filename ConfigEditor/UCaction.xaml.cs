@@ -34,15 +34,37 @@ namespace ConfigEditor
 
         public ucAction(Action act) : this()
         {
-            cBox.SelectedIndex = (int)act.kind;
             this.act = act;
+            cBox.SelectedIndex = (int)act.kind;
         }
-        public ucAction(Action act, UserControl uc)
-            : this()
+
+        private void cBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            cBox.SelectedIndex = (int)act.kind;
-            this.act = act;
-            container.Children.Add(uc);
+            container.Children.Clear();
+
+            switch (act.kind)
+            {
+                case RulesCollection.ActionKinds.moveAction:
+                    container.Children.Add(((MoveAction)act).GetUC());
+                    break;
+                case RulesCollection.ActionKinds.copyAction:
+                    container.Children.Add(((copyAction)act).GetUC());
+                    break;
+                case RulesCollection.ActionKinds.deleteAction:
+                    break;
+                case RulesCollection.ActionKinds.cmdAction:
+                    container.Children.Add(((cmdAction)act).GetUC());
+                    break;
+                default:
+                    break;
+            }
         }
+        //public ucAction(Action act, UserControl uc)
+        //    : this()
+        //{
+        //    cBox.SelectedIndex = (int)act.kind;
+        //    this.act = act;
+        //    container.Children.Add(uc);
+        //}
     }
 }
