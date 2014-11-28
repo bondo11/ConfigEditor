@@ -13,7 +13,7 @@ namespace ConfigEditor
 
         public UserControl GetUC()
         {
-            return new ucAction();
+            return new UserControl();
         }
     }
 }
