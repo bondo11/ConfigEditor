@@ -14,9 +14,9 @@ namespace ConfigEditor
         private string _Name;
         public string Name { get { return _Name; } set { _Name = value; NotifyPropertyChanged("Name"); } }
 
-        public MatchSet(string name, Match match)
+        public MatchSet(string Name, Match match)
         {
-            this.Name = name;
+            this.Name = Name;
             this.match = match;
         }
 
