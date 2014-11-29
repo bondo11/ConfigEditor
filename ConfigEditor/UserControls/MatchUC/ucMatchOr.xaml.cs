@@ -30,6 +30,11 @@ namespace ConfigEditor.MatchClasses
             : this()
         {
             this.OrRule = OrRule;
+            refresh();
+        }
+        private void refresh()
+        {
+            listMatch.Items.Clear();
             foreach (Match m in OrRule.matchRules)
             {
                 switch (m.kind)
@@ -51,6 +56,12 @@ namespace ConfigEditor.MatchClasses
                         break;
                 }
             }
+        }
+
+        private void addMatch_Click(object sender, RoutedEventArgs e)
+        {
+            OrRule.Add(new Match(OrRule));
+            refresh();
         }
     }
 }

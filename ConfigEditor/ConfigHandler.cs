@@ -60,7 +60,7 @@ namespace ConfigEditor
                     i = 1;
                     foreach (XmlNode node in nodes)
                     {
-                        andRule.add(getMatch(xpath + "/matches/match[" + i + "]"));
+                        andRule.Add(getMatch(xpath + "/matches/match[" + i + "]"));
                         i++;
                     }
 
@@ -73,7 +73,7 @@ namespace ConfigEditor
                     i = 1;
                     foreach (XmlNode node in nodes)
                     {
-                        orRule.add(getMatch(xpath + "/matches/match[" + i + "]"));
+                        orRule.Add(getMatch(xpath + "/matches/match[" + i + "]"));
                         i++;
                     }
                     return orRule;

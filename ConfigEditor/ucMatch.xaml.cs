@@ -46,16 +46,24 @@ namespace ConfigEditor
                 switch (cbMatch.SelectedIndex)
                 {
                     case (int)RulesCollection.MatchKinds.And:
-                        match = new AndRule();
+                        AndRule and = new AndRule();
+                        match.replace(and);
+                        match = and;
                         break;
                     case (int)RulesCollection.MatchKinds.Or:
-                        match = new OrRule();
+                        OrRule or = new OrRule();
+                        match.replace(or);
+                        match = or;
                         break;
                     case (int)RulesCollection.MatchKinds.extensionMatch:
-                        match = new extensionMatch();
+                        extensionMatch ext = new extensionMatch();
+                        match.replace(ext);
+                        match = ext;
                         break;
                     case (int)RulesCollection.MatchKinds.regexMatch:
-                        match = new regexMatch();
+                        regexMatch reg = new regexMatch();
+                        match.replace(reg);
+                        match = reg;
                         break;
                     default:
                         break;

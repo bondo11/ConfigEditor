@@ -7,16 +7,16 @@ using System.Windows.Controls;
 
 namespace ConfigEditor
 {
-    public class AndRule : Match
+    public class AndRule : MatchCollection
     {
-        public List<Match> matchRules = new List<Match>();
         public AndRule()
         {
             this.kind = RulesCollection.MatchKinds.And;
         }
-        public void add(Match matchRule)
+        public AndRule(MatchCollection parent)
+            : this()
         {
-            matchRules.Add(matchRule);
+            this.parent = parent;
         }
 
         public new UserControl GetUC()

@@ -7,16 +7,15 @@ using System.Windows.Controls;
 
 namespace ConfigEditor
 {
-    public class OrRule : Match
+    public class OrRule : MatchCollection
     {
-        public List<Match> matchRules = new List<Match>();
         public OrRule()
         {
             this.kind = RulesCollection.MatchKinds.Or;
         }
-        public void add(Match matchRule)
+        public OrRule(MatchCollection parent) : this()
         {
-            matchRules.Add(matchRule);
+            this.parent = parent;
         }
 
         public new UserControl GetUC()

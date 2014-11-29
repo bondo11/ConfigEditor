@@ -20,17 +20,23 @@ namespace ConfigEditor.MatchClasses
     /// </summary>
     public partial class ucMatchAnd : UserControl
     {
-        private AndRule andRule;
+        private AndRule AndRule;
 
         public ucMatchAnd()
         {
             InitializeComponent();
         }
-        public ucMatchAnd(AndRule andRule)
+        public ucMatchAnd(AndRule AndRule)
             : this()
         {
-            this.andRule = andRule;
-            foreach (Match m in andRule.matchRules)
+            this.AndRule = AndRule;
+            refresh();
+        }
+
+        private void refresh()
+        {
+            listMatch.Items.Clear();
+            foreach (Match m in AndRule.matchRules)
             {
                 switch (m.kind)
                 {
@@ -51,6 +57,12 @@ namespace ConfigEditor.MatchClasses
                         break;
                 }
             }
+        }
+
+        private void addMatch_Click(object sender, RoutedEventArgs e)
+        {
+            AndRule.Add(new Match(AndRule));
+            refresh();
         }
     }
 }
