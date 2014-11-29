@@ -42,15 +42,15 @@ namespace ConfigEditor
             {
                 if (f.Equals(folderList.SelectedValue))
                 {
-                    foreach (ruleset rs in f.rules)
+                    foreach (ruleset rs in f.RuleSets)
                     {
                         int msindex = 0;
                         int asindex = 0;
                         //ComboBox cbMatchset = new ComboBox();
-                        foreach (MatchSet ms in RulesCollection.getMatchSets())
+                        foreach (MatchSet ms in RulesCollection.matchSets)
                         {
                            
-                            if (!ms.name.Equals(rs.matchSet.name))
+                            if (!ms.Name.Equals(rs.matchSet.Name))
                             {
                                 msindex++;
                             }
@@ -60,9 +60,9 @@ namespace ConfigEditor
                             }
                         }
                         ComboBox cbAction = new ComboBox();
-                        foreach (ActionSet a in RulesCollection.getActionSets())
+                        foreach (ActionSet a in RulesCollection.actionSets)
                         {
-                            if (!a.name.Equals(rs.actionSet.name))
+                            if (!a.Name.Equals(rs.actionSet.Name))
                             {
                                 asindex++;
                             }
@@ -195,9 +195,9 @@ namespace ConfigEditor
         private void listActiveMatches_Initialized(object sender, EventArgs e)
         {
 
-            foreach (ActionSet a in RulesCollection.getActionSets())
+            foreach (ActionSet a in RulesCollection.actionSets)
             {
-                listActiveMatches.Items.Add(a.name);
+                listActiveMatches.Items.Add(a.Name);
             }
         }
 

@@ -7,7 +7,7 @@
     <DockPanel
         VerticalAlignment="Stretch" 
         Height="Auto">
-        <ComboBox x:Name="cbMatch" DockPanel.Dock="Top" VerticalAlignment="Stretch" Height="Auto">
+        <ComboBox x:Name="cbMatch" DockPanel.Dock="Top" VerticalAlignment="Stretch" Height="Auto" SelectionChanged="cbMatch_SelectionChanged">
         </ComboBox>
         <StackPanel x:Name="container" DockPanel.Dock="Top" VerticalAlignment="Stretch" Height="Auto">
             

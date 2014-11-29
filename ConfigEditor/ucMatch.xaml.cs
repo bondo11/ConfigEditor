@@ -21,9 +21,6 @@ namespace ConfigEditor
     public partial class ucMatch : UserControl
     {
         private Match match;
-        private UserControl UCmatch;
-        //private RulesCollection.MatchKinds kind;
-
 
         public ucMatch()
         {
@@ -33,68 +30,54 @@ namespace ConfigEditor
                 cbMatch.Items.Add(kind);
             }
         }
-        public ucMatch(Match match, UserControl UC)
-            : this()
-        {
-            cbMatch.SelectedIndex = (int)match.kind;
-            this.UCmatch = UC;
-            container.Children.Add(UCmatch);
-        }
 
         public ucMatch(Match match) : this()
         {
-            // TODO: Complete member initialization
             this.match = match;
+            cbMatch.SelectedIndex = (int)match.kind;
+        }
+
+        private void cbMatch_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            container.Children.Clear();
+
+            if ((int)match.kind != cbMatch.SelectedIndex)
+            {
+                switch (cbMatch.SelectedIndex)
+                {
+                    case (int)RulesCollection.MatchKinds.And:
+                        match = new AndRule();
+                        break;
+                    case (int)RulesCollection.MatchKinds.Or:
+                        match = new OrRule();
+                        break;
+                    case (int)RulesCollection.MatchKinds.extensionMatch:
+                        match = new extensionMatch();
+                        break;
+                    case (int)RulesCollection.MatchKinds.regexMatch:
+                        match = new regexMatch();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
             switch (match.kind)
             {
                 case RulesCollection.MatchKinds.And:
-                    addAndUC((AndRule)match);
+                    container.Children.Add(((AndRule)match).GetUC());
                     break;
                 case RulesCollection.MatchKinds.Or:
-                    addOrUC((OrRule)match);
+                    container.Children.Add(((OrRule)match).GetUC());
+                    break;
+                case RulesCollection.MatchKinds.extensionMatch:
+                    container.Children.Add(((extensionMatch)match).GetUC());
+                    break;
+                case RulesCollection.MatchKinds.regexMatch:
+                    container.Children.Add(((regexMatch)match).GetUC());
                     break;
                 default:
                     break;
-            }
-        }
-
-        private void addAndUC(AndRule match)
-        {
-            foreach (Match m in match.matchRules)
-            {
-                switch (m.kind)
-                {
-                    case RulesCollection.MatchKinds.And:
-                        break;
-                    case RulesCollection.MatchKinds.Or:
-                        break;
-                    case RulesCollection.MatchKinds.extensionMatch:
-                        break;
-                    case RulesCollection.MatchKinds.regexMatch:
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-
-        private void addOrUC(OrRule match)
-        {
-            foreach (Match m in match.matchRules)
-            {
-                switch (m.kind)
-                {
-                    case RulesCollection.MatchKinds.And:
-                        break;
-                    case RulesCollection.MatchKinds.Or:
-                        break;
-                    case RulesCollection.MatchKinds.extensionMatch:
-                        break;
-                    case RulesCollection.MatchKinds.regexMatch:
-                        break;
-                    default:
-                        break;
-                }
             }
         }
 

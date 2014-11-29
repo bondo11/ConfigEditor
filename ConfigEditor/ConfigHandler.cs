@@ -33,7 +33,7 @@ namespace ConfigEditor
                 XmlNodeList rulesets = document.DocumentElement.SelectNodes("folders/folder[path = '" + node.InnerText + "']/rulesets/ruleset");
                 foreach (XmlNode ruleset in rulesets)
                 {
-                    f.rules.Add(new ruleset(getMatchSet(ruleset.SelectSingleNode("matchsetname").InnerText), getActionSet(ruleset.SelectSingleNode("actionsetname").InnerText)));
+                    f.RuleSets.Add(new ruleset(getMatchSet(ruleset.SelectSingleNode("matchsetname").InnerText), getActionSet(ruleset.SelectSingleNode("actionsetname").InnerText)));
                 }
                 RulesCollection.Folders.Add(f);
             }
@@ -166,18 +166,18 @@ namespace ConfigEditor
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("rulesets");
-                foreach (ruleset rs in f.rules)
+                foreach (ruleset rs in f.RuleSets)
                 {
                     writer.WriteStartElement("ruleset");
 
                     //matchset
                     writer.WriteStartElement("matchsetname");
-                    writer.WriteValue(rs.matchSet.name);
+                    writer.WriteValue(rs.matchSet.Name);
                     writer.WriteEndElement();
 
                     //actionset
                     writer.WriteStartElement("actionsetname");
-                    writer.WriteValue(rs.actionSet.name);
+                    writer.WriteValue(rs.actionSet.Name);
                     writer.WriteEndElement();
 
                     writer.WriteEndElement();
@@ -190,12 +190,12 @@ namespace ConfigEditor
 
         private static void writeMatchSets(XmlWriter writer)
         {
-            foreach (MatchSet ms in RulesCollection.getMatchSets())
+            foreach (MatchSet ms in RulesCollection.matchSets)
             {
                 writer.WriteStartElement("matchset");
 
                 writer.WriteStartElement("name");
-                writer.WriteValue(ms.name);
+                writer.WriteValue(ms.Name);
                 writer.WriteEndElement();
 
                 writeMatch(writer, ms.match);
@@ -259,17 +259,17 @@ namespace ConfigEditor
 
         private static void writeActionSets(XmlWriter writer)
         {
-            foreach (ActionSet a in RulesCollection.getActionSets())
+            foreach (ActionSet a in RulesCollection.actionSets)
             {
                 writer.WriteStartElement("actionset");
 
                 //Actionset Name
                 writer.WriteStartElement("name");
-                writer.WriteValue(a.name);
+                writer.WriteValue(a.Name);
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("actions");
-                foreach (Action action in a.actions)
+                foreach (Action action in a.Actions)
                 {
                     writer.WriteStartElement("action");
                     switch (action.kind)

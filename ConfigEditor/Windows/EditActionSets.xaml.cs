@@ -22,9 +22,9 @@ namespace ConfigEditor
         public EditActionSets()
         {
             InitializeComponent();
-            foreach (ActionSet a in RulesCollection.getActionSets())
+            foreach (ActionSet a in RulesCollection.actionSets)
             {
-                listActionsets.Items.Add(a.name);
+                listActionsets.Items.Add(a.Name);
             }
         }
 
@@ -51,9 +51,9 @@ namespace ConfigEditor
             listAction.Items.Clear();
             foreach (ActionSet a in RulesCollection.actionSets)
             {
-                if (a.name.Equals(listActionsets.SelectedValue))
+                if (a.Name.Equals(listActionsets.SelectedValue))
                 {
-                    foreach (Action act in a.actions)
+                    foreach (Action act in a.Actions)
                     {
                         listAction.Items.Add(new ucAction(act));
                         //switch (act.kind)
@@ -83,7 +83,7 @@ namespace ConfigEditor
         {
             ActionSet a = new ActionSet("actionSet" + (listActionsets.Items.Count + 1).ToString());
             RulesCollection.actionSets.Add(a);
-            listActionsets.Items.Add(a.name);
+            listActionsets.Items.Add(a.Name);
         }
 
         private void delActionsets_Click(object sender, RoutedEventArgs e)
@@ -92,7 +92,7 @@ namespace ConfigEditor
             {
                 for (int i = 0; i < RulesCollection.actionSets.Count; i++)
                 {
-                    if (RulesCollection.actionSets[i].name.Equals(listActionsets.SelectedIndex))
+                    if (RulesCollection.actionSets[i].Name.Equals(listActionsets.SelectedIndex))
                         RulesCollection.actionSets.RemoveAt(i);
                 }
                 listActionsets.Items.RemoveAt(listActionsets.SelectedIndex);

@@ -19,7 +19,6 @@ namespace ConfigEditor
         private static ObservableCollection<Folder> _Folders = new ObservableCollection<Folder>();
         public static ObservableCollection<Folder> Folders { get { return _Folders; } }
 
-
         #region Set enums
         public enum ActionKinds
         {
@@ -44,7 +43,7 @@ namespace ConfigEditor
         {
             foreach (ActionSet a in _actionSets)
             {
-                if (a.name.Equals(actionSet.name))
+                if (a.Name.Equals(actionSet.Name))
                 {
                     return false;
                 }
@@ -60,7 +59,7 @@ namespace ConfigEditor
         {
             foreach (MatchSet m in _matchSets)
             {
-                if (m.name.Equals(matchSet.name))
+                if (m.Name.Equals(matchSet.Name))
                 {
                     return false;
                 }

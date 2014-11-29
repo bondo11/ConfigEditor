@@ -25,11 +25,11 @@ namespace ConfigEditor
             InitializeComponent();
             foreach (MatchSet m in RulesCollection.matchSets)
             {
-                cbMatchSet.Items.Add(m.name);
+                cbMatchSet.Items.Add(m.Name);
             }
             foreach (ActionSet a in RulesCollection.actionSets)
             {
-                cbActionSet.Items.Add(a.name);
+                cbActionSet.Items.Add(a.Name);
             }
         }
         public ucRuleSet(int matchSetIndex, int actionSetIndex) : this()

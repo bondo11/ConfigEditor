@@ -20,13 +20,17 @@ namespace ConfigEditor.MatchClasses
     /// </summary>
     public partial class ucRegexMatch : UserControl
     {
+        private regexMatch regexMatch;
+
         public ucRegexMatch()
         {
             InitializeComponent();
         }
-        public ucRegexMatch(string regex) : this()
+        public ucRegexMatch(regexMatch regexMatch)
+            : this()
         {
-            tbRegex.Text = regex;
+            this.regexMatch = regexMatch;
+            tbRegex.Text = regexMatch.regex;
         }
     }
 }

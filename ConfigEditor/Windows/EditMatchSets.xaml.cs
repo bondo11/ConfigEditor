@@ -23,9 +23,9 @@ namespace ConfigEditor
         public EditMatchSets()
         {
             InitializeComponent();
-            foreach (MatchSet ms in RulesCollection.getMatchSets())
+            foreach (MatchSet ms in RulesCollection.matchSets)
             {
-                listMatchsets.Items.Add(ms.name);
+                listMatchsets.Items.Add(ms.Name);
             }
         }
 
@@ -40,21 +40,21 @@ namespace ConfigEditor
             listMatch.Items.Clear();
             foreach (MatchSet ms in RulesCollection.matchSets)
             {
-                if (ms.name.Equals(listMatchsets.SelectedValue))
+                if (ms.Name.Equals(listMatchsets.SelectedValue))
                 {                   
                     switch (ms.match.kind)
                     {
                         case RulesCollection.MatchKinds.And:
-                            listMatch.Items.Add(new ucMatch(ms.match, new ucMatchAnd(((AndRule)ms.match).matchRules)));
+                            listMatch.Items.Add(new ucMatch((AndRule)ms.match));
                             break;
                         case RulesCollection.MatchKinds.Or:
-                            listMatch.Items.Add(new ucMatch(ms.match, new ucMatchOr(((OrRule)ms.match).matchRules)));
+                            listMatch.Items.Add(new ucMatch((OrRule)ms.match));
                             break;
                         case RulesCollection.MatchKinds.extensionMatch:
-                            listMatch.Items.Add(new ucMatch(ms.match, new ucExtentionMatch(((extensionMatch)ms.match).extension)));
+                            listMatch.Items.Add(new ucMatch((extensionMatch)ms.match));
                             break;
                         case RulesCollection.MatchKinds.regexMatch:
-                            listMatch.Items.Add(new ucMatch(ms.match, new ucRegexMatch(((regexMatch)ms.match).regex)));
+                            listMatch.Items.Add(new ucMatch((regexMatch)ms.match));
                             break;
                         default:
                             listMatch.Items.Add(new ucMatch(ms.match));
@@ -73,7 +73,7 @@ namespace ConfigEditor
         {
             MatchSet ms = new MatchSet("matchset" + (listMatchsets.Items.Count + 1).ToString(), new regexMatch(""));
             RulesCollection.matchSets.Add(ms);
-            listMatchsets.Items.Add(ms.name);
+            listMatchsets.Items.Add(ms.Name);
         }
 
         private void delMatchsets_Click(object sender, RoutedEventArgs e)
@@ -83,7 +83,7 @@ namespace ConfigEditor
             {
                 for (int i = 0; i < RulesCollection.matchSets.Count; i++)
                 {
-                    if (RulesCollection.matchSets[i].name.Equals(listMatchsets.SelectedIndex))
+                    if (RulesCollection.matchSets[i].Name.Equals(listMatchsets.SelectedIndex))
                         RulesCollection.matchSets.RemoveAt(i);
                 }
 

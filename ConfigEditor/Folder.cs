@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -12,16 +13,16 @@ namespace ConfigEditor
         private string _Path;
         public string Path { get { return _Path; } set { _Path = value; NotifyPropertyChanged("Path"); } }
 
-        public List<ruleset> rules = new List<ruleset>();
+        public ObservableCollection<ruleset> RuleSets = new ObservableCollection<ruleset>();
 
-        public Folder(string path)
+        public Folder(string Path)
         {
-            Path = path;
+            this.Path = Path;
         }
-        public Folder(string path, List<ruleset> rulesets)
+        public Folder(string Path, ObservableCollection<ruleset> RuleSets)
         {
-            Path = path;
-            rules = rulesets;
+            this.Path = Path;
+            this.RuleSets = RuleSets;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

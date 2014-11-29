@@ -1,11 +1,13 @@
-﻿using System;
+﻿using ConfigEditor.MatchClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Controls;
 
 namespace ConfigEditor
 {
-    class AndRule : Match
+    public class AndRule : Match
     {
         public List<Match> matchRules = new List<Match>();
         public AndRule()
@@ -15,6 +17,11 @@ namespace ConfigEditor
         public void add(Match matchRule)
         {
             matchRules.Add(matchRule);
+        }
+
+        public new UserControl GetUC()
+        {
+            return new ucMatchAnd(this);
         }
     }
 }

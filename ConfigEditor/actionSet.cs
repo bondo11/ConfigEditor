@@ -1,23 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
 namespace ConfigEditor
 {
-    public class ActionSet
+    public class ActionSet : INotifyPropertyChanged
     {
-        public List<Action> actions = new List<Action>();
-        public string name;
+        private string _Name;
+        public string Name { get { return _Name; } set { _Name = value; NotifyPropertyChanged("Name"); } }
 
-        public ActionSet(string name)
+        public ObservableCollection<Action> Actions = new ObservableCollection<Action>();
+
+        public ActionSet(string Name)
         {
-            this.name = name;
+            this.Name = Name;
         }
 
-        internal void Add(Action action)
+        internal void Add(Action Action)
         {
-            actions.Add(action);
+            Actions.Add(Action);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(String propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

@@ -26,24 +26,25 @@ namespace ConfigEditor.MatchClasses
         {
             InitializeComponent();
         }
-        public ucMatchAnd(List<Match> matchRules)
+        public ucMatchAnd(AndRule andRule)
             : this()
         {
-            foreach (Match m in matchRules)
+            this.andRule = andRule;
+            foreach (Match m in andRule.matchRules)
             {
                 switch (m.kind)
                 {
                     case RulesCollection.MatchKinds.And:
-                        listMatch.Items.Add(new ucMatch(m, new ucMatchAnd(((AndRule)m).matchRules)));
+                        listMatch.Items.Add(new ucMatch((AndRule)m));
                         break;
                     case RulesCollection.MatchKinds.Or:
-                        listMatch.Items.Add(new ucMatch(m, new ucMatchOr(((OrRule)m).matchRules)));
+                        listMatch.Items.Add(new ucMatch((OrRule)m));
                         break;
                     case RulesCollection.MatchKinds.extensionMatch:
-                        listMatch.Items.Add(new ucMatch(m, new ucExtentionMatch(((extensionMatch)m).extension)));
+                        listMatch.Items.Add(new ucMatch((extensionMatch)m));
                         break;
                     case RulesCollection.MatchKinds.regexMatch:
-                        listMatch.Items.Add(new ucMatch(m, new ucRegexMatch(((regexMatch)m).regex)));
+                        listMatch.Items.Add(new ucMatch((regexMatch)m));
                         break;
                     default:
                         listMatch.Items.Add(new ucMatch(m));

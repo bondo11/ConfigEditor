@@ -20,6 +20,7 @@ namespace ConfigEditor.MatchClasses
     /// </summary>
     public partial class ucExtentionMatch : UserControl
     {
+        private extensionMatch extensionMatch;
 
         public ucExtentionMatch()
         {
@@ -27,10 +28,11 @@ namespace ConfigEditor.MatchClasses
         }
 
 
-        public ucExtentionMatch(string Ext) : this()
+        public ucExtentionMatch(extensionMatch extensionMatch)
+            : this()
         {
-            // TODO: Complete member initialization
-            tbExtension.Text = Ext;
+            this.extensionMatch = extensionMatch;
+            tbExtension.Text = extensionMatch.extension;
         }
     }
 }
