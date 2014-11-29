@@ -23,11 +23,11 @@ namespace ConfigEditor
         public ucRuleSet()
         {
             InitializeComponent();
-            foreach (MatchSet m in RulesCollection.getMatchSets())
+            foreach (MatchSet m in RulesCollection.matchSets)
             {
                 cbMatchSet.Items.Add(m.name);
             }
-            foreach (ActionSet a in RulesCollection.getActionSets())
+            foreach (ActionSet a in RulesCollection.actionSets)
             {
                 cbActionSet.Items.Add(a.name);
             }

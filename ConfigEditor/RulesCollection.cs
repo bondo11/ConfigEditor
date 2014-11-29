@@ -10,8 +10,12 @@ namespace ConfigEditor
     public static class RulesCollection
     {
 
-        public static ObservableCollection<ActionSet> actionSets = new ObservableCollection<ActionSet>();
-        public static ObservableCollection<MatchSet> matchSets = new ObservableCollection<MatchSet>();
+        private static ObservableCollection<ActionSet> _actionSets = new ObservableCollection<ActionSet>();
+        public static ObservableCollection<ActionSet> actionSets { get { return _actionSets; } }
+
+        private static ObservableCollection<MatchSet> _matchSets = new ObservableCollection<MatchSet>();
+        public static ObservableCollection<MatchSet> matchSets { get { return _matchSets; } }
+
         private static ObservableCollection<Folder> _Folders = new ObservableCollection<Folder>();
         public static ObservableCollection<Folder> Folders { get { return _Folders; } }
 
@@ -38,43 +42,35 @@ namespace ConfigEditor
 
         public static bool AddActionSet(ActionSet actionSet)
         {
-            foreach (ActionSet a in actionSets)
+            foreach (ActionSet a in _actionSets)
             {
                 if (a.name.Equals(actionSet.name))
                 {
                     return false;
                 }
             }
-            actionSets.Add(actionSet);
+            _actionSets.Add(actionSet);
             return true;
         }
         public static void RemoveActionSet(int index)
         {
-            actionSets.RemoveAt(index);
+            _actionSets.RemoveAt(index);
         }
         public static bool AddMatchSet(MatchSet matchSet)
         {
-            foreach (MatchSet m in matchSets)
+            foreach (MatchSet m in _matchSets)
             {
                 if (m.name.Equals(matchSet.name))
                 {
                     return false;
                 }
             }
-            matchSets.Add(matchSet);
+            _matchSets.Add(matchSet);
             return true;
         }
         public static void RemoveMatchSet(int index)
         {
-            matchSets.RemoveAt(index);
-        }
-        public static ObservableCollection<MatchSet> getMatchSets()
-        {
-            return matchSets;
-        }
-        public static ObservableCollection<ActionSet> getActionSets()
-        {
-            return actionSets;
+            _matchSets.RemoveAt(index);
         }
     }
 }
