@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" >
     <StackPanel MinWidth="220" Margin="0,0,0,4">
-        <ComboBox x:Name="cbMatch" DockPanel.Dock="Top" VerticalAlignment="Stretch" SelectionChanged="cbMatch_SelectionChanged" />
+        <ComboBox x:Name="cbMatch" VerticalAlignment="Stretch" SelectionChanged="cbMatch_SelectionChanged" />
         <StackPanel x:Name="container" VerticalAlignment="Top" Height="Auto" ScrollViewer.VerticalScrollBarVisibility="Disabled" />
     </StackPanel>
 </UserControl>
