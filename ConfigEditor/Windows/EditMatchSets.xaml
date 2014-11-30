@@ -97,6 +97,8 @@
             </StackPanel>
         </Button>
         <Label x:Name="lblMatch" FontSize="14" Content="Match" HorizontalAlignment="Left" Margin="211,10,0,0" VerticalAlignment="Top" Height="31" Width="135"/>
-        <ListBox x:Name="listMatch" HorizontalAlignment="Right" Height="241" Margin="0,46,34,0" VerticalAlignment="Top" Width="222"/>
+        <Border Height="241" Width="222" Margin="211,46,34,43" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+            <ScrollViewer x:Name="MatchContainer"/>
+        </Border>
     </Grid>
 </Window>
