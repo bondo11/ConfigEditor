@@ -63,5 +63,16 @@ namespace ConfigEditor.MatchClasses
             OrRule.Add(new Match(OrRule));
             refresh();
         }
+
+        public Match GetMatch()
+        {
+            OrRule.matchRules.Clear();
+            foreach (ucMatch ucM in listMatch.Items)
+            {
+                OrRule.matchRules.Add(ucM.GetMatch());
+            }
+
+            return OrRule;
+        }
     }
 }

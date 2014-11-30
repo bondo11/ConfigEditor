@@ -91,5 +91,13 @@ namespace ConfigEditor
             }
         }
 
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            String n = RulesCollection.matchSets[listMatchsets.SelectedIndex].Name;
+            int i = (int)RulesCollection.matchSets[listMatchsets.SelectedIndex].match.kind;
+
+            RulesCollection.matchSets[listMatchsets.SelectedIndex].match = ((ucMatch)listMatch.Items[0]).GetMatch();
+        }
+
     }
 }

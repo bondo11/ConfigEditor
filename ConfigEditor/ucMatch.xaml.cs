@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConfigEditor.MatchClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -89,5 +90,23 @@ namespace ConfigEditor
             }
         }
 
+        public Match GetMatch()
+        {
+            switch (cbMatch.SelectedIndex)
+            {
+                case (int)RulesCollection.MatchKinds.And:
+                    return ((ucMatchAnd)container.Children[0]).GetMatch();
+                case (int)RulesCollection.MatchKinds.Or:
+                    return ((ucMatchOr)container.Children[0]).GetMatch();
+                case (int)RulesCollection.MatchKinds.extensionMatch:
+                    return ((ucExtentionMatch)container.Children[0]).GetMatch();
+                case (int)RulesCollection.MatchKinds.regexMatch:
+                    return ((ucRegexMatch)container.Children[0]).GetMatch();
+                default:
+                    break;
+            }
+
+            return match;
+        }
     }
 }

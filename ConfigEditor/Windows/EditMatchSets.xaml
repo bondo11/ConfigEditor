@@ -55,11 +55,11 @@
                 <Image x:Name="imgDelMatchset" Source="../Pictures/discard.png" Width="20" Opacity="0.7" />
             </StackPanel>
         </Button>
-        <Button x:Name="btnAddMatch" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="211,292,0,0" VerticalAlignment="Top" Width="20" Height="20" Click="btnAddMatch_Click" >
+        <!--<Button x:Name="btnAddMatch" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="211,292,0,0" VerticalAlignment="Top" Width="20" Height="20" Click="btnAddMatch_Click" >
             <StackPanel>
                 <Image x:Name="imgAddMatch" Source="../Pictures/new.png" Width="20" Opacity="0.7" />
             </StackPanel>
-        </Button>
+        </Button>-->
         <Button x:Name="btnMoveMatchDown" BorderThickness="0" HorizontalAlignment="Left" Margin="437,73,0,0" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
@@ -84,6 +84,11 @@
             </Button.RenderTransform>
             <StackPanel>
                 <Image x:Name="imgMoveMatchUp" Source="../Pictures/previous_item.png" Width="20" Opacity="0.7" />
+            </StackPanel>
+        </Button>
+        <Button x:Name="btnSave" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" Margin="0,0,44,5" Click="btnSave_Click">
+            <StackPanel>
+                <Image x:Name="btnSaveImage" Source="../Pictures/save-icon.png" Width="30" Opacity="0.4" />
             </StackPanel>
         </Button>
         <Button x:Name="btnOK" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" Margin="0,0,5,5" >

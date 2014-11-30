@@ -32,5 +32,11 @@ namespace ConfigEditor.MatchClasses
             this.regexMatch = regexMatch;
             tbRegex.Text = regexMatch.regex;
         }
+
+        public Match GetMatch()
+        {
+            regexMatch.regex = tbRegex.Text;
+            return regexMatch;
+        }
     }
 }

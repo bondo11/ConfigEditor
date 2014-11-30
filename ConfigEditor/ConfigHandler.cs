@@ -235,7 +235,7 @@ namespace ConfigEditor
                     break;
                 case RulesCollection.MatchKinds.extensionMatch:
                     writer.WriteStartElement("kind");
-                    writer.WriteValue("or");
+                    writer.WriteValue("extension");
                     writer.WriteEndElement();
 
                     writer.WriteStartElement("extension");
@@ -247,7 +247,7 @@ namespace ConfigEditor
                     writer.WriteValue("regex");
                     writer.WriteEndElement();
 
-                    writer.WriteStartElement("extension");
+                    writer.WriteStartElement("pattern");
                     writer.WriteValue(((regexMatch)match).regex);
                     writer.WriteEndElement();
                     break;
