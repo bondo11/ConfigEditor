@@ -1,104 +1,108 @@
 ﻿<Window x:Class="ConfigEditor.EditMatchSets"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MatchSet editor" Height="359" Width="473"
-        ResizeMode="NoResize">
-    <Grid>
-        <Label Content="Matchsets" FontSize="14" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.294,-0.171" Width="105" Height="31"/>
-        <ListBox x:Name="listMatchsets" HorizontalAlignment="Left" Height="241" Margin="10,46,0,0" VerticalAlignment="Top" Width="196" SelectionChanged="listMatchsets_SelectionChanged">
-            <ListBox.Template>
-                <ControlTemplate TargetType="{x:Type ListBox}">
-                    <Border x:Name="Bd" SnapsToDevicePixels="true"
+        Title="MatchSet editor"
+        ResizeMode="NoResize" SizeToContent="Width" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalAlignment="Top" Height="392">
+    <StackPanel VerticalAlignment="Top">
+        <StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+            <StackPanel MinWidth="220" Height="320" VerticalAlignment="Top">
+                <Label Content="Matchsets" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <ListBox x:Name="listMatchsets" SelectionChanged="listMatchsets_SelectionChanged" Height="270">
+                    <ListBox.Template>
+                        <ControlTemplate TargetType="{x:Type ListBox}">
+                            <Border x:Name="Bd" SnapsToDevicePixels="true"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     Padding="1">
-                        <Grid>
-                            <Image HorizontalAlignment="Right"
+                                <Grid>
+                                    <Image HorizontalAlignment="Right"
                            VerticalAlignment="Center"
                            Source="../Pictures/white_folder.png"
                            Margin="0,0,15,15"
                            Opacity="0.45" Width="168" Height="210">
-                            </Image>
-                            <ScrollViewer Padding="{TemplateBinding Padding}"
+                                    </Image>
+                                    <ScrollViewer Padding="{TemplateBinding Padding}"
                                   Focusable="false">
-                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                            </ScrollViewer>
-                        </Grid>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background"
+                                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    </ScrollViewer>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter Property="Background"
                             TargetName="Bd"
                             Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
-                        </Trigger>
-                        <Trigger Property="IsGrouping" Value="true">
-                            <Setter Property="ScrollViewer.CanContentScroll"
+                                </Trigger>
+                                <Trigger Property="IsGrouping" Value="true">
+                                    <Setter Property="ScrollViewer.CanContentScroll"
                             Value="false"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </ListBox.Template>
-        </ListBox>
-        <Button x:Name="delMatchsets" BorderThickness="0" HorizontalAlignment="Left" Margin="37,291,0,0" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent" Click="delMatchsets_Click" >
-            <StackPanel>
-                <Image x:Name="delBtnMatchsets" Source="../Pictures/discard.png" Width="20" Opacity="0.7" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ListBox.Template>
+                </ListBox>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="delMatchsets" BorderThickness="0" DockPanel.Dock="Right" Width="20" Height="20" Background="Transparent" Click="delMatchsets_Click" >
+                        <StackPanel>
+                            <Image x:Name="delBtnMatchsets" Source="../Pictures/discard.png" Width="20" Opacity="0.7" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="addbtnMatchsets" BorderThickness="0" Background="Transparent" DockPanel.Dock="Left" Width="20" Height="20" Click="addbtnMatchsets_Click">
+                        <StackPanel>
+                            <Image x:Name="addMatchImage" Source="../Pictures/new.png" Width="20" Opacity="0.7" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
             </StackPanel>
-        </Button>
-        <Button x:Name="addbtnMatchsets" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="11,291,0,0" VerticalAlignment="Top" Width="20" Height="20" Click="addbtnMatchsets_Click">
-            <StackPanel>
-                <Image x:Name="addMatchImage" Source="../Pictures/new.png" Width="20" Opacity="0.7" />
+            <StackPanel MinWidth="250" Height="300" VerticalAlignment="Top">
+                <Label x:Name="lblMatch" FontSize="14" Content="Match" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <StackPanel Orientation="Horizontal" Height="270">
+                    <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" HorizontalAlignment="Left">
+                        <ScrollViewer x:Name="MatchContainer"/>
+                    </Border>
+                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
+                        <Button x:Name="btnMoveMatchUp" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="0.5,0.5">
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="91.01"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                            <StackPanel>
+                                <Image x:Name="imgMoveMatchUp" Source="../Pictures/previous_item.png" Width="20" Opacity="0.7" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="btnMoveMatchDown" BorderThickness="0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent" RenderTransformOrigin="0.5,0.5">
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                            <StackPanel>
+                                <Image x:Name="imgMoveMatchDown" Source="../Pictures/next_item.png" Width="20" Opacity="0.7" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
-        </Button>
-        <Button x:Name="delMatch" BorderThickness="0" HorizontalAlignment="Left" Margin="236,292,0,0" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent"  RenderTransformOrigin="-10.45,2">
-            <StackPanel>
-                <Image x:Name="imgDelMatchset" Source="../Pictures/discard.png" Width="20" Opacity="0.7" />
-            </StackPanel>
-        </Button>
-        <!--<Button x:Name="btnAddMatch" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="211,292,0,0" VerticalAlignment="Top" Width="20" Height="20" Click="btnAddMatch_Click" >
-            <StackPanel>
-                <Image x:Name="imgAddMatch" Source="../Pictures/new.png" Width="20" Opacity="0.7" />
-            </StackPanel>
-        </Button>-->
-        <Button x:Name="btnMoveMatchDown" BorderThickness="0" HorizontalAlignment="Left" Margin="437,73,0,0" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent" RenderTransformOrigin="0.5,0.5">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="89.864"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-            <StackPanel>
-                <Image x:Name="imgMoveMatchDown" Source="../Pictures/next_item.png" Width="20" Opacity="0.7" />
-            </StackPanel>
-        </Button>
-        <Button x:Name="btnMoveMatchUp" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="437,48,0,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="0.5,0.5">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="91.01"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-            <StackPanel>
-                <Image x:Name="imgMoveMatchUp" Source="../Pictures/previous_item.png" Width="20" Opacity="0.7" />
-            </StackPanel>
-        </Button>
-        <Button x:Name="btnSave" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" Margin="0,0,44,5" Click="btnSave_Click">
-            <StackPanel>
-                <Image x:Name="btnSaveImage" Source="../Pictures/save-icon.png" Width="30" Opacity="0.4" />
-            </StackPanel>
-        </Button>
-        <Button x:Name="btnOK" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" Margin="0,0,5,5" >
-            <StackPanel>
-                <Image x:Name="imgOK" Source="../Pictures/accept.png" Width="30" Opacity="0.4" />
-            </StackPanel>
-        </Button>
-        <Label x:Name="lblMatch" FontSize="14" Content="Match" HorizontalAlignment="Left" Margin="211,10,0,0" VerticalAlignment="Top" Height="31" Width="135"/>
-        <Border Height="241" Width="222" Margin="211,46,34,43" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
-            <ScrollViewer x:Name="MatchContainer"/>
-        </Border>
-    </Grid>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" FlowDirection="RightToLeft">
+            <Button x:Name="btnOK" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" >
+                <StackPanel>
+                    <Image x:Name="imgOK" Source="../Pictures/accept.png" Width="30" Opacity="0.4" />
+                </StackPanel>
+            </Button>
+            <Button x:Name="btnSave" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" Click="btnSave_Click">
+                <StackPanel>
+                    <Image x:Name="btnSaveImage" Source="../Pictures/save-icon.png" Width="30" Opacity="0.4" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </StackPanel>
 </Window>

@@ -4,24 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" >
-    <DockPanel
-        VerticalAlignment="Stretch" 
-        Height="Auto">
-        <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch" 
-        Height="Auto" Width="208">
-            <ListBox x:Name="listMatch" VerticalAlignment="Top" />
-        </DockPanel>
-        <DockPanel DockPanel.Dock="Top" Height="Auto" Width="Auto" HorizontalAlignment="Right">
-            <Button x:Name="addMatch" BorderThickness="0" Background="Transparent" DockPanel.Dock="Left" Width="20" Height="20" Click="addMatch_Click">
+    <StackPanel>
+        <ListBox x:Name="listMatch" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.CanContentScroll="False" />
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button x:Name="addMatch" BorderThickness="0" Background="Transparent" Width="20" Height="20" Click="addMatch_Click">
                 <StackPanel>
                     <Image x:Name="addmatchImage" Source="../../Pictures/new.png" Width="20" Opacity="0.7" />
                 </StackPanel>
             </Button>
-            <Button x:Name="delMatch" BorderThickness="0" Background="Transparent" DockPanel.Dock="Right" Width="20" Height="20" >
+            <Button x:Name="delMatch" BorderThickness="0" Background="Transparent" Width="20" Height="20">
                 <StackPanel>
                     <Image x:Name="delmatchImage" Source="../../Pictures/discard.png" Width="20" Opacity="0.7" />
                 </StackPanel>
             </Button>
-        </DockPanel>
-    </DockPanel>
+        </StackPanel>
+    </StackPanel>
 </UserControl>

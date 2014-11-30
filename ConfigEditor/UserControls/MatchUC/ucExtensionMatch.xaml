@@ -4,16 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" >
-    <DockPanel
-        VerticalAlignment="Stretch" 
-        Height="Auto">
-        <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch" 
-        Height="Auto" Width="208">
-            <Label x:Name="lblExtension" Content="File type" Background="Transparent" DockPanel.Dock="Left" VerticalAlignment="Stretch" Height="Auto" />
-        </DockPanel>
-        <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch" 
-        Height="Auto" Width="208">
-            <TextBox x:Name="tbExtension" DockPanel.Dock="right" VerticalAlignment="Stretch" Height="Auto"/>
-        </DockPanel>
-    </DockPanel>
+    <StackPanel>
+        <Label x:Name="lblExtension" Content="File type" Background="Transparent" />
+        <TextBox x:Name="tbExtension" />
+    </StackPanel>
 </UserControl>
