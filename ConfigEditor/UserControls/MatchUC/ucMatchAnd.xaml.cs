@@ -75,5 +75,24 @@ namespace ConfigEditor.MatchClasses
 
             return AndRule;
         }
+
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ((Image)sender).Opacity = 1;
+        }
+
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ((Image)sender).Opacity = 0.45;
+        }
+
+        private void delMatch_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (listMatch.SelectedIndex > -1)
+            {
+                AndRule.matchRules.RemoveAt(listMatch.SelectedIndex);
+                refresh();
+            }
+        }
     }
 }
