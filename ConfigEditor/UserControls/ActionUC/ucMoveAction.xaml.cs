@@ -18,20 +18,43 @@ namespace ConfigEditor
     /// <summary>
     /// Interaction logic for moveAction.xaml
     /// </summary>
-    public partial class ucMoveAction : UserControl
+    public partial class ucMoveAction : UserControl, Action
     {
-        private MoveAction moveAction;
+        public RulesCollection.ActionKinds Kind { get; set; }
+        public string Destination { get; set; }
 
         public ucMoveAction()
         {
             InitializeComponent();
+            Kind = RulesCollection.ActionKinds.Move;
+            Destination = "";
         }
 
-        public ucMoveAction(MoveAction moveAction): this()
+        public ucMoveAction(string Destination)
+            : this()
         {
-            // TODO: Complete member initialization
-            this.moveAction = moveAction;
-            tbPath.Text= moveAction.destination;
+            this.Destination = Destination;
+            tbPath.Text = Destination;
+        }
+
+        public UserControl GetUC()
+        {
+            return this;
+        }
+        public void Save(ActionSet ActionSet)
+        {
+            Destination = tbPath.Text;
+            ActionSet.Add(this);
+        }
+        public void WriteToConfig(System.Xml.XmlWriter Writer)
+        {
+            Writer.WriteStartElement("kind");
+            Writer.WriteValue("move");
+            Writer.WriteEndElement();
+
+            Writer.WriteStartElement("destination");
+            Writer.WriteValue(Destination);
+            Writer.WriteEndElement();
         }
     }
 }

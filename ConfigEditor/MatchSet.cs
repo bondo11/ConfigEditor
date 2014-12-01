@@ -9,15 +9,15 @@ namespace ConfigEditor
 {
     public class MatchSet : INotifyPropertyChanged
     {
-        public Match match = new Match();
+        public Match Match;
 
         private string _Name;
         public string Name { get { return _Name; } set { _Name = value; NotifyPropertyChanged("Name"); } }
 
-        public MatchSet(string Name, Match match)
+        public MatchSet(string Name, Match Match)
         {
             this.Name = Name;
-            this.match = match;
+            this.Match = Match;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

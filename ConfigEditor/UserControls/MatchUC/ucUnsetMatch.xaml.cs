@@ -12,29 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml;
 
 namespace ConfigEditor.MatchClasses
 {
     /// <summary>
-    /// Interaction logic for ucRegexMatch.xaml
+    /// Interaction logic for ucExtentionMatch.xaml
     /// </summary>
-    public partial class ucRegexMatch : UserControl, Match
+    public partial class ucUnsetMatch : UserControl, Match
     {
         public RulesCollection.MatchKinds Kind { get; set; }
-        public string Pattern;
 
-        public ucRegexMatch()
+        public ucUnsetMatch()
         {
             InitializeComponent();
-            Kind = RulesCollection.MatchKinds.Regex;
-            Pattern = "";
-        }
-        public ucRegexMatch(string Pattern)
-            : this()
-        {
-            this.Pattern = Pattern;
-            tbRegex.Text = Pattern;
         }
 
         public UserControl GetUC()
@@ -44,19 +34,11 @@ namespace ConfigEditor.MatchClasses
 
         public Match Save()
         {
-            Pattern = tbRegex.Text;
             return this;
         }
 
-        public void WriteToConfig(XmlWriter Writer)
+        public void WriteToConfig(System.Xml.XmlWriter Writer)
         {
-            Writer.WriteStartElement("kind");
-            Writer.WriteValue("regex");
-            Writer.WriteEndElement();
-
-            Writer.WriteStartElement("pattern");
-            Writer.WriteValue(Pattern);
-            Writer.WriteEndElement();
         }
     }
 }

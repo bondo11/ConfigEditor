@@ -20,77 +20,59 @@ namespace ConfigEditor
     /// </summary>
     public partial class ucAction : UserControl
     {
-        private Action act;
-
+        private Action Action;
 
         public ucAction()
         {
             InitializeComponent();
-            foreach (RulesCollection.ActionKinds kind in (RulesCollection.ActionKinds[])Enum.GetValues(typeof(RulesCollection.ActionKinds)))
+            foreach (RulesCollection.ActionKinds Kind in (RulesCollection.ActionKinds[])Enum.GetValues(typeof(RulesCollection.ActionKinds)))
             {
-                cBox.Items.Add(kind);
+                cBox.Items.Add(Kind);
             }
         }
-
-        public ucAction(Action act) : this()
+        public ucAction(Action Action)
+            : this()
         {
-            this.act = act;
-            cBox.SelectedIndex = (int)act.kind;
+            this.Action = Action;
+            cBox.SelectedIndex = (int)Action.Kind;
         }
 
-        private void cBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void Clear()
         {
             container.Children.Clear();
+        }
+        private void cBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Clear();
 
-            if ((int)act.kind != cBox.SelectedIndex)
+            if (Action != null && (int)Action.Kind != cBox.SelectedIndex)
             {
                 switch (cBox.SelectedIndex)
                 {
-                    case (int)RulesCollection.ActionKinds.onSet:
+                    case (int)RulesCollection.ActionKinds.Move:
+                        Action = new ucMoveAction();
                         break;
-                    case (int)RulesCollection.ActionKinds.moveAction:
-                        act = new MoveAction();
+                    case (int)RulesCollection.ActionKinds.Copy:
+                        Action = new ucCopyAction();
                         break;
-                    case (int)RulesCollection.ActionKinds.copyAction:
-                        act = new copyAction();
-                        break;
-                    case (int)RulesCollection.ActionKinds.deleteAction:
-                        act = new Action();
-                        break;
-                    case (int)RulesCollection.ActionKinds.cmdAction:
-                        act = new cmdAction();
+                    case (int)RulesCollection.ActionKinds.Cmd:
+                        Action = new ucCmdAction();
                         break;
                     default:
-                        act = new Action();
+                        Action = null;
                         break;
                 }
             }
 
-            switch (act.kind)
+            if (Action != null)
             {
-                case RulesCollection.ActionKinds.onSet:
-                    break;
-                case RulesCollection.ActionKinds.moveAction:
-                    container.Children.Add(((MoveAction)act).GetUC());
-                    break;
-                case RulesCollection.ActionKinds.copyAction:
-                    container.Children.Add(((copyAction)act).GetUC());
-                    break;
-                case RulesCollection.ActionKinds.deleteAction:
-                    break;
-                case RulesCollection.ActionKinds.cmdAction:
-                    container.Children.Add(((cmdAction)act).GetUC());
-                    break;
-                default:
-                    break;
+                container.Children.Add(Action.GetUC());
             }
         }
-        //public ucAction(Action act, UserControl uc)
-        //    : this()
-        //{
-        //    cBox.SelectedIndex = (int)act.kind;
-        //    this.act = act;
-        //    container.Children.Add(uc);
-        //}
+
+        public void Save(ActionSet ActionSet)
+        {
+            Action.Save(ActionSet);
+        }
     }
 }

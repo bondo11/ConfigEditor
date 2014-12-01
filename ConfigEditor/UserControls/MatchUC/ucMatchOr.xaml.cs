@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,67 +13,39 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace ConfigEditor.MatchClasses
 {
     /// <summary>
     /// Interaction logic for ucMatchOr.xaml
     /// </summary>
-    public partial class ucMatchOr : UserControl
+    public partial class ucMatchOr : UserControl, MatchCollection
     {
-        private OrRule OrRule;
+        public RulesCollection.MatchKinds Kind { get; set; }
+        public ObservableCollection<Match> Matches { get; set; }
 
         public ucMatchOr()
         {
             InitializeComponent();
+            Kind = RulesCollection.MatchKinds.Or;
+            Matches = new ObservableCollection<Match>();
+            Refresh();
         }
-        public ucMatchOr(OrRule OrRule)
-            : this()
+
+        public void Refresh()
         {
-            this.OrRule = OrRule;
-            refresh();
-        }
-        private void refresh()
-        {
-            listMatch.Items.Clear();
-            foreach (Match m in OrRule.matchRules)
+            Clear();
+            foreach (Match m in Matches)
             {
-                switch (m.kind)
-                {
-                    case RulesCollection.MatchKinds.And:
-                        listMatch.Items.Add(new ucMatch((AndRule)m));
-                        break;
-                    case RulesCollection.MatchKinds.Or:
-                        listMatch.Items.Add(new ucMatch((OrRule)m));
-                        break;
-                    case RulesCollection.MatchKinds.extensionMatch:
-                        listMatch.Items.Add(new ucMatch((extensionMatch)m));
-                        break;
-                    case RulesCollection.MatchKinds.regexMatch:
-                        listMatch.Items.Add(new ucMatch((regexMatch)m));
-                        break;
-                    default:
-                        listMatch.Items.Add(new ucMatch(m));
-                        break;
-                }
+                listMatch.Items.Add(new ucMatch(m));
             }
         }
 
         private void addMatch_Click(object sender, RoutedEventArgs e)
         {
-            OrRule.Add(new Match(OrRule));
-            refresh();
-        }
-
-        public Match GetMatch()
-        {
-            OrRule.matchRules.Clear();
-            foreach (ucMatch ucM in listMatch.Items)
-            {
-                OrRule.matchRules.Add(ucM.GetMatch());
-            }
-
-            return OrRule;
+            Matches.Add(new ucRegexMatch());
+            Refresh();
         }
 
         private void btn_MouseEnter(object sender, MouseEventArgs e)
@@ -89,9 +62,71 @@ namespace ConfigEditor.MatchClasses
         {
             if (listMatch.SelectedIndex > -1)
             {
-                OrRule.matchRules.RemoveAt(listMatch.SelectedIndex);
-                refresh();
+                Matches.RemoveAt(listMatch.SelectedIndex);
+                Refresh();
             }
+        }
+
+        public void ReplaceMatch(Match Match, Match NewMatch)
+        {
+            for (int i = 0; i < Matches.Count(); i++)
+            {
+                if (Matches[i].Equals(Match))
+                {
+                    Matches.RemoveAt(i);
+                    Matches.Insert(i, NewMatch);
+                    break;
+                }
+            }
+        }
+
+        public void Add(Match Match)
+        {
+            Matches.Add(Match);
+        }
+
+        public UserControl GetUC()
+        {
+            return this;
+        }
+
+        public Match Save()
+        {
+            Matches.Clear();
+            foreach (ucMatch m in listMatch.Items)
+            {
+                Matches.Add(m.Save());
+            }
+            return this;
+        }
+
+        public void WriteToConfig(XmlWriter Writer)
+        {
+            Writer.WriteStartElement("kind");
+            Writer.WriteValue("or");
+            Writer.WriteEndElement();
+
+            Writer.WriteStartElement("matches");
+            foreach (Match m in Matches)
+            {
+                m.WriteToConfig(Writer);
+            }
+            Writer.WriteEndElement();
+        }
+
+        public void Clear()
+        {
+            foreach (ucMatch m in listMatch.Items)
+            {
+                m.Clear();
+            }
+            listMatch.Items.Clear();
+        }
+
+        private void addMatch_Click(object sender, MouseButtonEventArgs e)
+        {
+            Add(new ucUnsetMatch());
+            Refresh();
         }
     }
 }

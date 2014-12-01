@@ -12,33 +12,51 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace ConfigEditor.MatchClasses
 {
     /// <summary>
     /// Interaction logic for ucExtentionMatch.xaml
     /// </summary>
-    public partial class ucExtentionMatch : UserControl
+    public partial class ucExtensionMatch : UserControl, Match
     {
-        public extensionMatch extensionMatch;
+        public RulesCollection.MatchKinds Kind { get; set; }
+        public string Extension;
 
-        public ucExtentionMatch()
+        public ucExtensionMatch()
         {
             InitializeComponent();
+            Kind = RulesCollection.MatchKinds.Extension;
+            Extension = "";
         }
-
-
-        public ucExtentionMatch(extensionMatch extensionMatch)
+        public ucExtensionMatch(string Extension)
             : this()
         {
-            this.extensionMatch = extensionMatch;
-            tbExtension.Text = extensionMatch.extension;
+            this.Extension = Extension;
+            tbExtension.Text = Extension;
         }
 
-        public Match GetMatch()
+        public UserControl GetUC()
         {
-            extensionMatch.extension = tbExtension.Text;
-            return extensionMatch;
+            return this;
+        }
+
+        public Match Save()
+        {
+            Extension = tbExtension.Text;
+            return this;
+        }
+
+        public void WriteToConfig(XmlWriter Writer)
+        {
+            Writer.WriteStartElement("kind");
+            Writer.WriteValue("extension");
+            Writer.WriteEndElement();
+
+            Writer.WriteStartElement("extension");
+            Writer.WriteValue(Extension);
+            Writer.WriteEndElement();
         }
     }
 }

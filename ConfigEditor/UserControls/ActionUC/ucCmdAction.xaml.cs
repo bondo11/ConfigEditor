@@ -18,22 +18,42 @@ namespace ConfigEditor
     /// <summary>
     /// Interaction logic for cmdAction.xaml
     /// </summary>
-    public partial class ucCmdAction : UserControl
+    public partial class ucCmdAction : UserControl, Action
     {
-        private cmdAction cmdAction;
+        public RulesCollection.ActionKinds Kind { get; set; }
+        public string Command { get; set; }
 
         public ucCmdAction()
         {
             InitializeComponent();
+            Kind = RulesCollection.ActionKinds.Cmd;
+            Command = "";
         }
-
-
-        public ucCmdAction(cmdAction cmdAction)
+        public ucCmdAction(string Command)
             : this()
         {
-            this.cmdAction = cmdAction;
-            // TODO: Complete member initialization
-            tbCmd.Text = cmdAction.command;
+            this.Command = Command;
+            tbCmd.Text = Command;
+        }
+
+        public UserControl GetUC()
+        {
+            return this;
+        }
+        public void Save(ActionSet ActionSet)
+        {
+            Command = tbCmd.Text;
+            ActionSet.Add(this);
+        }
+        public void WriteToConfig(System.Xml.XmlWriter Writer)
+        {
+            Writer.WriteStartElement("kind");
+            Writer.WriteValue("cmd");
+            Writer.WriteEndElement();
+
+            Writer.WriteStartElement("command");
+            Writer.WriteValue(Command);
+            Writer.WriteEndElement();
         }
     }
 }

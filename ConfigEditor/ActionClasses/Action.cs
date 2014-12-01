@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Xml;
 
 namespace ConfigEditor
 {
-    public class Action
+    public interface Action
     {
-        public RulesCollection.ActionKinds kind;
+        RulesCollection.ActionKinds Kind { get; set; }
 
-        public UserControl GetUC()
-        {
-            return new UserControl();
-        }
+        UserControl GetUC();
+        void Save(ActionSet ActionSet);
+        void WriteToConfig(XmlWriter Writer);
     }
 }

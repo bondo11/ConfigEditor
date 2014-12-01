@@ -1,36 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Controls;
 
 namespace ConfigEditor
 {
-    public class MatchCollection : Match
+    public interface MatchCollection : Match
     {
-        public List<Match> matchRules = new List<Match>();
+        ObservableCollection<Match> Matches { get; set; }
 
-        public void replaceChild(Match child, Match newChild)
-        {
-            for (int i = 0; i < matchRules.Count(); i++)
-            {
-                if (matchRules[i].Equals(child))
-                {
-                    matchRules.RemoveAt(i);
-                    matchRules.Insert(i, newChild);
-                    break;
-                }
-            }
-        }
-
-        public void Add(Match matchRule)
-        {
-            matchRules.Add(matchRule);
-        }
-
-        public new UserControl GetUC()
-        {
-            return new UserControl();
-        }
+        void ReplaceMatch(Match Match, Match NewMatch);
+        void Add(Match Match);
+        void Refresh();
+        void Clear();
     }
 }

@@ -22,7 +22,7 @@ namespace ConfigEditor
         public EditActionSets()
         {
             InitializeComponent();
-            listActionsets.ItemsSource = RulesCollection.actionSets;
+            listActionsets.ItemsSource = RulesCollection.ActionSets;
         }
 
         public EditActionSets(int ActionSetIndex)
@@ -34,6 +34,10 @@ namespace ConfigEditor
 
         private void listActionsets_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            foreach (ucAction a in listAction.Items)
+            {
+                a.Clear();
+            }
             listAction.Items.Clear();
             foreach (Action a in ((ActionSet)listActionsets.SelectedValue).Actions)
             {
@@ -44,7 +48,7 @@ namespace ConfigEditor
         private void addbtnActionsets_Click(object sender, RoutedEventArgs e)
         {
             ActionSet a = new ActionSet("actionSet" + (listActionsets.Items.Count + 1).ToString());
-            RulesCollection.actionSets.Add(a);
+            RulesCollection.ActionSets.Add(a);
             listActionsets.Items.Add(a.Name);
         }
 
@@ -52,13 +56,37 @@ namespace ConfigEditor
         {
             if (listActionsets.SelectedIndex > -1)
             {
-                for (int i = 0; i < RulesCollection.actionSets.Count; i++)
+                for (int i = 0; i < RulesCollection.ActionSets.Count; i++)
                 {
-                    if (RulesCollection.actionSets[i].Name.Equals(listActionsets.SelectedIndex))
-                        RulesCollection.actionSets.RemoveAt(i);
+                    if (RulesCollection.ActionSets[i].Name.Equals(listActionsets.SelectedIndex))
+                        RulesCollection.ActionSets.RemoveAt(i);
                 }
                 listActionsets.Items.RemoveAt(listActionsets.SelectedIndex);
             }
+        }
+
+        private void btnSave_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ((ActionSet)listActionsets.SelectedItem).Actions.Clear();
+            foreach (ucAction a in listAction.Items)
+            {
+                a.Save((ActionSet)listActionsets.SelectedItem);
+            }
+        }
+
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ((Image)sender).Opacity = 1;
+        }
+
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ((Image)sender).Opacity = 0.45;
+        }
+
+        private void btnOK_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
         }
 
     }

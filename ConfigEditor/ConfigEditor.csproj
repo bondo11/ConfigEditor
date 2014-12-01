@@ -85,6 +85,9 @@
     </ApplicationDefinition>
     <Compile Include="ActionClasses\Action.cs" />
     <Compile Include="MatchClasses\MatchCollection.cs" />
+    <Compile Include="UserControls\MatchUC\ucUnsetMatch.xaml.cs">
+      <DependentUpon>ucUnsetMatch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\EditFolder.xaml.cs">
       <DependentUpon>EditFolder.xaml</DependentUpon>
     </Compile>
@@ -114,13 +117,8 @@
     <Compile Include="Windows\EditActionSets.xaml.cs">
       <DependentUpon>EditActionSets.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MatchClasses\AndRule.cs" />
-    <Compile Include="ActionClasses\cmdAction.cs" />
-    <Compile Include="ActionClasses\copyAction.cs" />
-    <Compile Include="MatchClasses\extensionMatch.cs" />
     <Compile Include="Folder.cs" />
     <Compile Include="MatchClasses\Match.cs" />
-    <Compile Include="ActionClasses\moveAction.cs" />
     <Compile Include="UserControls\ActionUC\ucCmdAction.xaml.cs">
       <DependentUpon>ucCmdAction.xaml</DependentUpon>
     </Compile>
@@ -130,9 +128,7 @@
     <Compile Include="UserControls\ActionUC\ucMoveAction.xaml.cs">
       <DependentUpon>ucMoveAction.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MatchClasses\OrRule.cs" />
     <Compile Include="PasswordEncoder.cs" />
-    <Compile Include="MatchClasses\regexMatch.cs" />
     <Compile Include="RulesCollection.cs" />
     <Compile Include="ConfigSettings.cs" />
     <Compile Include="rules.cs" />
@@ -149,6 +145,10 @@
     <Compile Include="ucRuleSet.xaml.cs">
       <DependentUpon>ucRuleSet.xaml</DependentUpon>
     </Compile>
+    <Page Include="UserControls\MatchUC\ucUnsetMatch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\EditFolder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

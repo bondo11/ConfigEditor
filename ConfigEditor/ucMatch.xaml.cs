@@ -21,7 +21,7 @@ namespace ConfigEditor
     /// </summary>
     public partial class ucMatch : UserControl
     {
-        private Match match;
+        private Match Match;
 
         public ucMatch()
         {
@@ -32,81 +32,58 @@ namespace ConfigEditor
             }
         }
 
-        public ucMatch(Match match) : this()
+        public ucMatch(Match Match)
+            : this()
         {
-            this.match = match;
-            cbMatch.SelectedIndex = (int)match.kind;
+            this.Match = Match;
+            cbMatch.SelectedIndex = (int)Match.Kind;
         }
 
         private void cbMatch_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            container.Children.Clear();
+            Clear();
 
-            if ((int)match.kind != cbMatch.SelectedIndex)
+            if ((int)Match.Kind != cbMatch.SelectedIndex)
             {
                 switch (cbMatch.SelectedIndex)
                 {
                     case (int)RulesCollection.MatchKinds.And:
-                        AndRule and = new AndRule();
-                        match.replace(and);
-                        match = and;
+                        Match = new ucMatchAnd();
                         break;
                     case (int)RulesCollection.MatchKinds.Or:
-                        OrRule or = new OrRule();
-                        match.replace(or);
-                        match = or;
+                        Match = new ucMatchOr();
                         break;
-                    case (int)RulesCollection.MatchKinds.extensionMatch:
-                        extensionMatch ext = new extensionMatch();
-                        match.replace(ext);
-                        match = ext;
+                    case (int)RulesCollection.MatchKinds.Extension:
+                        Match = new ucExtensionMatch();
                         break;
-                    case (int)RulesCollection.MatchKinds.regexMatch:
-                        regexMatch reg = new regexMatch();
-                        match.replace(reg);
-                        match = reg;
+                    case (int)RulesCollection.MatchKinds.Regex:
+                        Match = new ucRegexMatch();
                         break;
                     default:
+                        Match = new ucUnsetMatch();
                         break;
                 }
             }
 
-            switch (match.kind)
+            container.Children.Add(Match.GetUC());
+            if (Match is MatchCollection)
             {
-                case RulesCollection.MatchKinds.And:
-                    container.Children.Add(((AndRule)match).GetUC());
-                    break;
-                case RulesCollection.MatchKinds.Or:
-                    container.Children.Add(((OrRule)match).GetUC());
-                    break;
-                case RulesCollection.MatchKinds.extensionMatch:
-                    container.Children.Add(((extensionMatch)match).GetUC());
-                    break;
-                case RulesCollection.MatchKinds.regexMatch:
-                    container.Children.Add(((regexMatch)match).GetUC());
-                    break;
-                default:
-                    break;
+                ((MatchCollection)Match).Refresh();
             }
         }
 
-        public Match GetMatch()
+        public Match Save() 
         {
-            switch (cbMatch.SelectedIndex)
-            {
-                case (int)RulesCollection.MatchKinds.And:
-                    return ((ucMatchAnd)container.Children[0]).GetMatch();
-                case (int)RulesCollection.MatchKinds.Or:
-                    return ((ucMatchOr)container.Children[0]).GetMatch();
-                case (int)RulesCollection.MatchKinds.extensionMatch:
-                    return ((ucExtentionMatch)container.Children[0]).GetMatch();
-                case (int)RulesCollection.MatchKinds.regexMatch:
-                    return ((ucRegexMatch)container.Children[0]).GetMatch();
-                default:
-                    break;
-            }
+            return Match.Save();
+        }
 
-            return match;
+        public void Clear()
+        {
+            container.Children.Clear();
+            if (Match is MatchCollection)
+            {
+                ((MatchCollection)Match).Clear();
+            }
         }
     }
 }

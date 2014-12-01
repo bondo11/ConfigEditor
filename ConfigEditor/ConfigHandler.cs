@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConfigEditor.MatchClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -49,35 +50,35 @@ namespace ConfigEditor
             switch (kind)
             {
                 case "and":
-                    AndRule andRule = new AndRule();
+                    ucMatchAnd And = new ucMatchAnd();
                     nodes = document.DocumentElement.SelectNodes(xpath + "/matches/match");
                     i = 1;
                     foreach (XmlNode node in nodes)
                     {
-                        andRule.Add(getMatch(xpath + "/matches/match[" + i + "]"));
+                        And.Add(getMatch(xpath + "/matches/match[" + i + "]"));
                         i++;
                     }
-                    return andRule;
+                    return And;
 
                 case "or":
-                    OrRule orRule = new OrRule();
+                    ucMatchOr Or = new ucMatchOr();
                     nodes = document.DocumentElement.SelectNodes(xpath + "/matches/match");
                     i = 1;
                     foreach (XmlNode node in nodes)
                     {
-                        orRule.Add(getMatch(xpath + "/matches/match[" + i + "]"));
+                        Or.Add(getMatch(xpath + "/matches/match[" + i + "]"));
                         i++;
                     }
-                    return orRule;
+                    return Or;
 
                 case "extension":
-                    return new extensionMatch(document.DocumentElement.SelectSingleNode(xpath + "/extension").InnerText);
+                    return new ucExtensionMatch(document.DocumentElement.SelectSingleNode(xpath + "/extension").InnerText);
 
                 case "regex":
-                    return new regexMatch(document.DocumentElement.SelectSingleNode(xpath + "/pattern").InnerText);
+                    return new ucRegexMatch(document.DocumentElement.SelectSingleNode(xpath + "/pattern").InnerText);
 
                 default:
-                    return new Match();
+                    return null;
             }
         }
 
@@ -89,7 +90,11 @@ namespace ConfigEditor
             int i = 1;
             foreach (XmlNode node in nodes)
             {
-                actionSet.Add(getAction(xpath + "/actions/action[" + i + "]"));
+                Action Action = getAction(xpath + "/actions/action[" + i + "]");
+                if (Action != null)
+                {
+                    actionSet.Add(Action);
+                }
                 i++;
             }
             RulesCollection.AddActionSet(actionSet);
@@ -97,21 +102,21 @@ namespace ConfigEditor
         }
         private static Action getAction(string xpath)
         {
-            string kind = document.DocumentElement.SelectSingleNode(xpath + "/kind").InnerText;
+            string Kind = document.DocumentElement.SelectSingleNode(xpath + "/kind").InnerText;
 
-            switch (kind)
+            switch (Kind)
             {
                 case "copy":
-                    return new copyAction(document.DocumentElement.SelectSingleNode(xpath + "/destination").InnerText);
+                    return new ucCopyAction(document.DocumentElement.SelectSingleNode(xpath + "/destination").InnerText);
 
                 case "move":
-                    return new MoveAction(document.DocumentElement.SelectSingleNode(xpath + "/destination").InnerText);
+                    return new ucMoveAction(document.DocumentElement.SelectSingleNode(xpath + "/destination").InnerText);
 
                 case "cmd":
-                    return new cmdAction(document.DocumentElement.SelectSingleNode(xpath + "/command").InnerText);
+                    return new ucCmdAction(document.DocumentElement.SelectSingleNode(xpath + "/command").InnerText);
 
                 default:
-                    return new Action();
+                    return null;
             }
         }
 
@@ -182,7 +187,7 @@ namespace ConfigEditor
 
         private static void writeMatchSets(XmlWriter writer)
         {
-            foreach (MatchSet ms in RulesCollection.matchSets)
+            foreach (MatchSet ms in RulesCollection.MatchSets)
             {
                 writer.WriteStartElement("matchset");
 
@@ -190,7 +195,7 @@ namespace ConfigEditor
                 writer.WriteValue(ms.Name);
                 writer.WriteEndElement();
 
-                writeMatch(writer, ms.match);
+                writeMatch(writer, ms.Match);
                 writer.WriteEndElement();
             }
         }
@@ -198,60 +203,13 @@ namespace ConfigEditor
         private static void writeMatch(XmlWriter writer, Match match)
         {
             writer.WriteStartElement("match");
-            switch (match.kind)
-            {
-                case RulesCollection.MatchKinds.And:
-                    writer.WriteStartElement("kind");
-                    writer.WriteValue("and");
-                    writer.WriteEndElement();
-
-                    writer.WriteStartElement("matches");
-                    foreach (Match m in ((AndRule)match).matchRules)
-                    {
-                        writeMatch(writer, m);
-                    }
-                    writer.WriteEndElement();
-                    break;
-
-                case RulesCollection.MatchKinds.Or:
-                    writer.WriteStartElement("kind");
-                    writer.WriteValue("or");
-                    writer.WriteEndElement();
-
-                    writer.WriteStartElement("matches");
-                    foreach (Match m in ((OrRule)match).matchRules)
-                    {
-                        writeMatch(writer, m);
-                    }
-                    writer.WriteEndElement();
-                    break;
-                case RulesCollection.MatchKinds.extensionMatch:
-                    writer.WriteStartElement("kind");
-                    writer.WriteValue("extension");
-                    writer.WriteEndElement();
-
-                    writer.WriteStartElement("extension");
-                    writer.WriteValue(((extensionMatch)match).extension);
-                    writer.WriteEndElement();
-                    break;
-                case RulesCollection.MatchKinds.regexMatch:
-                    writer.WriteStartElement("kind");
-                    writer.WriteValue("regex");
-                    writer.WriteEndElement();
-
-                    writer.WriteStartElement("pattern");
-                    writer.WriteValue(((regexMatch)match).regex);
-                    writer.WriteEndElement();
-                    break;
-                default:
-                    break;
-            }
+            match.WriteToConfig(writer);
             writer.WriteEndElement();
         }
 
         private static void writeActionSets(XmlWriter writer)
         {
-            foreach (ActionSet a in RulesCollection.actionSets)
+            foreach (ActionSet a in RulesCollection.ActionSets)
             {
                 writer.WriteStartElement("actionset");
 
@@ -264,39 +222,7 @@ namespace ConfigEditor
                 foreach (Action action in a.Actions)
                 {
                     writer.WriteStartElement("action");
-                    switch (action.kind)
-                    {
-                        case RulesCollection.ActionKinds.moveAction:
-                            writer.WriteStartElement("kind");
-                            writer.WriteValue("move");
-                            writer.WriteEndElement();
-
-                            writer.WriteStartElement("destination");
-                            writer.WriteValue(((MoveAction)action).destination);
-                            writer.WriteEndElement();
-                            break;
-                        case RulesCollection.ActionKinds.copyAction:
-                            writer.WriteStartElement("kind");
-                            writer.WriteValue("copy");
-                            writer.WriteEndElement();
-
-                            writer.WriteStartElement("destination");
-                            writer.WriteValue(((copyAction)action).destination);
-                            writer.WriteEndElement();
-                            break;
-                        case RulesCollection.ActionKinds.cmdAction:
-                            writer.WriteStartElement("kind");
-                            writer.WriteValue("cmd");
-                            writer.WriteEndElement();
-
-                            writer.WriteStartElement("command");
-                            writer.WriteValue(((cmdAction)action).command);
-                            writer.WriteEndElement();
-                            break;
-                        default:
-                            break;
-                    }
-
+                    action.WriteToConfig(writer);
                     writer.WriteEndElement();
                 }
                 writer.WriteEndElement();

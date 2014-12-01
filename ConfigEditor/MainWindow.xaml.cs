@@ -47,7 +47,7 @@ namespace ConfigEditor
                         int msindex = 0;
                         int asindex = 0;
                         //ComboBox cbMatchset = new ComboBox();
-                        foreach (MatchSet ms in RulesCollection.matchSets)
+                        foreach (MatchSet ms in RulesCollection.MatchSets)
                         {
                            
                             if (!ms.Name.Equals(rs.matchSet.Name))
@@ -60,7 +60,7 @@ namespace ConfigEditor
                             }
                         }
                         ComboBox cbAction = new ComboBox();
-                        foreach (ActionSet a in RulesCollection.actionSets)
+                        foreach (ActionSet a in RulesCollection.ActionSets)
                         {
                             if (!a.Name.Equals(rs.actionSet.Name))
                             {

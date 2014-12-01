@@ -18,21 +18,42 @@ namespace ConfigEditor
     /// <summary>
     /// Interaction logic for copyAction.xaml
     /// </summary>
-    public partial class ucCopyAction : UserControl
+    public partial class ucCopyAction : UserControl, Action
     {
-        private copyAction copyAction;
+        public RulesCollection.ActionKinds Kind { get; set; }
+        public string Destination { get; set; }
 
         public ucCopyAction()
         {
             InitializeComponent();
+            Kind = RulesCollection.ActionKinds.Copy;
+            Destination = "";
         }
-        
-        public ucCopyAction(copyAction copyAction)
+        public ucCopyAction(string Destination)
             : this()
         {
-            // TODO: Complete member initialization
-            this.copyAction = copyAction;
-            tbPath.Text = copyAction.destination;
+            this.Destination = Destination;
+            tbPath.Text = Destination;
+        }
+
+        public UserControl GetUC()
+        {
+            return this;
+        }
+        public void Save(ActionSet ActionSet)
+        {
+            Destination = tbPath.Text;
+            ActionSet.Add(this);
+        }
+        public void WriteToConfig(System.Xml.XmlWriter Writer)
+        {
+            Writer.WriteStartElement("kind");
+            Writer.WriteValue("copy");
+            Writer.WriteEndElement();
+
+            Writer.WriteStartElement("destination");
+            Writer.WriteValue(Destination);
+            Writer.WriteEndElement();
         }
     }
 }

@@ -93,7 +93,8 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" FlowDirection="RightToLeft">
-            <Image x:Name="imgOK" Source="../Pictures/accept.png" Width="30" Opacity="0.4" />
+            <Image x:Name="btnOK" Source="../Pictures/accept.png" Width="30" Opacity="0.4" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MouseDown="btnOK_MouseDown"/>
+            <Image x:Name="btnSave" Source="../Pictures/save-icon.png" Width="30" Opacity="0.4" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MouseDown="btnSave_MouseDown"/>
         </StackPanel>
     </StackPanel>
 </Window>

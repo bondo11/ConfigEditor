@@ -10,11 +10,11 @@ namespace ConfigEditor
     public static class RulesCollection
     {
 
-        private static ObservableCollection<ActionSet> _actionSets = new ObservableCollection<ActionSet>();
-        public static ObservableCollection<ActionSet> actionSets { get { return _actionSets; } }
+        private static ObservableCollection<ActionSet> _ActionSets = new ObservableCollection<ActionSet>();
+        public static ObservableCollection<ActionSet> ActionSets { get { return _ActionSets; } }
 
-        private static ObservableCollection<MatchSet> _matchSets = new ObservableCollection<MatchSet>();
-        public static ObservableCollection<MatchSet> matchSets { get { return _matchSets; } }
+        private static ObservableCollection<MatchSet> _MatchSets = new ObservableCollection<MatchSet>();
+        public static ObservableCollection<MatchSet> MatchSets { get { return _MatchSets; } }
 
         private static ObservableCollection<Folder> _Folders = new ObservableCollection<Folder>();
         public static ObservableCollection<Folder> Folders { get { return _Folders; } }
@@ -22,62 +22,61 @@ namespace ConfigEditor
         #region Set enums
         public enum ActionKinds
         {
-            onSet = 0,
-            moveAction = 1,
-            copyAction = 2,
-            deleteAction = 3,
-            cmdAction = 4
+            Unset = 0,
+            Move = 1,
+            Copy = 2,
+            Cmd = 3
         }
 
         public enum MatchKinds
         {
-            onSet = 0,
+            Unset = 0,
             And = 1,
             Or = 2,
-            extensionMatch = 3,
-            regexMatch = 4
+            Extension = 3,
+            Regex = 4
         } 
         #endregion
 
-        public static bool AddActionSet(ActionSet actionSet)
+        public static bool AddActionSet(ActionSet ActionSet)
         {
-            foreach (ActionSet a in _actionSets)
+            foreach (ActionSet a in _ActionSets)
             {
-                if (a.Name.Equals(actionSet.Name))
+                if (a.Name.Equals(ActionSet.Name))
                 {
                     return false;
                 }
             }
-            _actionSets.Add(actionSet);
+            _ActionSets.Add(ActionSet);
             return true;
         }
         public static void RemoveActionSet(int index)
         {
-            _actionSets.RemoveAt(index);
+            _ActionSets.RemoveAt(index);
         }
-        public static bool AddMatchSet(MatchSet matchSet)
+
+        public static bool AddMatchSet(MatchSet MatchSet)
         {
-            foreach (MatchSet m in _matchSets)
+            foreach (MatchSet m in _MatchSets)
             {
-                if (m.Name.Equals(matchSet.Name))
+                if (m.Name.Equals(MatchSet.Name))
                 {
                     return false;
                 }
             }
-            _matchSets.Add(matchSet);
+            _MatchSets.Add(MatchSet);
             return true;
         }
         public static void RemoveMatchSet(int index)
         {
-            _matchSets.RemoveAt(index);
+            _MatchSets.RemoveAt(index);
         }
-        //public static void 
 
         internal static void ClearAll()
         {
             _Folders.Clear();
-            _actionSets.Clear();
-            _matchSets.Clear();
+            _ActionSets.Clear();
+            _MatchSets.Clear();
         }
     }
 }

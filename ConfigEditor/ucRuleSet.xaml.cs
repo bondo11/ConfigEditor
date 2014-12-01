@@ -23,8 +23,8 @@ namespace ConfigEditor
         public ucRuleSet()
         {
             InitializeComponent();
-            cbMatchSet.ItemsSource = RulesCollection.matchSets;
-            cbActionSet.ItemsSource = RulesCollection.actionSets;
+            cbMatchSet.ItemsSource = RulesCollection.MatchSets;
+            cbActionSet.ItemsSource = RulesCollection.ActionSets;
         }
         public ucRuleSet(int matchSetIndex, int actionSetIndex) : this()
         {

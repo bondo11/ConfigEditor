@@ -23,7 +23,7 @@ namespace ConfigEditor
         public EditMatchSets()
         {
             InitializeComponent();
-            listMatchsets.ItemsSource = RulesCollection.matchSets;
+            listMatchsets.ItemsSource = RulesCollection.MatchSets;
             /*
             foreach (MatchSet ms in RulesCollection.matchSets)
             {
@@ -40,67 +40,18 @@ namespace ConfigEditor
 
         private void listMatchsets_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            foreach (MatchSet ms in RulesCollection.matchSets)
+            if (MatchContainer.Content is ucMatch)
             {
-                if (ms.Name.Equals(((MatchSet)listMatchsets.SelectedValue).Name))
-                {
-                    switch (ms.match.kind)
-                    {
-                        case RulesCollection.MatchKinds.And:
-                            MatchContainer.Content = new ucMatch((AndRule)ms.match);
-                            break;
-                        case RulesCollection.MatchKinds.Or:
-                            MatchContainer.Content = new ucMatch((OrRule)ms.match);
-                            break;
-                        case RulesCollection.MatchKinds.extensionMatch:
-                            MatchContainer.Content = new ucMatch((extensionMatch)ms.match);
-                            break;
-                        case RulesCollection.MatchKinds.regexMatch:
-                            MatchContainer.Content = new ucMatch((regexMatch)ms.match);
-                            break;
-                        default:
-                            MatchContainer.Content = new ucMatch(ms.match);
-                            break;
-                    }
-                }
+                ((ucMatch)MatchContainer.Content).Clear();
             }
-            //listMatch.Items.Clear();
-            //foreach (MatchSet ms in RulesCollection.matchSets)
-            //{
-            //    if (ms.Name.Equals(listMatchsets.SelectedValue))
-            //    {                   
-            //        switch (ms.match.kind)
-            //        {
-            //            case RulesCollection.MatchKinds.And:
-            //                listMatch.Items.Add(new ucMatch((AndRule)ms.match));
-            //                break;
-            //            case RulesCollection.MatchKinds.Or:
-            //                listMatch.Items.Add(new ucMatch((OrRule)ms.match));
-            //                break;
-            //            case RulesCollection.MatchKinds.extensionMatch:
-            //                listMatch.Items.Add(new ucMatch((extensionMatch)ms.match));
-            //                break;
-            //            case RulesCollection.MatchKinds.regexMatch:
-            //                listMatch.Items.Add(new ucMatch((regexMatch)ms.match));
-            //                break;
-            //            default:
-            //                listMatch.Items.Add(new ucMatch(ms.match));
-            //                break;
-            //        }
-            //    }
-            //}
-        }
-
-        private void btnAddMatch_Click(object sender, RoutedEventArgs e)
-        {
-            //listMatch.Items.Add(new ucMatch());
+            MatchContainer.Content = new ucMatch(((MatchSet)listMatchsets.SelectedValue).Match);
         }
 
         private void btnAddMatchSet_Click(object sender, RoutedEventArgs e)
         {
 
-            MatchSet ms = new MatchSet("matchset" + (RulesCollection.matchSets.Count + 1).ToString(), new regexMatch(""));
-            RulesCollection.matchSets.Add(ms);
+            MatchSet ms = new MatchSet("matchset" + (RulesCollection.MatchSets.Count + 1).ToString(), new ucRegexMatch());
+            RulesCollection.MatchSets.Add(ms);
             //listMatchsets.Items.Add(ms.Name);
         }
 
@@ -109,25 +60,8 @@ namespace ConfigEditor
           
             if (listMatchsets.SelectedIndex > -1)
             {
-                RulesCollection.matchSets.RemoveAt(listMatchsets.SelectedIndex);
-                //for (int i = 0; i < RulesCollection.matchSets.Count; i++)
-                //{
-                //    if (RulesCollection.matchSets[i].Name.Equals(listMatchsets.SelectedIndex))
-                //        RulesCollection.matchSets.RemoveAt(i);
-                //}
-
-                //listMatchsets.Items.RemoveAt(listMatchsets.SelectedIndex);
+                RulesCollection.MatchSets.RemoveAt(listMatchsets.SelectedIndex);
             }
-        }
-
-        private void btnSave_Click(object sender, RoutedEventArgs e)
-        {
-            String n = RulesCollection.matchSets[listMatchsets.SelectedIndex].Name;
-            int i = (int)RulesCollection.matchSets[listMatchsets.SelectedIndex].match.kind;
-
-
-            RulesCollection.matchSets[listMatchsets.SelectedIndex].match = ((ucMatch)MatchContainer.Content).GetMatch();
-            //RulesCollection.matchSets[listMatchsets.SelectedIndex].match = ((ucMatch)listMatch.Items[0]).GetMatch();
         }
 
         private void btnMoveMatchUp_Click(object sender, RoutedEventArgs e)
@@ -152,7 +86,7 @@ namespace ConfigEditor
 
         private void btnSave_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            RulesCollection.MatchSets[listMatchsets.SelectedIndex].Match.Save();
         }
 
     }
