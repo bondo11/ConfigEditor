@@ -10,22 +10,17 @@ using System.Xml.XPath;
 
 namespace ConfigEditor
 {
-    public class configHandler
+    public static class configHandler
     {
-        XmlDocument document = new XmlDocument();
+        static XmlDocument document = new XmlDocument();
 
         //XmlUrlResolver resolver = new XmlUrlResolver();
-        public void getConfig()
+        public static void getConfig()
         {
-            //resolver.Credentials = CredentialCache.DefaultCredentials;
-            //document.XmlResolver = resolver;
-
-
+            RulesCollection.ClearAll();
             document.Load(ConfigSettings.getSource());
             //document.Load(@"c:\config\config.xml");
-
             XmlNodeList nodes = document.DocumentElement.SelectNodes("folders/folder/path");
-
             foreach (XmlNode node in nodes)
             {
                 Folder f = new Folder(node.InnerText);
@@ -39,14 +34,14 @@ namespace ConfigEditor
             }
         }
 
-        private MatchSet getMatchSet(string matchSetName)
+        private static MatchSet getMatchSet(string matchSetName)
         {
             MatchSet matchSet = new MatchSet(matchSetName, getMatch("matchsets/matchset[name = '" + matchSetName + "']/match"));
             RulesCollection.AddMatchSet(matchSet);
             return matchSet;
         }
 
-        private Match getMatch(string xpath)
+        private static Match getMatch(string xpath)
         {
             string kind = document.DocumentElement.SelectSingleNode(xpath + "/kind").InnerText;
             XmlNodeList nodes;
@@ -55,7 +50,6 @@ namespace ConfigEditor
             {
                 case "and":
                     AndRule andRule = new AndRule();
-
                     nodes = document.DocumentElement.SelectNodes(xpath + "/matches/match");
                     i = 1;
                     foreach (XmlNode node in nodes)
@@ -63,12 +57,10 @@ namespace ConfigEditor
                         andRule.Add(getMatch(xpath + "/matches/match[" + i + "]"));
                         i++;
                     }
-
                     return andRule;
 
                 case "or":
                     OrRule orRule = new OrRule();
-
                     nodes = document.DocumentElement.SelectNodes(xpath + "/matches/match");
                     i = 1;
                     foreach (XmlNode node in nodes)
@@ -89,7 +81,7 @@ namespace ConfigEditor
             }
         }
 
-        private ActionSet getActionSet(string actionSetName)
+        private static ActionSet getActionSet(string actionSetName)
         {
             string xpath = "actionsets/actionset[name = '" + actionSetName + "']";
             ActionSet actionSet = new ActionSet(actionSetName);
@@ -103,7 +95,7 @@ namespace ConfigEditor
             RulesCollection.AddActionSet(actionSet);
             return actionSet;
         }
-        private Action getAction(string xpath)
+        private static Action getAction(string xpath)
         {
             string kind = document.DocumentElement.SelectSingleNode(xpath + "/kind").InnerText;
 
