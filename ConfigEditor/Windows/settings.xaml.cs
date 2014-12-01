@@ -31,24 +31,22 @@ namespace ConfigEditor
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+
             if (File.Exists(tbPath.Text))
             {
-                if (HasWritePermission(tbPath.Text) && ConfigSettings.IsValidPath(tbPath.Text))
+                if (cbCreds.IsChecked.Value)
+                {
+                    ConfigSettings.setUser(tbUsername.Text);
+                    ConfigSettings.setPassword(pbPassword.Password);
+                }
+                if (HasWritePermission(tbPath.Text))
                 {
                     ConfigSettings.setSource(tbPath.Text);
-                    //ConfigurationManager.AppSettings["source"] = tbPath.Text;
-                }
-                else if (!ConfigSettings.IsValidPath(tbPath.Text))
-                {
-                    LinearGradientBrush myBrush = new LinearGradientBrush();
-                    myBrush.GradientStops.Add(new GradientStop(Colors.Yellow, 0.0));
-                    myBrush.GradientStops.Add(new GradientStop(Colors.Orange, 0.5));
-                    myBrush.GradientStops.Add(new GradientStop(Colors.Red, 1.0));
-                    tbPath.Background = myBrush;
+                    
                 }
                 else
                 {
-                    MessageBoxResult result = System.Windows.MessageBox.Show("No permission to file!" + Environment.NewLine + "Insert crednetials?", "Config Error", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                    MessageBoxResult result = System.Windows.MessageBox.Show("No permission to file!" + Environment.NewLine + "Insert crednetials?", "Config Error", MessageBoxButton.YesNo, MessageBoxImage.Information);
                     if (result == MessageBoxResult.Yes)
                     {
                         ConfigurationManager.AppSettings["source"] = tbPath.Text;
@@ -67,7 +65,7 @@ namespace ConfigEditor
             }
             else
             {
-                MessageBoxResult result = System.Windows.MessageBox.Show("Could not load config!" + Environment.NewLine + "Sure you want to continue?", "Config Error", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                MessageBoxResult result = System.Windows.MessageBox.Show("Could not load config!" + Environment.NewLine + "Sure you want to continue?", "Config Error", MessageBoxButton.YesNo, MessageBoxImage.Information);
                 if (result == MessageBoxResult.Yes)
                 {
                     ConfigurationManager.AppSettings["source"] = tbPath.Text;
@@ -166,6 +164,49 @@ namespace ConfigEditor
                 throw;
             }
         }
+
+        private void cbCreds_Checked(object sender, RoutedEventArgs e)
+        {
+            spCreds.Visibility = Visibility.Visible;
+        }
+
+        private void cbCreds_Unchecked(object sender, RoutedEventArgs e)
+        {
+            spCreds.Visibility = Visibility.Hidden;
+        }
+
+        private void btnSave_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            btnSave_Click(sender, e);
+        }
+
+        private void btnSave_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            btnSave.Opacity = 1;
+        }
+
+        private void btnSave_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            btnSave.Opacity = 0.45;
+        }
+
+        private void browseImg_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            browseBtn_Click(sender, e);
+        }
+
+        private void browseImg_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+
+            browseImg.Opacity = 1;
+        }
+
+        private void browseImg_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+
+            browseImg.Opacity = 0.45;
+        }
+
 
     }
 }

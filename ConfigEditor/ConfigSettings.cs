@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ConfigEditor
@@ -53,7 +55,7 @@ namespace ConfigEditor
             }
             return password;
         }
-        /*
+        
         public static bool IsValidPath(string path)
         {
             try
@@ -61,7 +63,7 @@ namespace ConfigEditor
                 Regex driveCheck = new Regex(@"^[a-zA-Z]:\\$");
                 if (path == null || !driveCheck.IsMatch(path.Substring(0, 3)))
                 {
-                    logWriter.Write("Path: " + path + " did not pass the driveCheck");
+                    //logWriter.Write("Path: " + path + " did not pass the driveCheck");
                     return false;
                 }
                 string strTheseAreInvalidFileNameChars = new string(Path.GetInvalidPathChars());
@@ -69,17 +71,17 @@ namespace ConfigEditor
                 Regex containsABadCharacter = new Regex("[" + Regex.Escape(strTheseAreInvalidFileNameChars) + "]");
                 if (containsABadCharacter.IsMatch(path.Substring(3, path.Length - 3)))
                 {
-                    logWriter.Write("Path: " + path + " contains invalid characters");
+                    //logWriter.Write("Path: " + path + " contains invalid characters");
                     return false;
                 }
             }
-            catch (Exception e) {
-                logWriter.Write(Environment.NewLine + "error: " + e + Environment.NewLine);
+            catch (Exception) {
+                //logWriter.Write(Environment.NewLine + "error: " + e + Environment.NewLine);
                 return false;
             }
             
             return true;
-        }*/
+        }
         public static void setSource(string path)
         {
                 ConfigurationManager.AppSettings["source"] = path;

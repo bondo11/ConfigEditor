@@ -102,7 +102,7 @@ namespace ConfigEditor
 
         private void btnSettings_MouseLeave(object sender, MouseEventArgs e)
         {
-            settingsImage.Opacity = 0.65;
+            settingsImage.Opacity = 0.45;
         }
 
 
@@ -113,82 +113,69 @@ namespace ConfigEditor
 
         private void btnSave_MouseLeave(object sender, MouseEventArgs e)
         {
-            btnSave.Opacity = 0.7;
+            btnSave.Opacity = 0.45;
         }
 
         private void btnReload_MouseEnter(object sender, MouseEventArgs e)
         {
-            btnReloadImage.Opacity = 1;
+            btnReload.Opacity = 1;
 
         }
 
         private void btnReload_MouseLeave(object sender, MouseEventArgs e)
         {
-            btnReloadImage.Opacity = 0.7;
+            btnReload.Opacity = 0.45;
         }
 
-        private void delFolder_MouseEnter(object sender, MouseEventArgs e)
-        {
-            delFolderImage.Opacity = 1;
-        }
-
-        private void delFolder_MouseLeave(object sender, MouseEventArgs e)
-        {
-            delFolderImage.Opacity = 0.7;
-        }
-
+        
         private void addFolder_MouseEnter(object sender, MouseEventArgs e)
         {
-            addFolderImage.Opacity = 1;
+            addFolder.Opacity = 1;
 
         }
 
         private void addFolder_MouseLeave(object sender, MouseEventArgs e)
         {
-            addFolderImage.Opacity = 0.7;
+            addFolder.Opacity = 0.45;
         }
 
-        private void delRule_MouseEnter(object sender, MouseEventArgs e)
-        {
-            delFolderImage.Opacity = 1;
-        }
+       
 
         private void delRule_MouseLeave(object sender, MouseEventArgs e)
         {
-            delRuleImage.Opacity = 0.7;
+            delRule.Opacity = 0.45;
         }
 
         private void addRule_MouseEnter(object sender, MouseEventArgs e)
         {
-            addRuleImage.Opacity = 1;
+            addRule.Opacity = 1;
 
         }
 
         private void addRule_MouseLeave(object sender, MouseEventArgs e)
         {
-            addRuleImage.Opacity = 0.7;
+            addRule.Opacity = 0.45;
         }
 
         private void addMatch_MouseEnter(object sender, MouseEventArgs e)
         {
-            addMatchImage.Opacity = 1;
+            addMatch.Opacity = 1;
         }
 
         private void addMatch_MouseLeave(object sender, MouseEventArgs e)
         {
-            addMatchImage.Opacity = 0.7;
+            addMatch.Opacity = 0.45;
 
         }
 
         private void removeMatch_MouseEnter(object sender, MouseEventArgs e)
         {
             removeMatchImage.Opacity = 1;
-            removeMatch.Background = null;
         }
 
         private void removeMatch_MouseLeave(object sender, MouseEventArgs e)
         {
-            removeMatchImage.Opacity = 0.7;
+            removeMatchImage.Opacity = 0.45;
         } 
         #endregion
 
@@ -229,6 +216,62 @@ namespace ConfigEditor
             RulesCollection.Folders.Add(new Folder(""));
             var newW = new Windows.EditFolder(RulesCollection.Folders.Last());
             newW.Show();
+        }
+
+        private void delFolder_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (folderList.SelectedIndex > -1)
+                RulesCollection.Folders.RemoveAt(folderList.SelectedIndex);
+        }
+
+        private void delFolder_MouseEnter_1(object sender, MouseEventArgs e)
+        {
+            delFolder.Opacity = 1;
+        }
+
+        private void delFolder_MouseLeave_1(object sender, MouseEventArgs e)
+        {
+            delFolder.Opacity = 0.45;
+        }
+
+        private void delRule_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            delRule_Click(sender, e);
+        }
+
+        private void delRule_MouseEnter(object sender, MouseEventArgs e)
+        {
+            delRule.Opacity = 1;
+        }
+
+        private void delFolder_MouseLeave(object sender, MouseEventArgs e)
+        {
+            delFolder.Opacity = 0.45;
+        }
+
+        private void delFolder_MouseEnter(object sender, MouseEventArgs e)
+        {
+            delFolder.Opacity = 1;
+        }
+
+        private void addRule_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            addRule_Click(sender, e);
+        }
+
+        private void btnSave_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            btnSave_Click(sender, e);
+        }
+
+        private void btnReload_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            configHandler.getConfig();
+        }
+
+        private void settingsImage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            btnSettings_Click(sender, e);
         }
 
         
