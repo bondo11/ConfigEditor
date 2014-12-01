@@ -142,8 +142,6 @@ namespace ConfigEditor
                 RulesCollection.Folders.RemoveAt(folderList.SelectedIndex);
         }
 
-
-
         private void btnReload_MouseDown(object sender, MouseButtonEventArgs e)
         {
             configHandler.getConfig();
