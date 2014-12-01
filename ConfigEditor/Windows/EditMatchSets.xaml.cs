@@ -96,7 +96,7 @@ namespace ConfigEditor
             //listMatch.Items.Add(new ucMatch());
         }
 
-        private void addbtnMatchsets_Click(object sender, RoutedEventArgs e)
+        private void btnAddMatchSet_Click(object sender, RoutedEventArgs e)
         {
 
             MatchSet ms = new MatchSet("matchset" + (RulesCollection.matchSets.Count + 1).ToString(), new regexMatch(""));
@@ -104,7 +104,7 @@ namespace ConfigEditor
             //listMatchsets.Items.Add(ms.Name);
         }
 
-        private void delMatchsets_Click(object sender, RoutedEventArgs e)
+        private void btnDelMatchSet_Click(object sender, RoutedEventArgs e)
         {
           
             if (listMatchsets.SelectedIndex > -1)
@@ -133,6 +133,26 @@ namespace ConfigEditor
         private void btnMoveMatchUp_Click(object sender, RoutedEventArgs e)
         {
             //((MatchSet)listMatchsets.SelectedItem).match
+        }
+
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ((Image)sender).Opacity = 1;
+        }
+
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ((Image)sender).Opacity = 0.45;
+        }
+
+        private void btnOK_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void btnSave_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
 
     }

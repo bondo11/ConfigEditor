@@ -50,16 +50,8 @@
                             </ListBox.Template>
                         </ListBox>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button x:Name="delMatchsets" BorderThickness="0" DockPanel.Dock="Right" Width="20" Height="20" Background="Transparent" Click="delMatchsets_Click" >
-                                <StackPanel>
-                                    <Image x:Name="delBtnMatchsets" Source="../Pictures/discard.png" Width="20" Opacity="0.7" />
-                                </StackPanel>
-                            </Button>
-                            <Button x:Name="addbtnMatchsets" BorderThickness="0" Background="Transparent" DockPanel.Dock="Left" Width="20" Height="20" Click="addbtnMatchsets_Click">
-                                <StackPanel>
-                                    <Image x:Name="addMatchImage" Source="../Pictures/new.png" Width="20" Opacity="0.7" />
-                                </StackPanel>
-                            </Button>
+                            <Image x:Name="btnDelMatchSet" Source="../Pictures/discard.png" Width="20" Opacity="0.7" MouseDown="btnDelMatchSet_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave"/>
+                            <Image x:Name="btnAddMatchSet" Source="../Pictures/new.png" Width="20" Opacity="0.7" MouseDown="btnAddMatchSet_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -70,15 +62,12 @@
                     <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" HorizontalAlignment="Left">
                         <ScrollViewer x:Name="MatchContainer"/>
                     </Border>
-                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
-                        
-                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" FlowDirection="RightToLeft">
-                    <Image x:Name="imgOK" Source="../Pictures/accept.png" Width="30" Opacity="0.4" />
-                    <Image x:Name="btnSaveImage" Source="../Pictures/save-icon.png" Width="30" Opacity="0.4" />
+            <Image x:Name="btnOK" Source="../Pictures/accept.png" Width="30" Opacity="0.4" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MouseDown="btnOK_MouseDown"/>
+            <Image x:Name="btnSave" Source="../Pictures/save-icon.png" Width="30" Opacity="0.4" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MouseDown="btnSave_MouseDown"/>
         </StackPanel>
     </StackPanel>
 </Window>
