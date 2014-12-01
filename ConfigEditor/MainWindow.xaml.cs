@@ -24,11 +24,11 @@ namespace ConfigEditor
     public partial class MainWindow : Window
     {
 
-        configHandler cl = new configHandler();
+        //configHandler cl = new configHandler();
         //RulesCollection rulesCollection;
         public MainWindow()
         {
-            cl.getConfig();
+            configHandler.getConfig();
             //rulesCollection = cl.getRules(ConfigHandler.getSource());
             InitializeComponent();
             folderList.ItemsSource = RulesCollection.Folders;

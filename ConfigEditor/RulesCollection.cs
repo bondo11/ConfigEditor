@@ -71,5 +71,13 @@ namespace ConfigEditor
         {
             _matchSets.RemoveAt(index);
         }
+        //public static void 
+
+        internal static void ClearAll()
+        {
+            _Folders.Clear();
+            _actionSets.Clear();
+            _matchSets.Clear();
+        }
     }
 }
