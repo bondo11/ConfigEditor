@@ -33,10 +33,18 @@ namespace ConfigEditor
         {
             if (File.Exists(tbPath.Text))
             {
-                if (HasWritePermission(tbPath.Text))
+                if (HasWritePermission(tbPath.Text) && ConfigSettings.IsValidPath(tbPath.Text))
                 {
                     ConfigSettings.setSource(tbPath.Text);
                     //ConfigurationManager.AppSettings["source"] = tbPath.Text;
+                }
+                else if (!ConfigSettings.IsValidPath(tbPath.Text))
+                {
+                    LinearGradientBrush myBrush = new LinearGradientBrush();
+                    myBrush.GradientStops.Add(new GradientStop(Colors.Yellow, 0.0));
+                    myBrush.GradientStops.Add(new GradientStop(Colors.Orange, 0.5));
+                    myBrush.GradientStops.Add(new GradientStop(Colors.Red, 1.0));
+                    tbPath.Background = myBrush;
                 }
                 else
                 {
