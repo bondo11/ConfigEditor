@@ -35,7 +35,8 @@ namespace ConfigEditor
             {
                 if (HasWritePermission(tbPath.Text))
                 {
-                    ConfigurationManager.AppSettings["source"] = tbPath.Text;
+                    ConfigSettings.setSource(tbPath.Text);
+                    //ConfigurationManager.AppSettings["source"] = tbPath.Text;
                 }
                 else
                 {
@@ -46,13 +47,14 @@ namespace ConfigEditor
                         //ConfigurationManager.AppSettings["port"] = tbPort.Text;
                         //ConfigurationManager.AppSettings["user"] = tbUser.Text;
                         //ConfigurationManager.AppSettings["password"] = pwdPassword.Password;
+                        configHandler.getConfig();
                         this.Close();
                     }
                 }
                 //ConfigurationManager.AppSettings["port"] = tbPort.Text;
                 //ConfigurationManager.AppSettings["user"] = tbUser.Text;
                 //ConfigurationManager.AppSettings["password"] = pwdPassword.Password;
-
+                configHandler.getConfig();
                 this.Close();
             }
             else
