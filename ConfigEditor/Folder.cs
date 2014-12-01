@@ -15,7 +15,11 @@ namespace ConfigEditor
 
         public ObservableCollection<ruleset> RuleSets = new ObservableCollection<ruleset>();
 
-        public Folder(string Path)
+        public Folder()
+        {
+            this.Path = "";
+        }
+        public Folder(string Path) : this()
         {
             this.Path = Path;
         }
