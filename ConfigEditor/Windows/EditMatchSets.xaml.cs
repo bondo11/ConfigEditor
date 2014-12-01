@@ -23,10 +23,13 @@ namespace ConfigEditor
         public EditMatchSets()
         {
             InitializeComponent();
+            listMatchsets.ItemsSource = RulesCollection.matchSets;
+            /*
             foreach (MatchSet ms in RulesCollection.matchSets)
             {
                 listMatchsets.Items.Add(ms.Name);
             }
+             * */
         }
 
         public EditMatchSets(int MatchSetIndex)
@@ -39,7 +42,7 @@ namespace ConfigEditor
         {
             foreach (MatchSet ms in RulesCollection.matchSets)
             {
-                if (ms.Name.Equals(listMatchsets.SelectedValue))
+                if (ms.Name.Equals(((MatchSet)listMatchsets.SelectedValue).Name))
                 {
                     switch (ms.match.kind)
                     {
@@ -95,9 +98,10 @@ namespace ConfigEditor
 
         private void addbtnMatchsets_Click(object sender, RoutedEventArgs e)
         {
-            MatchSet ms = new MatchSet("matchset" + (listMatchsets.Items.Count + 1).ToString(), new regexMatch(""));
+
+            MatchSet ms = new MatchSet("matchset" + (RulesCollection.matchSets.Count + 1).ToString(), new regexMatch(""));
             RulesCollection.matchSets.Add(ms);
-            listMatchsets.Items.Add(ms.Name);
+            //listMatchsets.Items.Add(ms.Name);
         }
 
         private void delMatchsets_Click(object sender, RoutedEventArgs e)
@@ -105,13 +109,14 @@ namespace ConfigEditor
           
             if (listMatchsets.SelectedIndex > -1)
             {
-                for (int i = 0; i < RulesCollection.matchSets.Count; i++)
-                {
-                    if (RulesCollection.matchSets[i].Name.Equals(listMatchsets.SelectedIndex))
-                        RulesCollection.matchSets.RemoveAt(i);
-                }
+                RulesCollection.matchSets.RemoveAt(listMatchsets.SelectedIndex);
+                //for (int i = 0; i < RulesCollection.matchSets.Count; i++)
+                //{
+                //    if (RulesCollection.matchSets[i].Name.Equals(listMatchsets.SelectedIndex))
+                //        RulesCollection.matchSets.RemoveAt(i);
+                //}
 
-                listMatchsets.Items.RemoveAt(listMatchsets.SelectedIndex);
+                //listMatchsets.Items.RemoveAt(listMatchsets.SelectedIndex);
             }
         }
 
@@ -123,6 +128,11 @@ namespace ConfigEditor
 
             RulesCollection.matchSets[listMatchsets.SelectedIndex].match = ((ucMatch)MatchContainer.Content).GetMatch();
             //RulesCollection.matchSets[listMatchsets.SelectedIndex].match = ((ucMatch)listMatch.Items[0]).GetMatch();
+        }
+
+        private void btnMoveMatchUp_Click(object sender, RoutedEventArgs e)
+        {
+            //((MatchSet)listMatchsets.SelectedItem).match
         }
 
     }

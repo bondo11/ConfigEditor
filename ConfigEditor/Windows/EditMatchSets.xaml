@@ -8,6 +8,11 @@
             <StackPanel MinWidth="220" Height="320" VerticalAlignment="Top">
                 <Label Content="Matchsets" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <ListBox x:Name="listMatchsets" SelectionChanged="listMatchsets_SelectionChanged" Height="270">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                     <ListBox.Template>
                         <ControlTemplate TargetType="{x:Type ListBox}">
                             <Border x:Name="Bd" SnapsToDevicePixels="true"
@@ -62,32 +67,7 @@
                         <ScrollViewer x:Name="MatchContainer"/>
                     </Border>
                     <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
-                        <Button x:Name="btnMoveMatchUp" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="0.5,0.5">
-                            <Button.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="91.01"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Button.RenderTransform>
-                            <StackPanel>
-                                <Image x:Name="imgMoveMatchUp" Source="../Pictures/previous_item.png" Width="20" Opacity="0.7" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="btnMoveMatchDown" BorderThickness="0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent" RenderTransformOrigin="0.5,0.5">
-                            <Button.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="90"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Button.RenderTransform>
-                            <StackPanel>
-                                <Image x:Name="imgMoveMatchDown" Source="../Pictures/next_item.png" Width="20" Opacity="0.7" />
-                            </StackPanel>
-                        </Button>
+                        
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
