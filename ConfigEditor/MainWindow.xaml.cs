@@ -95,90 +95,16 @@ namespace ConfigEditor
 
         #region Button MouseEnter and MouseLeave
 
-        private void btnSettings_MouseEnter(object sender, MouseEventArgs e)
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
         {
-            settingsImage.Opacity = 1;
+            ((Image)sender).Opacity = 1;
         }
 
-        private void btnSettings_MouseLeave(object sender, MouseEventArgs e)
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
         {
-            settingsImage.Opacity = 0.45;
+            ((Image)sender).Opacity = 0.45;
         }
-
-
-        private void btnSave_MouseEnter(object sender, MouseEventArgs e)
-        {
-            btnSave.Opacity = 1;
-        }
-
-        private void btnSave_MouseLeave(object sender, MouseEventArgs e)
-        {
-            btnSave.Opacity = 0.45;
-        }
-
-        private void btnReload_MouseEnter(object sender, MouseEventArgs e)
-        {
-            btnReload.Opacity = 1;
-
-        }
-
-        private void btnReload_MouseLeave(object sender, MouseEventArgs e)
-        {
-            btnReload.Opacity = 0.45;
-        }
-
         
-        private void addFolder_MouseEnter(object sender, MouseEventArgs e)
-        {
-            addFolder.Opacity = 1;
-
-        }
-
-        private void addFolder_MouseLeave(object sender, MouseEventArgs e)
-        {
-            addFolder.Opacity = 0.45;
-        }
-
-       
-
-        private void delRule_MouseLeave(object sender, MouseEventArgs e)
-        {
-            delRule.Opacity = 0.45;
-        }
-
-        private void addRule_MouseEnter(object sender, MouseEventArgs e)
-        {
-            addRule.Opacity = 1;
-
-        }
-
-        private void addRule_MouseLeave(object sender, MouseEventArgs e)
-        {
-            addRule.Opacity = 0.45;
-        }
-
-        private void addMatch_MouseEnter(object sender, MouseEventArgs e)
-        {
-            addMatch.Opacity = 1;
-        }
-
-        private void addMatch_MouseLeave(object sender, MouseEventArgs e)
-        {
-            addMatch.Opacity = 0.45;
-
-        }
-
-        private void removeMatch_MouseEnter(object sender, MouseEventArgs e)
-        {
-            removeMatchImage.Opacity = 1;
-        }
-
-        private void removeMatch_MouseLeave(object sender, MouseEventArgs e)
-        {
-            removeMatchImage.Opacity = 0.45;
-        } 
-        #endregion
-
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -216,58 +142,14 @@ namespace ConfigEditor
                 RulesCollection.Folders.RemoveAt(folderList.SelectedIndex);
         }
 
-        private void delFolder_MouseEnter_1(object sender, MouseEventArgs e)
-        {
-            delFolder.Opacity = 1;
-        }
 
-        private void delFolder_MouseLeave_1(object sender, MouseEventArgs e)
-        {
-            delFolder.Opacity = 0.45;
-        }
-
-        private void delRule_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            delRule_Click(sender, e);
-        }
-
-        private void delRule_MouseEnter(object sender, MouseEventArgs e)
-        {
-            delRule.Opacity = 1;
-        }
-
-        private void delFolder_MouseLeave(object sender, MouseEventArgs e)
-        {
-            delFolder.Opacity = 0.45;
-        }
-
-        private void delFolder_MouseEnter(object sender, MouseEventArgs e)
-        {
-            delFolder.Opacity = 1;
-        }
-
-        private void addRule_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            addRule_Click(sender, e);
-        }
-
-        private void btnSave_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            btnSave_Click(sender, e);
-        }
 
         private void btnReload_MouseDown(object sender, MouseButtonEventArgs e)
         {
             configHandler.getConfig();
         }
 
-        private void settingsImage_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            btnSettings_Click(sender, e);
-        }
-
-        
-
+        #endregion
 
     }
 }

@@ -48,25 +48,25 @@
                     </ListBox.Template>
                 </ListBox>
                 <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" >
-                    <Image x:Name="addFolder" Source="Pictures/new.png" Width="20" Opacity="0.45" HorizontalAlignment="Left" VerticalAlignment="Top" MouseEnter="addFolder_MouseEnter" MouseLeave="addFolder_MouseLeave" />
-                    <Image x:Name="delFolder" Source="Pictures/discard.png" Width="20" Opacity="0.45" HorizontalAlignment="Left" VerticalAlignment="Top" MouseDown="delFolder_MouseDown" MouseEnter="delFolder_MouseEnter" MouseLeave="delFolder_MouseLeave" />
+                    <Image x:Name="addFolder" Source="Pictures/new.png" Width="20" Opacity="0.45" HorizontalAlignment="Left" VerticalAlignment="Top" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" />
+                    <Image x:Name="delFolder" Source="Pictures/discard.png" Width="20" Opacity="0.45" HorizontalAlignment="Left" VerticalAlignment="Top" MouseDown="delFolder_MouseDown" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" />
                 </StackPanel>
             </StackPanel>
             <StackPanel>
                 <DockPanel HorizontalAlignment="Stretch">
                     <Label x:Name="lblMatches" DockPanel.Dock="Left" FontSize="14" Content="Rules"/>
-                    <Image x:Name="settingsImage" DockPanel.Dock="Right" Source="Pictures/settings.png" Width="25" Opacity="0.45" MouseEnter="btnSettings_MouseEnter" MouseLeave="btnSettings_MouseLeave" MouseDown="settingsImage_MouseDown" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                    <Image x:Name="settingsImage" DockPanel.Dock="Right" Source="Pictures/settings.png" Width="25" Opacity="0.45" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MouseDown="btnSettings_Click" HorizontalAlignment="Right" VerticalAlignment="Top"/>
                 </DockPanel>
                 <StackPanel Orientation="Horizontal">
                     <StackPanel FlowDirection="RightToLeft">
                         <ListBox x:Name="rulesList" MinWidth="216" HorizontalAlignment="Left" Height="270" VerticalAlignment="Top" FlowDirection="LeftToRight" />
                         <StackPanel Orientation="Horizontal">
-                            <Image x:Name="addRule" Source="Pictures/new.png" Width="20" Opacity="0.45" HorizontalAlignment="Left" VerticalAlignment="Top" MouseEnter="addRule_MouseEnter" MouseLeave="addRule_MouseLeave" MouseDown="addRule_MouseDown" />
-                            <Image x:Name="delRule" Source="Pictures/discard.png" Width="20" Opacity="0.7" HorizontalAlignment="Left" VerticalAlignment="Top" MouseEnter="delRule_MouseEnter" MouseLeave="delRule_MouseLeave" MouseDown="delRule_MouseDown" />
+                            <Image x:Name="addRule" Source="Pictures/new.png" Width="20" Opacity="0.45" HorizontalAlignment="Left" VerticalAlignment="Top" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MouseDown="addRule_Click" />
+                            <Image x:Name="delRule" Source="Pictures/discard.png" Width="20" Opacity="0.7" HorizontalAlignment="Left" VerticalAlignment="Top" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MouseDown="delRule_Click" />
                         </StackPanel>
                     </StackPanel>
                     <StackPanel>
-                        <Image x:Name="removeMatchImage" Source="Pictures/previous_item.png" Width="20" Opacity="0.45" HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" MouseEnter="removeMatch_MouseEnter" MouseLeave="removeMatch_MouseLeave" RenderTransformOrigin="0.5, 0.5">
+                        <Image x:Name="removeMatchImage" Source="Pictures/previous_item.png" Width="20" Opacity="0.45" HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" RenderTransformOrigin="0.5, 0.5">
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -76,7 +76,7 @@
                                 </TransformGroup>
                             </Image.RenderTransform>
                         </Image>
-                        <Image x:Name="addMatch" Source="Pictures/next_item.png" Width="20" Opacity="0.45" VerticalAlignment="Top" MouseEnter="addMatch_MouseEnter" MouseLeave="addMatch_MouseLeave" RenderTransformOrigin="0.5, 0.5">
+                        <Image x:Name="addMatch" Source="Pictures/next_item.png" Width="20" Opacity="0.45" VerticalAlignment="Top" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" RenderTransformOrigin="0.5, 0.5">
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -91,8 +91,8 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-        <Image x:Name="btnSave" Source="Pictures/save-icon.png" Width="30" Opacity="0.4" HorizontalAlignment="Right" VerticalAlignment="Bottom"  MouseEnter="btnSave_MouseEnter" MouseLeave="btnSave_MouseLeave" MouseDown="btnSave_MouseDown"/>
-        <Image x:Name="btnReload" Source="Pictures/refresh.png" Width="30" Opacity="0.45" HorizontalAlignment="Right" VerticalAlignment="Bottom" MouseEnter="btnReload_MouseEnter" MouseLeave="btnReload_MouseLeave" MouseDown="btnReload_MouseDown"/>
+            <Image x:Name="btnSave" Source="Pictures/save-icon.png" Width="30" Opacity="0.4" HorizontalAlignment="Right" VerticalAlignment="Bottom"  MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MouseDown="btnSave_Click"/>
+        <Image x:Name="btnReload" Source="Pictures/refresh.png" Width="30" Opacity="0.45" HorizontalAlignment="Right" VerticalAlignment="Bottom" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MouseDown="btnReload_MouseDown"/>
         </StackPanel>
     </StackPanel>
 </Window>
