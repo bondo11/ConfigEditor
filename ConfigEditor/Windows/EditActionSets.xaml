@@ -4,7 +4,7 @@
         Title="ActionSets"
         ResizeMode="NoResize" SizeToContent="WidthAndHeight">
     <StackPanel VerticalAlignment="Top" Margin="4">
-        <StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+        <StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top" Margin="0,0,0,4">
             <StackPanel VerticalAlignment="Top">
                 <Label Content="Actionsets" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" />
                 <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Margin="0,0,4,0">
