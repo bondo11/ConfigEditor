@@ -68,14 +68,6 @@
                         </StackPanel>
                     </Border>
                     <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
-                        <StackPanel.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="180"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </StackPanel.RenderTransform>
                         <Image x:Name="imgMoveMatchUp" Source="../Pictures/previous_item.png" Width="20" Opacity="0.7" RenderTransformOrigin="0.5,0.5" >
                             <Image.RenderTransform>
                                 <TransformGroup>

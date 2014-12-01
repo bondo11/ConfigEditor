@@ -179,14 +179,6 @@ namespace ConfigEditor
         } 
         #endregion
 
-        private void listActiveMatches_Initialized(object sender, EventArgs e)
-        {
-
-            foreach (ActionSet a in RulesCollection.actionSets)
-            {
-                listActiveMatches.Items.Add(a.Name);
-            }
-        }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
