@@ -43,5 +43,26 @@ namespace ConfigEditor
             var newW = new EditActionSets(cbActionSet.SelectedIndex);
             newW.Show();
         }
+
+        private void editMatchSet_MouseEnter(object sender, MouseEventArgs e)
+        {
+            editMatchSet.Opacity = 1;
+
+        }
+
+        private void editMatchSet_MouseLeave(object sender, MouseEventArgs e)
+        {
+            editMatchSet.Opacity = 0.45;
+        }
+
+        private void editActionSet_MouseEnter(object sender, MouseEventArgs e)
+        {
+            editActionSet.Opacity = 1;
+        }
+
+        private void editActionSet_MouseLeave(object sender, MouseEventArgs e)
+        {
+            editActionSet.Opacity = 0.45;
+        }
     }
 }

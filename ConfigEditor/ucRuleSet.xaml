@@ -9,21 +9,27 @@
         Height="Auto">
         <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch" 
         Height="Auto" Width="208">
-            <Button x:Name="editMatchSet" DockPanel.Dock="right" BorderThickness="0" Background="Transparent" Width="25" Height="25" Click="editMatchSet_Click">
+
+            <Image x:Name="editMatchSet" Source="Pictures/edit.png" Opacity="0.45" DockPanel.Dock="right" Width="25" Height="25" MouseEnter="editMatchSet_MouseEnter" MouseLeave="editMatchSet_MouseLeave" MouseDown="editMatchSet_Click" />
+            <!--<Button x:Name="editMatchSet" DockPanel.Dock="right" BorderThickness="0" Background="Transparent" Width="25" Height="25" Click="editMatchSet_Click">
                 <StackPanel Width="25">
-                    <Image Source="Pictures/edit.png" Width="25" Opacity="0.65" />
+                    <Image Source="Pictures/edit.png" Width="25" Opacity="0.45" />
                 </StackPanel>
             </Button>
+            -->
             <ComboBox x:Name="cbMatchSet" DockPanel.Dock="right" DisplayMemberPath="Name" VerticalAlignment="Stretch" Height="Auto" >
             </ComboBox>
         </DockPanel>
         <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch" 
         Height="Auto" Width="208">
+            <Image x:Name="editActionSet" Source="Pictures/edit.png" DockPanel.Dock="right" Width="25" Opacity="0.45" Height="25" MouseDown="editActionSet_Click" MouseEnter="editActionSet_MouseEnter" MouseLeave="editActionSet_MouseLeave" />
+            <!--
             <Button x:Name="editActionSet"  DockPanel.Dock="right" BorderThickness="0" Background="Transparent" Width="25" Height="25" Click="editActionSet_Click">
                 <StackPanel Width="25">
                     <Image Source="Pictures/edit.png" Width="25" Opacity="0.65" />
                 </StackPanel>
             </Button>
+            -->
             <ComboBox x:Name="cbActionSet" DockPanel.Dock="right" DisplayMemberPath="Name" VerticalAlignment="Stretch" Height="Auto"/>
         </DockPanel>
     </DockPanel>
