@@ -3,108 +3,105 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ActionSets"
         ResizeMode="NoResize" SizeToContent="WidthAndHeight">
-    <StackPanel VerticalAlignment="Top">
+    <StackPanel VerticalAlignment="Top" Margin="4">
         <StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
-            <StackPanel  Height="320" VerticalAlignment="Top">
+            <StackPanel VerticalAlignment="Top">
                 <Label Content="Actionsets" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                <ListBox x:Name="listActionsets" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="listActionsets_SelectionChanged">
-                    <ListBox.Template>
-                        <ControlTemplate TargetType="{x:Type ListBox}">
-                            <Border x:Name="Bd" SnapsToDevicePixels="true"
+                <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Margin="0,0,4,0">
+                    <StackPanel>
+                        <ListBox x:Name="listActionsets" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="270" SelectionChanged="listActionsets_SelectionChanged">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                            <ListBox.Template>
+                                <ControlTemplate TargetType="{x:Type ListBox}">
+                                    <Border x:Name="Bd" SnapsToDevicePixels="true"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     Padding="1">
-                                <Grid>
-                                    <Image HorizontalAlignment="Right"
+                                        <Grid>
+                                            <Image HorizontalAlignment="Right"
                            VerticalAlignment="Center"
                            Source="../Pictures/white_folder.png"
                            Opacity="0.45" Width="168" Height="210">
-                                    </Image>
-                                    <ScrollViewer Padding="{TemplateBinding Padding}"
+                                            </Image>
+                                            <ScrollViewer Padding="{TemplateBinding Padding}"
                                   Focusable="false">
-                                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                    </ScrollViewer>
-                                </Grid>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsEnabled" Value="false">
-                                    <Setter Property="Background"
+                                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                            </ScrollViewer>
+                                        </Grid>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsEnabled" Value="false">
+                                            <Setter Property="Background"
                             TargetName="Bd"
                             Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
-                                </Trigger>
-                                <Trigger Property="IsGrouping" Value="true">
-                                    <Setter Property="ScrollViewer.CanContentScroll"
+                                        </Trigger>
+                                        <Trigger Property="IsGrouping" Value="true">
+                                            <Setter Property="ScrollViewer.CanContentScroll"
                             Value="false"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </ListBox.Template>
-                </ListBox>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button x:Name="delActionsets" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent" Click="delActionsets_Click" >
-                        <StackPanel>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </ListBox.Template>
+                        </ListBox>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <Image x:Name="delBtnActionsets" Source="../Pictures/discard.png" Width="20" Opacity="0.7" />
-                        </StackPanel>
-                    </Button>
-                    <Button x:Name="addbtnActionsets" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Click="addbtnActionsets_Click">
-                        <StackPanel>
                             <Image x:Name="addFolderImage" Source="../Pictures/new.png" Width="20" Opacity="0.7" />
                         </StackPanel>
-                    </Button>
-                </StackPanel>
-                <Button x:Name="delActionset" BorderThickness="0" HorizontalAlignment="Left" Margin="236,292,0,0" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent"  RenderTransformOrigin="-10.45,2">
-                    <StackPanel>
-                        <Image x:Name="imgDelActionset" Source="../Pictures/discard.png" Width="20" Opacity="0.7" />
                     </StackPanel>
-                </Button>
-                <Button x:Name="btnAddActionset" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="211,292,0,0" VerticalAlignment="Top" Width="20" Height="20" >
-                    <StackPanel>
-                        <Image x:Name="imgAddActionset" Source="../Pictures/new.png" Width="20" Opacity="0.7" />
-                    </StackPanel>
-                </Button>
+                </Border>
             </StackPanel>
-            <StackPanel MinWidth="250" Height="300" VerticalAlignment="Top">
+            <StackPanel VerticalAlignment="Top">
                 <Label x:Name="lblActions" FontSize="14" Content="Actions" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <StackPanel Orientation="Horizontal" Height="270">
-                    <ListBox x:Name="listAction" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
-                        <Button x:Name="btnMoveMatchUp" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="0.5,0.5">
-                            <Button.RenderTransform>
+                <StackPanel Orientation="Horizontal">
+                    <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+                        <StackPanel>
+                            <ListBox x:Name="listAction" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="270"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Image x:Name="delBtnAction" Source="../Pictures/discard.png" Width="20" Opacity="0.7" />
+                                <Image x:Name="addActionImage" Source="../Pictures/new.png" Width="20" Opacity="0.7" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                        <StackPanel.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="180"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </StackPanel.RenderTransform>
+                        <Image x:Name="imgMoveMatchUp" Source="../Pictures/previous_item.png" Width="20" Opacity="0.7" RenderTransformOrigin="0.5,0.5" >
+                            <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
                                     <SkewTransform/>
                                     <RotateTransform Angle="90"/>
                                     <TranslateTransform/>
                                 </TransformGroup>
-                            </Button.RenderTransform>
-                            <StackPanel>
-                                <Image x:Name="imgMoveMatchUp" Source="../Pictures/previous_item.png" Width="20" Opacity="0.7" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="btnMoveMatchDown" BorderThickness="0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="20" Height="20" Background="Transparent" RenderTransformOrigin="0.5,0.5">
-                            <Button.RenderTransform>
+                            </Image.RenderTransform>
+                        </Image>
+                        <Image x:Name="imgMoveMatchDown" Source="../Pictures/next_item.png" Width="20" Opacity="0.7" RenderTransformOrigin="0.5,0.5" >
+                            <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
                                     <SkewTransform/>
                                     <RotateTransform Angle="90"/>
                                     <TranslateTransform/>
                                 </TransformGroup>
-                            </Button.RenderTransform>
-                            <StackPanel>
-                                <Image x:Name="imgMoveMatchDown" Source="../Pictures/next_item.png" Width="20" Opacity="0.7" />
-                            </StackPanel>
-                        </Button>
+                            </Image.RenderTransform>
+                        </Image>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" FlowDirection="RightToLeft">
-            <Button x:Name="btnOK" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" >
-                <StackPanel>
-                    <Image x:Name="imgOK" Source="../Pictures/accept.png" Width="30" Opacity="0.4" />
-                </StackPanel>
-            </Button>
+            <Image x:Name="imgOK" Source="../Pictures/accept.png" Width="30" Opacity="0.4" />
         </StackPanel>
     </StackPanel>
 </Window>

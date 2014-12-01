@@ -22,60 +22,22 @@ namespace ConfigEditor
         public EditActionSets()
         {
             InitializeComponent();
-            foreach (ActionSet a in RulesCollection.actionSets)
-            {
-                listActionsets.Items.Add(a.Name);
-            }
+            listActionsets.ItemsSource = RulesCollection.actionSets;
         }
 
         public EditActionSets(int ActionSetIndex)
             : this()
         {
             listActionsets.SelectedIndex = ActionSetIndex;
-            /*foreach (ActionSet a in RulesCollection.actionSets)
-            {
-                if (a.name.Equals(listActionsets.SelectedValue))
-                {
-                    foreach (Action act in a.actions)
-	                {
-                        ucAction UCA = new ucAction(act);
-                        listAction.Items.Add(UCA);
-	                }
-                }
-            }*/
         }
 
 
         private void listActionsets_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             listAction.Items.Clear();
-            foreach (ActionSet a in RulesCollection.actionSets)
+            foreach (Action a in ((ActionSet)listActionsets.SelectedValue).Actions)
             {
-                if (a.Name.Equals(listActionsets.SelectedValue))
-                {
-                    foreach (Action act in a.Actions)
-                    {
-                        listAction.Items.Add(new ucAction(act));
-                        //switch (act.kind)
-                        //{ 
-                        //    case RulesCollection.ActionKinds.moveAction:
-                        //        listAction.Items.Add(new ucAction(act, new ucMoveAction((MoveAction)act)));
-                        //        break;
-                        //    case RulesCollection.ActionKinds.copyAction:
-                        //        listAction.Items.Add(new ucAction(act, new ucCopyAction((copyAction)act)));
-                        //        break;
-                        //    case RulesCollection.ActionKinds.deleteAction:
-                        //        listAction.Items.Add(new ucAction(act, new ucDeleteAction(act)));
-                        //        break;
-                        //    case RulesCollection.ActionKinds.cmdAction:
-                        //        listAction.Items.Add(new ucAction(act, new ucCmdAction((cmdAction)act)));
-                        //        break;
-                        //    default:
-                        //        listAction.Items.Add(new ucAction(act));
-                        //        break;
-                        //}
-                    }
-                }
+                listAction.Items.Add(new ucAction(a));
             }
         }
 
