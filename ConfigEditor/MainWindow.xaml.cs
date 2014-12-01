@@ -223,6 +223,14 @@ namespace ConfigEditor
             newW.Show();
         }
 
+        private void addFolder_Click(object sender, RoutedEventArgs e)
+        {
+            
+            RulesCollection.Folders.Add(new Folder(""));
+            var newW = new Windows.EditFolder(RulesCollection.Folders.Last());
+            newW.Show();
+        }
+
         
 
 

@@ -69,7 +69,7 @@
                 <Image x:Name="delFolderImage" Source="Pictures/discard.png" Width="20" Opacity="0.7" />
             </StackPanel>
         </Button>
-        <Button x:Name="addFolder" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="11,291,0,0" VerticalAlignment="Top" Width="20" Height="20" MouseEnter="addFolder_MouseEnter" MouseLeave="addFolder_MouseLeave">
+        <Button x:Name="addFolder" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="11,291,0,0" VerticalAlignment="Top" Width="20" Height="20" MouseEnter="addFolder_MouseEnter" MouseLeave="addFolder_MouseLeave" Click="addFolder_Click">
             <StackPanel>
                 <Image x:Name="addFolderImage" Source="Pictures/new.png" Width="20" Opacity="0.7" />
             </StackPanel>
