@@ -2,14 +2,14 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ActionSets"
-        ResizeMode="NoResize" SizeToContent="WidthAndHeight">
+        ResizeMode="NoResize" SizeToContent="WidthAndHeight" Closing="Window_Closing">
     <StackPanel VerticalAlignment="Top" Margin="4">
         <StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top" Margin="0,0,0,4">
             <StackPanel VerticalAlignment="Top">
                 <Label Content="Actionsets" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" />
                 <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Margin="0,0,4,0">
                     <StackPanel>
-                        <ListBox x:Name="listActionsets" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="270" SelectionChanged="listActionsets_SelectionChanged">
+                        <ListBox x:Name="listActionsets" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="270" SelectionChanged="listActionsets_SelectionChanged" MouseDoubleClick="listActionsets_MouseDoubleClick">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Name}" />
@@ -49,8 +49,8 @@
                             </ListBox.Template>
                         </ListBox>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Image x:Name="delBtnActionsets" Source="../Pictures/discard.png" Width="20" Opacity="0.7" />
-                            <Image x:Name="addFolderImage" Source="../Pictures/new.png" Width="20" Opacity="0.7" />
+                            <Image x:Name="delBtnActionsets" Source="../Pictures/discard.png" Width="20" Opacity="0.4" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave"  />
+                            <Image x:Name="addFolderImage" Source="../Pictures/new.png" Width="20" Opacity="0.4" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MouseDown="addlistActionset_Click"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -62,8 +62,8 @@
                         <StackPanel>
                             <ListBox x:Name="listAction" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="270"/>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Image x:Name="delBtnAction" Source="../Pictures/discard.png" Width="20" Opacity="0.7" />
-                                <Image x:Name="addActionImage" Source="../Pictures/new.png" Width="20" Opacity="0.7" />
+                                <Image x:Name="delBtnAction" Source="../Pictures/discard.png" Width="20" Opacity="0.4" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MouseDown="btn_delAction" />
+                                <Image x:Name="addActionImage" Source="../Pictures/new.png" Width="20" Opacity="0.4" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MouseDown="btn_addAction" />
                             </StackPanel>
                         </StackPanel>
                     </Border>

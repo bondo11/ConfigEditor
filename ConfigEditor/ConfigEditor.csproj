@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,7 +26,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -84,9 +84,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ActionClasses\Action.cs" />
+    <Compile Include="Libraries\BrowseDialog.cs" />
     <Compile Include="MatchClasses\MatchCollection.cs" />
     <Compile Include="UserControls\MatchUC\ucUnsetMatch.xaml.cs">
       <DependentUpon>ucUnsetMatch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EditActionSet.xaml.cs">
+      <DependentUpon>EditActionSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EditMatchSet.xaml.cs">
+      <DependentUpon>EditMatchSet.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\EditFolder.xaml.cs">
       <DependentUpon>EditFolder.xaml</DependentUpon>
@@ -146,6 +153,14 @@
       <DependentUpon>ucRuleSet.xaml</DependentUpon>
     </Compile>
     <Page Include="UserControls\MatchUC\ucUnsetMatch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\EditActionSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\EditMatchSet.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

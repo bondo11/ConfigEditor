@@ -147,17 +147,12 @@ namespace ConfigEditor
         {
             try
             {
-                System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
-                ofd.Filter = "Config Files|config.xml";
-                ofd.Title = "Open Config Dialog";
-                ofd.RestoreDirectory = true;
-                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                string result = Libraries.BrowseDialog.File("Config Files", "config.xml", "Open Config Dialog");
+                if (result != null)
                 {
-                    string Path = ofd.FileName;
-                    string FolderName = System.IO.Path.GetFullPath(Path);
-                    tbPath.Text = FolderName;
+
+                    tbPath.Text = result;
                 }
-                else { tbPath.Text = "No permission"; }
             }
             catch (Exception)
             {

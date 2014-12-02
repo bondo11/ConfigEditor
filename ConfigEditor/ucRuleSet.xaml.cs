@@ -20,28 +20,40 @@ namespace ConfigEditor
     /// </summary>
     public partial class ucRuleSet : UserControl
     {
-        public ucRuleSet()
+        private MainWindow MainWindow;
+        private EditMatchSets EditMatchSets;
+        private EditActionSets EditActionSets;
+
+        public ucRuleSet(MainWindow MainWindow, EditMatchSets EditMatchSets, EditActionSets EditActionSets)
         {
             InitializeComponent();
             cbMatchSet.ItemsSource = RulesCollection.MatchSets;
             cbActionSet.ItemsSource = RulesCollection.ActionSets;
+            this.MainWindow = MainWindow;
+            this.EditMatchSets = EditMatchSets;
+            this.EditActionSets = EditActionSets;
         }
-        public ucRuleSet(int matchSetIndex, int actionSetIndex) : this()
+
+        public ucRuleSet(int matchSetIndex, int actionSetIndex, MainWindow MainWindow, EditMatchSets EditMatchSets, EditActionSets EditActionSets)
+            : this(MainWindow, EditMatchSets, EditActionSets)
         {
+
             cbMatchSet.SelectedIndex = matchSetIndex;
             cbActionSet.SelectedIndex = actionSetIndex;
         }
 
         private void editMatchSet_Click(object sender, RoutedEventArgs e)
         {
-            var newW = new EditMatchSets(cbMatchSet.SelectedIndex);
-            newW.Show();
+            MainWindow.Hide();
+            EditMatchSets.Show();
+            EditMatchSets.SetIndex(cbMatchSet.SelectedIndex);
         }
 
         private void editActionSet_Click(object sender, RoutedEventArgs e)
         {
-            var newW = new EditActionSets(cbActionSet.SelectedIndex);
-            newW.Show();
+            MainWindow.Hide();
+            EditActionSets.Show();
+            EditActionSets.SetIndex(cbActionSet.SelectedIndex);
         }
 
         private void editMatchSet_MouseEnter(object sender, MouseEventArgs e)

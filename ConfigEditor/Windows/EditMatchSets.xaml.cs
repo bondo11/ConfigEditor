@@ -20,20 +20,15 @@ namespace ConfigEditor
     /// </summary>
     public partial class EditMatchSets : Window
     {
-        public EditMatchSets()
+        Window mainWin;
+        public EditMatchSets(MainWindow Main)
         {
             InitializeComponent();
             listMatchsets.ItemsSource = RulesCollection.MatchSets;
-            /*
-            foreach (MatchSet ms in RulesCollection.matchSets)
-            {
-                listMatchsets.Items.Add(ms.Name);
-            }
-             * */
+            mainWin = Main;
         }
 
-        public EditMatchSets(int MatchSetIndex)
-            : this()
+        public void SetIndex(int MatchSetIndex)
         {
             listMatchsets.SelectedIndex = MatchSetIndex;
         }
@@ -79,15 +74,42 @@ namespace ConfigEditor
             ((Image)sender).Opacity = 0.45;
         }
 
-        private void btnOK_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
+        //private void btnOK_MouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    mainWin.Show();
+        //    this.Hide();
+        //}
 
         private void btnSave_MouseDown(object sender, MouseButtonEventArgs e)
         {
             RulesCollection.MatchSets[listMatchsets.SelectedIndex].Match.Save();
         }
+
+        private void btnOK_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            mainWin.Show();
+            this.Hide();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            btnOK_MouseDown(sender, null);
+        }
+        private void listMatchsets_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var newW = new Windows.EditMatchSet(RulesCollection.MatchSets[listMatchsets.SelectedIndex]);
+            newW.Show();
+        }
+
+        private void addlistMatchset_Click(object sender, RoutedEventArgs e)
+        {
+            MatchSet ms = new MatchSet("New Matchset" + (RulesCollection.MatchSets.Count + 1).ToString(), new ucRegexMatch());
+            RulesCollection.MatchSets.Add(ms);
+            var newW = new Windows.EditMatchSet(RulesCollection.MatchSets.Last());
+            newW.Show();
+        }
+
 
     }
 }

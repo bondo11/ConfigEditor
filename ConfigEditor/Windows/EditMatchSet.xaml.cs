@@ -17,35 +17,37 @@ namespace ConfigEditor.Windows
     /// <summary>
     /// Interaction logic for EditFolder.xaml
     /// </summary>
-    public partial class EditFolder : Window
+    public partial class EditMatchSet : Window
     {
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private Folder f;
+        //private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private MatchSet ms;
 
-        public EditFolder()
+        public EditMatchSet()
         {
             InitializeComponent();
         }
 
 
-        public EditFolder(Folder f) : this()
+        public EditMatchSet(MatchSet ms)
+            : this()
         {
-            // TODO: Complete member initialization
-            this.f = f;
-            tbFolder.Text = f.Path;
+            this.ms = ms;
+            tbMatchset.Text = ms.Name;
         }
 
-
+        /*
         private void browseBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                string result = Libraries.BrowseDialog.Folder();
-                if (result != null)
+                this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+                if (folderBrowserDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-
-                    tbFolder.Text = result;
+                    string Path = folderBrowserDialog1.SelectedPath;
+                    string FolderName = System.IO.Path.GetFullPath(Path);
+                    tbMatchset.Text = FolderName;
                 }
+                else { tbMatchset.Text = "not valid"; }
             }
             catch (Exception)
             {
@@ -53,10 +55,10 @@ namespace ConfigEditor.Windows
             }
            
         }
-
+        */
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            f.Path = tbFolder.Text;
+            ms.Name= tbMatchset.Text;
             this.Close();
         }
     }

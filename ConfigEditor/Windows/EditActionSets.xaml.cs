@@ -19,14 +19,15 @@ namespace ConfigEditor
     /// </summary>
     public partial class EditActionSets : Window
     {
-        public EditActionSets()
+        Window mainWin;
+        public EditActionSets(MainWindow Main)
         {
             InitializeComponent();
             listActionsets.ItemsSource = RulesCollection.ActionSets;
+            mainWin = Main;
         }
 
-        public EditActionSets(int ActionSetIndex)
-            : this()
+        public void SetIndex(int ActionSetIndex)
         {
             listActionsets.SelectedIndex = ActionSetIndex;
         }
@@ -86,7 +87,41 @@ namespace ConfigEditor
 
         private void btnOK_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
+            mainWin.Show();
+            this.Hide();
+        }
+        private void listActionsets_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var newW = new Windows.EditActionSet(RulesCollection.ActionSets[listActionsets.SelectedIndex]);
+            newW.Show();
+        }
+
+        private void addlistActionset_Click(object sender, RoutedEventArgs e)
+        {
+            ActionSet a = new ActionSet("New ActionSet" + (RulesCollection.ActionSets.Count + 1).ToString());
+            RulesCollection.ActionSets.Add(a);
+            var newW = new Windows.EditActionSet(RulesCollection.ActionSets.Last());
+            newW.Show();
+        }
+        private void btn_addAction(object sender, RoutedEventArgs e)
+        {
+            ucCopyAction u = new ucCopyAction();
+            RulesCollection.ActionSets[listActionsets.SelectedIndex].Actions.Add(u);
+            listAction.Items.Add(new ucAction(u));
+        }
+        private void btn_delAction(object sender, RoutedEventArgs e)
+        {
+            if (listAction.SelectedIndex > -1)
+            {
+                RulesCollection.ActionSets[listActionsets.SelectedIndex].Actions.RemoveAt(listAction.SelectedIndex);
+                listAction.Items.RemoveAt(listAction.SelectedIndex);
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            btnOK_MouseDown(sender, null);
         }
 
     }

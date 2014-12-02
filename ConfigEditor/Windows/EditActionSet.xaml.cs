@@ -15,37 +15,40 @@ using System.Windows.Shapes;
 namespace ConfigEditor.Windows
 {
     /// <summary>
-    /// Interaction logic for EditFolder.xaml
+    /// Interaction logic for EditActionSet.xaml
     /// </summary>
-    public partial class EditFolder : Window
+    public partial class EditActionSet : Window
     {
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private Folder f;
+        //private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private ActionSet a;
 
-        public EditFolder()
+        public EditActionSet()
         {
             InitializeComponent();
         }
 
 
-        public EditFolder(Folder f) : this()
+        public EditActionSet(ActionSet a)
+            : this()
         {
             // TODO: Complete member initialization
-            this.f = f;
-            tbFolder.Text = f.Path;
+            this.a = a;
+            tbActionName.Text = a.Name;
         }
 
-
+        /*
         private void browseBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                string result = Libraries.BrowseDialog.Folder();
-                if (result != null)
+                this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+                if (folderBrowserDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-
-                    tbFolder.Text = result;
+                    string Path = folderBrowserDialog1.SelectedPath;
+                    string FolderName = System.IO.Path.GetFullPath(Path);
+                    tbFolder.Text = FolderName;
                 }
+                else { tbFolder.Text = "not valid"; }
             }
             catch (Exception)
             {
@@ -53,10 +56,10 @@ namespace ConfigEditor.Windows
             }
            
         }
-
+        */
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            f.Path = tbFolder.Text;
+            a.Name = tbActionName.Text;
             this.Close();
         }
     }

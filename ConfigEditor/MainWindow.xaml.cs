@@ -23,13 +23,16 @@ namespace ConfigEditor
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        //configHandler cl = new configHandler();
-        //RulesCollection rulesCollection;
+        private settings settingsWindow;
+        private EditActionSets editActionSet;
+        private EditMatchSets editMatchSet;
         public MainWindow()
         {
+            settingsWindow = new settings();
+            editActionSet = new EditActionSets(this);
+            editMatchSet = new EditMatchSets(this);
+
             configHandler.getConfig();
-            //rulesCollection = cl.getRules(ConfigHandler.getSource());
             InitializeComponent();
             folderList.ItemsSource = RulesCollection.Folders;
         }
@@ -49,7 +52,7 @@ namespace ConfigEditor
                         //ComboBox cbMatchset = new ComboBox();
                         foreach (MatchSet ms in RulesCollection.MatchSets)
                         {
-                           
+
                             if (!ms.Name.Equals(rs.matchSet.Name))
                             {
                                 msindex++;
@@ -72,39 +75,20 @@ namespace ConfigEditor
                             }
                         }
 
-                        rulesList.Items.Add(new ucRuleSet(msindex, asindex));
-                        
+                        rulesList.Items.Add(new ucRuleSet(msindex, asindex, this, editMatchSet, editActionSet));
+
                     }
                 }
             }
         }
-        private void listActiveMatches_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-        } 
+
         #endregion
 
         #region Button Functions
         private void btnSettings_Click(object sender, RoutedEventArgs e)
         {
-            var newW = new settings();
-            newW.Show();
+            settingsWindow.Show();
         }
-        
-        #endregion
-
-        #region Button MouseEnter and MouseLeave
-
-        private void btn_MouseEnter(object sender, MouseEventArgs e)
-        {
-            ((Image)sender).Opacity = 1;
-        }
-
-        private void btn_MouseLeave(object sender, MouseEventArgs e)
-        {
-            ((Image)sender).Opacity = 0.45;
-        }
-        
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -119,19 +103,35 @@ namespace ConfigEditor
 
         private void addRule_Click(object sender, RoutedEventArgs e)
         {
-            rulesList.Items.Add(new ucRuleSet());
+            rulesList.Items.Add(new ucRuleSet(this, editMatchSet, editActionSet));
+        }
+        #endregion
+
+        #region Button MouseEnter and MouseLeave
+
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ((Image)sender).Opacity = 1;
+        }
+
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ((Image)sender).Opacity = 0.45;
         }
 
         private void folderList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var newW = new Windows.EditFolder(RulesCollection.Folders[folderList.SelectedIndex]);
-            newW.Show();
+            if(folderList.SelectedIndex > -1)
+            {
+                var newW = new Windows.EditFolder(RulesCollection.Folders[folderList.SelectedIndex]);
+                newW.Show();
+            }
         }
 
         private void addFolder_Click(object sender, RoutedEventArgs e)
         {
-            
-            RulesCollection.Folders.Add(new Folder(""));
+
+            RulesCollection.Folders.Add(new Folder("New folder"));
             var newW = new Windows.EditFolder(RulesCollection.Folders.Last());
             newW.Show();
         }
@@ -149,5 +149,17 @@ namespace ConfigEditor
 
         #endregion
 
+        public void showActionEditor()
+        {
+            editActionSet.Show();
+        }
+        public void showMatchEditor()
+        {
+            editMatchSet.Show();
+        }
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
     }
 }
