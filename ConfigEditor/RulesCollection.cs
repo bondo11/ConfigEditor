@@ -25,7 +25,13 @@ namespace ConfigEditor
             Unset = 0,
             Move = 1,
             Copy = 2,
-            Cmd = 3
+            Cmd = 3,
+            Delete = 4,
+            Unpack = 5,
+            Metaeditor = 6
+
+
+
         }
 
         public enum MatchKinds
