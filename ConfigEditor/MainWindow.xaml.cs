@@ -121,7 +121,7 @@ namespace ConfigEditor
 
         private void folderList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if(folderList.SelectedIndex > -1)
+            if (folderList.SelectedIndex > -1)
             {
                 var newW = new Windows.EditFolder(RulesCollection.Folders[folderList.SelectedIndex]);
                 newW.Show();
@@ -159,7 +159,7 @@ namespace ConfigEditor
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
+            Environment.Exit(0);
         }
     }
 }

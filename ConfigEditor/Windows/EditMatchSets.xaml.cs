@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ConfigEditor.MatchClasses;
+using System.ComponentModel;
 
 namespace ConfigEditor
 {
@@ -91,7 +92,7 @@ namespace ConfigEditor
             this.Hide();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
             e.Cancel = true;
             btnOK_MouseDown(sender, null);
