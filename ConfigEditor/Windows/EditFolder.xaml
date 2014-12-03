@@ -12,19 +12,21 @@
         <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch" 
         Height="Auto" Width="208">
             <TextBox x:Name="tbFolder" DockPanel.Dock="Left" VerticalAlignment="Stretch" Width="180" />
-            <Button x:Name="browseBtn" DockPanel.Dock="Right" BorderThickness="0" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="25" Height="25" Background="Transparent" RenderTransformOrigin="-10.45,2" Click="browseBtn_Click">
+            <Image x:Name="browseBtn" DockPanel.Dock="Right" Source="../Pictures/download.png" Width="25" Opacity="0.45" HorizontalAlignment="Right"  VerticalAlignment="Top" MouseDown="browseBtn_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave"/>
+            <!--<Button x:Name="browseBtn" DockPanel.Dock="Right" BorderThickness="0" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="25" Height="25" Background="Transparent" RenderTransformOrigin="-10.45,2" Click="browseBtn_Click">
                 <StackPanel>
                     <Image x:Name="browseImg" Source="../Pictures/download.png" Width="25" Opacity="0.7" />
                 </StackPanel>
-            </Button>
+            </Button>-->
         </DockPanel>
         <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch" 
         Height="Auto" Width="218">
-            <Button x:Name="btnOK" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" Margin="0,0,5,5" Click="btnOK_Click" >
+            <Image x:Name="btnOK" Source="../Pictures/accept.png" Width="30" Opacity="0.4" HorizontalAlignment="Right" MouseDown="btnOK_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" />
+            <!--<Button x:Name="btnOK" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" Margin="0,0,5,5" Click="btnOK_Click" >
                 <StackPanel>
                     <Image x:Name="imgOK" Source="../Pictures/accept.png" Width="30" Opacity="0.4" />
                 </StackPanel>
-            </Button>
+            </Button>-->
         </DockPanel>
     </DockPanel>
 </Window>

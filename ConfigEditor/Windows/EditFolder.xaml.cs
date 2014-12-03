@@ -59,5 +59,16 @@ namespace ConfigEditor.Windows
             f.Path = tbFolder.Text;
             this.Close();
         }
+
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ((Image)sender).Opacity = 1;
+        }
+
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ((Image)sender).Opacity = 0.45;
+        }
+
     }
 }
