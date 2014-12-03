@@ -29,9 +29,6 @@ namespace ConfigEditor
             Delete = 4,
             Unpack = 5,
             Metaeditor = 6
-
-
-
         }
 
         public enum MatchKinds

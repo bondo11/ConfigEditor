@@ -18,14 +18,21 @@ namespace ConfigEditor
     /// <summary>
     /// Interaction logic for ucDeleteAction.xaml
     /// </summary>
-    public partial class ucDeleteAction : UserControl, Action
+    public partial class ucUnpackAction : UserControl, Action
     {
 
         public RulesCollection.ActionKinds Kind { get; set; }
-        public ucDeleteAction()
+
+        public ucUnpackAction()
         {
             InitializeComponent();
-            Kind = RulesCollection.ActionKinds.Delete;
+            Kind = RulesCollection.ActionKinds.Unpack;
+        }
+        public ucUnpackAction(Action act)
+            : this()
+        {
+            // TODO: Complete member initialization
+            //tbPath.Text= moveAction.destination;
         }
         public UserControl GetUC()
         {
@@ -36,15 +43,11 @@ namespace ConfigEditor
             ActionSet.Add(this);
         }
 
-        public ucDeleteAction(Action act) : this()
-        {
-            // TODO: Complete member initialization
-            //tbPath.Text= moveAction.destination;
-        }
+        
         public void WriteToConfig(System.Xml.XmlWriter Writer)
         {
             Writer.WriteStartElement("kind");
-            Writer.WriteValue("delete");
+            Writer.WriteValue("unpack");
             Writer.WriteEndElement();
         }
     }

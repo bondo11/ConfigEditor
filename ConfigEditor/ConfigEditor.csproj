@@ -86,6 +86,18 @@
     <Compile Include="ActionClasses\Action.cs" />
     <Compile Include="Libraries\BrowseDialog.cs" />
     <Compile Include="MatchClasses\MatchCollection.cs" />
+    <Compile Include="UserControls\ActionUC\MetaUC\ucMetaBool.xaml.cs">
+      <DependentUpon>ucMetaBool.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ActionUC\MetaUC\ucMetaDateTime.xaml.cs">
+      <DependentUpon>ucMetaDateTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ActionUC\ucMetaEditorAction.xaml.cs">
+      <DependentUpon>ucMetaEditorAction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ActionUC\ucUnpackAction.xaml.cs">
+      <DependentUpon>ucUnpackAction.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MatchUC\ucUnsetMatch.xaml.cs">
       <DependentUpon>ucUnsetMatch.xaml</DependentUpon>
     </Compile>
@@ -152,6 +164,22 @@
     <Compile Include="ucRuleSet.xaml.cs">
       <DependentUpon>ucRuleSet.xaml</DependentUpon>
     </Compile>
+    <Page Include="UserControls\ActionUC\MetaUC\ucMetaBool.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ActionUC\MetaUC\ucMetaDateTime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ActionUC\ucMetaEditorAction.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ActionUC\ucUnpackAction.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControls\MatchUC\ucUnsetMatch.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

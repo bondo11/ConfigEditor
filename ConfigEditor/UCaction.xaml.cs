@@ -58,6 +58,15 @@ namespace ConfigEditor
                     case (int)RulesCollection.ActionKinds.Cmd:
                         Action = new ucCmdAction();
                         break;
+                    case (int)RulesCollection.ActionKinds.Delete:
+                        Action = new ucDeleteAction();
+                        break;
+                    case (int)RulesCollection.ActionKinds.Unpack:
+                        Action = new ucUnpackAction();
+                        break;
+                    case (int)RulesCollection.ActionKinds.Metaeditor:
+                        Action = new ucMetaEditorAction();
+                        break;
                     default:
                         Action = null;
                         break;
