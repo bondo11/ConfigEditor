@@ -55,5 +55,30 @@ namespace ConfigEditor
             Writer.WriteValue(Destination);
             Writer.WriteEndElement();
         }
+        private void browseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string result = Libraries.BrowseDialog.Folder();
+                if (result != null)
+                {
+
+                    tbPath.Text = result;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+        private void btn_MouseEnter(object sender, RoutedEventArgs e)
+        {
+            ((Image)sender).Opacity = 1;
+        }
+        private void btn_MouseLeave(object sender, RoutedEventArgs e)
+        {
+            ((Image)sender).Opacity = 0.45;
+        }
     }
 }

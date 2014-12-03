@@ -13,6 +13,7 @@
         </DockPanel>
         <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch" 
         Height="Auto" Width="208">
+            <Image x:Name="browseBtn" DockPanel.Dock="Right" Source="../../Pictures/download.png" Width="20" Height="20" Opacity="0.45" HorizontalAlignment="Right"  VerticalAlignment="Top" MouseDown="browseBtn_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave"/>
             <TextBox x:Name="tbPath" DockPanel.Dock="right" VerticalAlignment="Stretch" Height="Auto"/>
         </DockPanel>
     </DockPanel>
