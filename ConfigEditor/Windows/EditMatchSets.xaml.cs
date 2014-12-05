@@ -83,7 +83,7 @@ namespace ConfigEditor
 
         private void btnSave_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            RulesCollection.MatchSets[listMatchsets.SelectedIndex].Match.Save();
+            RulesCollection.MatchSets[listMatchsets.SelectedIndex].Match = ((ucMatch)MatchContainer.Content).Save();
         }
 
         private void btnOK_MouseDown(object sender, MouseButtonEventArgs e)

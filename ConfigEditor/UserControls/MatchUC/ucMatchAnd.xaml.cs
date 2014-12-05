@@ -102,7 +102,9 @@ namespace ConfigEditor.MatchClasses
             Writer.WriteStartElement("matches");
             foreach (Match m in Matches)
             {
+                Writer.WriteStartElement("match");
                 m.WriteToConfig(Writer);
+                Writer.WriteEndElement();
             }
             Writer.WriteEndElement();
         }
