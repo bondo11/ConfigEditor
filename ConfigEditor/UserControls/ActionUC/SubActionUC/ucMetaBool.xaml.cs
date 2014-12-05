@@ -12,17 +12,34 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
-namespace ConfigEditor.UserControls.ActionUC.MetaUC
+namespace ConfigEditor.UserControls.ActionUC.SubActionUC
 {
     /// <summary>
-    /// Interaction logic for ucMetaDateTime.xaml
+    /// Interaction logic for ucMetaBool.xaml
     /// </summary>
     public partial class ucMetaBool : UserControl
     {
+        
+        bool value;
         public ucMetaBool()
         {
             InitializeComponent();
+            value = false;
         }
+        public ucMetaBool(bool value) : this()
+        {
+            this.value = value;
+        }
+        
+        public UserControl GetUC()
+        {
+            return (UserControl)this;
+        }
+        partial void Save(ActionSet ActionSet);
+        partial void WriteToConfig(XmlWriter Writer);
+        
+
     }
 }

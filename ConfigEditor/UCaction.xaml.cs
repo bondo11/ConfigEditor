@@ -67,6 +67,9 @@ namespace ConfigEditor
                     case (int)RulesCollection.ActionKinds.Metaeditor:
                         Action = new ucMetaEditorAction();
                         break;
+                    case (int)RulesCollection.ActionKinds.Packager:
+                        Action = new ucPackageAction();
+                        break;
                     default:
                         Action = null;
                         break;

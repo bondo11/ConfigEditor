@@ -1,4 +1,4 @@
-﻿using ConfigEditor.UserControls.ActionUC.MetaUC;
+﻿using ConfigEditor.UserControls.ActionUC.SubActionUC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,7 +85,7 @@ namespace ConfigEditor
             Writer.WriteValue("MetaEditor");
             Writer.WriteEndElement();
 
-            Writer.WriteStartElement("action");
+            Writer.WriteStartElement("tag");
             Writer.WriteValue(Enum.GetName(typeof(metaAction), (int)action));
             Writer.WriteEndElement();
             getActionValues(Writer);

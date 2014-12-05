@@ -86,11 +86,14 @@
     <Compile Include="ActionClasses\Action.cs" />
     <Compile Include="Libraries\BrowseDialog.cs" />
     <Compile Include="MatchClasses\MatchCollection.cs" />
-    <Compile Include="UserControls\ActionUC\MetaUC\ucMetaBool.xaml.cs">
+    <Compile Include="UserControls\ActionUC\SubActionUC\ucMetaBool.xaml.cs">
       <DependentUpon>ucMetaBool.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ActionUC\MetaUC\ucMetaDateTime.xaml.cs">
+    <Compile Include="UserControls\ActionUC\SubActionUC\ucMetaDateTime.xaml.cs">
       <DependentUpon>ucMetaDateTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ActionUC\ucPackageAction.xaml.cs">
+      <DependentUpon>ucPackageAction.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ActionUC\ucMetaEditorAction.xaml.cs">
       <DependentUpon>ucMetaEditorAction.xaml</DependentUpon>
@@ -164,13 +167,17 @@
     <Compile Include="ucRuleSet.xaml.cs">
       <DependentUpon>ucRuleSet.xaml</DependentUpon>
     </Compile>
-    <Page Include="UserControls\ActionUC\MetaUC\ucMetaBool.xaml">
+    <Page Include="UserControls\ActionUC\SubActionUC\ucMetaBool.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\ActionUC\MetaUC\ucMetaDateTime.xaml">
+    <Page Include="UserControls\ActionUC\SubActionUC\ucMetaDateTime.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ActionUC\ucPackageAction.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\ActionUC\ucMetaEditorAction.xaml">
       <Generator>MSBuild:Compile</Generator>
