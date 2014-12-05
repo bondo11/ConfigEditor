@@ -82,7 +82,7 @@ namespace ConfigEditor
         public void WriteToConfig(System.Xml.XmlWriter Writer)
         {
             Writer.WriteStartElement("kind");
-            Writer.WriteValue("MetaEditor");
+            Writer.WriteValue("meta");
             Writer.WriteEndElement();
 
             Writer.WriteStartElement("tag");
@@ -98,17 +98,17 @@ namespace ConfigEditor
             {
                 case metaAction.creationTime:
                     Writer.WriteStartElement("date");
-                    Writer.WriteValue(date);
+                    Writer.WriteValue(date.ToString("dd/MM/yyyy hh:mm:ss"));
                     Writer.WriteEndElement();
                     break;
                 case metaAction.lastModifiedTime:
                     Writer.WriteStartElement("date");
-                    Writer.WriteValue(date);
+                    Writer.WriteValue(date.ToString("dd/MM/yyyy hh:mm:ss"));
                     Writer.WriteEndElement();
                     break;
                 case metaAction.lastAccessTime:
                     Writer.WriteStartElement("date");
-                    Writer.WriteValue(date);
+                    Writer.WriteValue(date.ToString("dd/MM/yyyy hh:mm:ss"));
                     Writer.WriteEndElement();
                     break;
                 case metaAction.hidden:

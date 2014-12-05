@@ -75,7 +75,7 @@ namespace ConfigEditor
                             }
                         }
 
-                        rulesList.Items.Add(new ucRuleSet(msindex, asindex, this, editMatchSet, editActionSet));
+                        rulesList.Items.Add(new ucRuleSet(msindex, asindex, this, editMatchSet, editActionSet, rulesList.Items.Count));
 
                     }
                 }
@@ -103,7 +103,7 @@ namespace ConfigEditor
 
         private void addRule_Click(object sender, RoutedEventArgs e)
         {
-            rulesList.Items.Add(new ucRuleSet(this, editMatchSet, editActionSet));
+            rulesList.Items.Add(new ucRuleSet(this, editMatchSet, editActionSet, rulesList.Items.Count));
         }
         #endregion
 

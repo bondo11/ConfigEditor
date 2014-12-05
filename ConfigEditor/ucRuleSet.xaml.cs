@@ -23,21 +23,25 @@ namespace ConfigEditor
         private MainWindow MainWindow;
         private EditMatchSets EditMatchSets;
         private EditActionSets EditActionSets;
+        private ruleset rule;
+        private int rulesetindex;
 
-        public ucRuleSet(MainWindow MainWindow, EditMatchSets EditMatchSets, EditActionSets EditActionSets)
+        public ucRuleSet(MainWindow MainWindow, EditMatchSets EditMatchSets, EditActionSets EditActionSets, int index)
         {
+            if (RulesCollection.Folders[MainWindow.folderList.SelectedIndex].RuleSets.Count > index)
+                rule = RulesCollection.Folders[MainWindow.folderList.SelectedIndex].RuleSets[index];
             InitializeComponent();
             cbMatchSet.ItemsSource = RulesCollection.MatchSets;
             cbActionSet.ItemsSource = RulesCollection.ActionSets;
             this.MainWindow = MainWindow;
             this.EditMatchSets = EditMatchSets;
             this.EditActionSets = EditActionSets;
+            this.rulesetindex = index;
         }
 
-        public ucRuleSet(int matchSetIndex, int actionSetIndex, MainWindow MainWindow, EditMatchSets EditMatchSets, EditActionSets EditActionSets)
-            : this(MainWindow, EditMatchSets, EditActionSets)
+        public ucRuleSet(int matchSetIndex, int actionSetIndex, MainWindow MainWindow, EditMatchSets EditMatchSets, EditActionSets EditActionSets, int index)
+            : this(MainWindow, EditMatchSets, EditActionSets, index)
         {
-
             cbMatchSet.SelectedIndex = matchSetIndex;
             cbActionSet.SelectedIndex = actionSetIndex;
         }
@@ -76,5 +80,33 @@ namespace ConfigEditor
         {
             editActionSet.Opacity = 0.45;
         }
+
+        private void cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (rule != null && cbMatchSet.SelectedIndex >= 0 && cbActionSet.SelectedIndex >= 0)
+            {
+                (RulesCollection.Folders[MainWindow.folderList.SelectedIndex].RuleSets[rulesetindex]).matchSet = RulesCollection.MatchSets[cbMatchSet.SelectedIndex];
+                (RulesCollection.Folders[MainWindow.folderList.SelectedIndex].RuleSets[rulesetindex]).actionSet = RulesCollection.ActionSets[cbActionSet.SelectedIndex];
+            }
+            else if (rule == null && cbMatchSet.SelectedIndex >= 0 && cbActionSet.SelectedIndex >= 0)
+            {
+                rule = new ruleset(RulesCollection.MatchSets[cbMatchSet.SelectedIndex], RulesCollection.ActionSets[cbActionSet.SelectedIndex]);
+                (RulesCollection.Folders[MainWindow.folderList.SelectedIndex]).RuleSets.Add(rule);
+            }
+
+        }
+        /*
+        private void cbActionSet_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (rule != null && cbMatchSet.SelectedIndex >= 0)
+            {
+                (RulesCollection.Folders[MainWindow.folderList.SelectedIndex].RuleSets[rulesetindex]).actionSet = RulesCollection.ActionSets[cbActionSet.SelectedIndex];
+            }
+            else if (cbMatchSet.SelectedIndex >= 0 && cbActionSet.SelectedIndex >= 0)
+            {
+                rule = new ruleset(RulesCollection.MatchSets[cbMatchSet.SelectedIndex], RulesCollection.ActionSets[cbActionSet.SelectedIndex]);
+                (RulesCollection.Folders[MainWindow.folderList.SelectedIndex]).RuleSets.Add(rule);
+            }
+        }*/
     }
 }

@@ -17,7 +17,7 @@
                 </StackPanel>
             </Button>
             -->
-            <ComboBox x:Name="cbMatchSet" DockPanel.Dock="right" DisplayMemberPath="Name" VerticalAlignment="Stretch" Height="Auto" >
+            <ComboBox x:Name="cbMatchSet" DockPanel.Dock="right" DisplayMemberPath="Name" VerticalAlignment="Stretch" Height="Auto" SelectionChanged="cb_SelectionChanged" >
             </ComboBox>
         </DockPanel>
         <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch" 
@@ -30,7 +30,7 @@
                 </StackPanel>
             </Button>
             -->
-            <ComboBox x:Name="cbActionSet" DockPanel.Dock="right" DisplayMemberPath="Name" VerticalAlignment="Stretch" Height="Auto"/>
+            <ComboBox x:Name="cbActionSet" DockPanel.Dock="right" DisplayMemberPath="Name" VerticalAlignment="Stretch" Height="Auto" SelectionChanged="cb_SelectionChanged"/>
         </DockPanel>
     </DockPanel>
 </UserControl>
