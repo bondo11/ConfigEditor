@@ -125,7 +125,7 @@ namespace ConfigEditor
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Indent = true;
             settings.NewLineOnAttributes = true;
-            XmlWriter writer = XmlWriter.Create(@"c:\config\saveconfig.xml", settings);
+            XmlWriter writer = XmlWriter.Create(ConfigSettings.getSource(), settings);
 
             writer.WriteStartDocument();
             writer.WriteStartElement("config");
