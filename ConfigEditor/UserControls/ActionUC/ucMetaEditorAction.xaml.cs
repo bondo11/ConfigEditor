@@ -29,7 +29,7 @@ namespace ConfigEditor
         public ucMetaEditorAction()
         {
             InitializeComponent();
-
+            date = DateTime.Now;
             Kind = RulesCollection.ActionKinds.Metaeditor;
             foreach (metaAction a in (metaAction[])Enum.GetValues(typeof(metaAction)))
             {
@@ -52,6 +52,24 @@ namespace ConfigEditor
             }
             this.value = value;
         }
+        public ucMetaEditorAction(string action, DateTime date)
+            : this()
+        {
+            switch (action)
+            {
+                case ("creationtime"):
+                    this.action = metaAction.creationTime;
+                    break;
+                case ("lastAccessTime"):
+                    this.action = metaAction.lastAccessTime;
+                    break;
+                case ("lastModifiedTime"):
+                    this.action = metaAction.lastModifiedTime;
+                    break;
+                default:
+                    break;
+            }
+        }
         public enum metaAction
         {
             creationTime = 0,
@@ -73,9 +91,9 @@ namespace ConfigEditor
         }
         public void Save(ActionSet ActionSet)
         {
-            date = DateTime.Now;
-            value = true;
-            action = metaAction.lastAccessTime;
+            date = ((meta)uc).date;
+            value = ((meta)uc).value;
+            action = (metaAction)cBox.SelectedIndex;
             ActionSet.Add(this);
         }
 
@@ -98,27 +116,27 @@ namespace ConfigEditor
             {
                 case metaAction.creationTime:
                     Writer.WriteStartElement("date");
-                    Writer.WriteValue(date.ToString("dd/MM/yyyy hh:mm:ss"));
+                    Writer.WriteValue(((meta)uc).date.ToString("dd/MM/yyyy hh:mm:ss"));
                     Writer.WriteEndElement();
                     break;
                 case metaAction.lastModifiedTime:
                     Writer.WriteStartElement("date");
-                    Writer.WriteValue(date.ToString("dd/MM/yyyy hh:mm:ss"));
+                    Writer.WriteValue(((meta)uc).date.ToString("dd/MM/yyyy hh:mm:ss"));
                     Writer.WriteEndElement();
                     break;
                 case metaAction.lastAccessTime:
                     Writer.WriteStartElement("date");
-                    Writer.WriteValue(date.ToString("dd/MM/yyyy hh:mm:ss"));
+                    Writer.WriteValue(((meta)uc).date.ToString("dd/MM/yyyy hh:mm:ss"));
                     Writer.WriteEndElement();
                     break;
                 case metaAction.hidden:
                     Writer.WriteStartElement("value");
-                    Writer.WriteValue(value);
+                    Writer.WriteValue(((meta)uc).value);
                     Writer.WriteEndElement();
                     break;
                 case metaAction.writeprotected:
                     Writer.WriteStartElement("value");
-                    Writer.WriteValue(value);
+                    Writer.WriteValue(((meta)uc).value);
                     Writer.WriteEndElement();
                     break;
                 default:
@@ -138,19 +156,19 @@ namespace ConfigEditor
                 switch (cBox.SelectedIndex)
                 {
                     case (int)metaAction.creationTime:
-                        uc = new ucMetaDateTime();
+                        uc = new ucMetaDateTime(date);
                         break;
                     case (int)metaAction.lastAccessTime:
-                        uc = new ucMetaDateTime();
+                        uc = new ucMetaDateTime(date);
                         break;
                     case (int)metaAction.lastModifiedTime:
-                        uc = new ucMetaDateTime();                        
+                        uc = new ucMetaDateTime(date);                        
                         break;
                     case (int)metaAction.hidden:
-                        uc = new ucMetaBool();
+                        uc = new ucMetaBool(value);
                         break;
                     case (int)metaAction.writeprotected:
-                        uc = new ucMetaBool();
+                        uc = new ucMetaBool(value);
                         break;
                     default:
                         break;

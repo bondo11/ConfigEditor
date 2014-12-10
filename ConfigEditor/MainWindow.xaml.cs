@@ -31,8 +31,14 @@ namespace ConfigEditor
             settingsWindow = new settings();
             editActionSet = new EditActionSets(this);
             editMatchSet = new EditMatchSets(this);
-
-            configHandler.getConfig();
+            try
+            {
+                configHandler.getConfig();
+            }
+            catch (Exception)
+            {
+                settingsWindow.Show();
+            }
             InitializeComponent();
             folderList.ItemsSource = RulesCollection.Folders;
         }

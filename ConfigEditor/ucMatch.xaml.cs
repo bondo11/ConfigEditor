@@ -42,7 +42,6 @@ namespace ConfigEditor
         private void cbMatch_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Clear();
-
             if ((int)Match.Kind != cbMatch.SelectedIndex)
             {
                 switch (cbMatch.SelectedIndex)

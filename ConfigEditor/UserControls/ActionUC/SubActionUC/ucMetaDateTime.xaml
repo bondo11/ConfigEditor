@@ -13,7 +13,7 @@
         </DockPanel>
         <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch" 
         Height="Auto" Width="auto">
-            <DatePicker x:Name="dpDate" DockPanel.Dock="left" VerticalAlignment="Stretch" Height="Auto"/>
+            <DatePicker x:Name="dpDate" DockPanel.Dock="left" VerticalAlignment="Stretch" Height="Auto" SelectedDateChanged="dpDate_SelectedDateChanged" FirstDayOfWeek="Monday"/>
         </DockPanel>
     </DockPanel>
 </UserControl>

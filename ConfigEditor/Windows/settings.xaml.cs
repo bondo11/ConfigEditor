@@ -27,6 +27,27 @@ namespace ConfigEditor
     {
         public settings()
         {
+            try
+            {
+                if (!File.Exists(System.Reflection.Assembly.GetEntryAssembly().Location + ".config"))
+                {
+                    try
+                    {
+                        ConfigSettings.newConfig();
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
+                
             InitializeComponent();
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -61,7 +82,7 @@ namespace ConfigEditor
                 //ConfigurationManager.AppSettings["user"] = tbUser.Text;
                 //ConfigurationManager.AppSettings["password"] = pwdPassword.Password;
                 configHandler.getConfig();
-                this.Close();
+                btnOK_MouseDown(sender, null);
             }
             else
             {
@@ -72,7 +93,7 @@ namespace ConfigEditor
                     //ConfigurationManager.AppSettings["port"] = tbPort.Text;
                     //ConfigurationManager.AppSettings["user"] = tbUser.Text;
                     //ConfigurationManager.AppSettings["password"] = pwdPassword.Password;
-                    this.Close();
+                    btnOK_MouseDown(sender, null);
                 }
                 else
                 {
@@ -147,7 +168,7 @@ namespace ConfigEditor
         {
             try
             {
-                string result = Libraries.BrowseDialog.File("Config Files", "config.xml", "Open Config Dialog");
+                string result = Libraries.BrowseDialog.File("Config Files", "*.xml", "Open Config Dialog");
                 if (result != null)
                 {
 
@@ -175,31 +196,31 @@ namespace ConfigEditor
             btnSave_Click(sender, e);
         }
 
-        private void btnSave_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            btnSave.Opacity = 1;
-        }
-
-        private void btnSave_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            btnSave.Opacity = 0.45;
-        }
-
         private void browseImg_MouseDown(object sender, MouseButtonEventArgs e)
         {
             browseBtn_Click(sender, e);
         }
 
-        private void browseImg_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        private void btnOK_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
-            browseImg.Opacity = 1;
+            this.Hide();
         }
 
-        private void browseImg_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        private void img_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
 
-            browseImg.Opacity = 0.45;
+            ((Image)sender).Opacity = 1;
+        }
+        private void img_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+
+            ((Image)sender).Opacity = 0.4;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            btnOK_MouseDown(sender, null);
         }
 
 

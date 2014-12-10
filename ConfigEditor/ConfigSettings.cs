@@ -12,13 +12,13 @@ namespace ConfigEditor
     public static class ConfigSettings
     {
         private static string source, user, password;
-              private static int port;
-        
+        private static int port;
+
         public static string getSource()
         {
             if (source == null)
             {
-                    source = ConfigurationManager.AppSettings["source"];
+                source = ConfigurationManager.AppSettings["source"];
             }
             return source;
         }
@@ -41,7 +41,7 @@ namespace ConfigEditor
         {
             if (user == null)
             {
-               user = ConfigurationManager.AppSettings["user"];
+                user = ConfigurationManager.AppSettings["user"];
             }
             return user;
         }
@@ -55,7 +55,7 @@ namespace ConfigEditor
             }
             return password;
         }
-        
+
         public static bool IsValidPath(string path)
         {
             try
@@ -75,17 +75,18 @@ namespace ConfigEditor
                     return false;
                 }
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 //logWriter.Write(Environment.NewLine + "error: " + e + Environment.NewLine);
                 return false;
             }
-            
+
             return true;
         }
         public static void setSource(string path)
         {
-                ConfigurationManager.AppSettings["source"] = path;
-                source = path;
+            ConfigurationManager.AppSettings["source"] = path;
+            source = path;
         }
         public static void setPort(int Port)
         {
@@ -95,14 +96,29 @@ namespace ConfigEditor
         public static void setUser(string User)
         {
             PasswordEncoder pe = new PasswordEncoder();
-                ConfigurationManager.AppSettings["user"] = User;
-                user = User;
+            ConfigurationManager.AppSettings["user"] = User;
+            user = User;
         }
         public static void setPassword(string newPassword)
         {
             PasswordEncoder pe = new PasswordEncoder();
             ConfigurationManager.AppSettings["password"] = pe.EncryptWithByteArray(newPassword);
             password = newPassword;
+        }
+        public static void newConfig()
+        {
+            System.Text.StringBuilder sb = new StringBuilder();
+            sb.AppendLine("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
+            sb.AppendLine("<startup>");
+            sb.AppendLine("<supportedRuntime version=\"v4.0\" sku=\".NETFramework,Version=v4.5\" />");
+            sb.AppendLine("</startup>");
+            sb.AppendLine("<configuration>");
+            sb.AppendLine("<add key=\"source\" value=\"\" />");
+            sb.AppendLine("<add key=\"ClientSettingsProvider.ServiceUri\" value=\"\" />");
+            sb.AppendLine("</configuration>");
+
+            string loc = System.Reflection.Assembly.GetEntryAssembly().Location;
+            System.IO.File.WriteAllText(String.Concat(loc, ".config"), sb.ToString());
         }
 
     }

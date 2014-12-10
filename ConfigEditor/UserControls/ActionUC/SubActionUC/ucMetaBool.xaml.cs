@@ -19,27 +19,58 @@ namespace ConfigEditor.UserControls.ActionUC.SubActionUC
     /// <summary>
     /// Interaction logic for ucMetaBool.xaml
     /// </summary>
-    public partial class ucMetaBool : UserControl
+    public partial class ucMetaBool : UserControl, meta
     {
         
-        bool value;
+
         public ucMetaBool()
         {
+            cbBool.IsChecked = false;
             InitializeComponent();
-            value = false;
         }
         public ucMetaBool(bool value) : this()
         {
             this.value = value;
+            cbBool.IsChecked = value;
         }
-        
-        public UserControl GetUC()
+
+
+        public DateTime date
         {
-            return (UserControl)this;
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
-        partial void Save(ActionSet ActionSet);
-        partial void WriteToConfig(XmlWriter Writer);
-        
+
+        public bool value
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        private void cbBool_checked_change(object sender, RoutedEventArgs e)
+        {
+            if (((CheckBox)sender).IsChecked.Value)
+            {
+                value = true;
+            }
+            else
+            {
+                value = false;
+            }
+
+        }
 
     }
 }

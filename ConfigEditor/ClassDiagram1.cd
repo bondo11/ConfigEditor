@@ -1,170 +1,325 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="ConfigEditor.Action">
-    <Position X="2.75" Y="4" Width="1.5" />
+  <Class Name="ConfigEditor.ActionSet" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Action.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConfigEditor.ActionSet">
-    <Position X="7.5" Y="9.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAACAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAAAAAIAAAAIAAAAAAIAQAgAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ActionSet.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="ConfigEditor.ActionSets">
-    <Position X="7.25" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ActionSets.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConfigEditor.AndRule">
-    <Position X="5" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACCAA=</HashCode>
-      <FileName>AndRule.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConfigEditor.App">
-    <Position X="7.5" Y="6" Width="1.5" />
+  <Class Name="ConfigEditor.App" Collapsed="true">
+    <Position X="1.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ConfigEditor.cmdAction">
-    <Position X="0.5" Y="5.25" Width="1.5" />
+  <Class Name="ConfigEditor.configHandler" Collapsed="true">
+    <Position X="18.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>cmdAction.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConfigEditor.configHandler">
-    <Position X="5.75" Y="7.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>gAAAAAAAAAwAAAAAQAAAAAAAAIIAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>gAEAAAAAAAwAAAAIwAAIAAAAAIIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>configHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ConfigEditor.ConfigSettings">
-    <Position X="0.5" Y="7.25" Width="1.5" />
+  <Class Name="ConfigEditor.ConfigSettings" Collapsed="true">
+    <Position X="18.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAgAAACAAAAAIAAAAIAAAAAAAAAAgAAAAAAhAAA6A=</HashCode>
+      <HashCode>AAAAgIAAGAAAAAIAAAAIAAAAAAAAAAgAAAAAAhAAA6A=</HashCode>
       <FileName>ConfigSettings.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ConfigEditor.copyAction">
-    <Position X="2.75" Y="5.25" Width="1.5" />
+  <Class Name="ConfigEditor.Folder" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>copyAction.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConfigEditor.extensionMatch">
-    <Position X="7.25" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
-      <FileName>extensionMatch.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConfigEditor.Folder">
-    <Position X="0.5" Y="11" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAMIAAAAAAAAAgAAAAAAAAAAAAAIAAAA=</HashCode>
       <FileName>Folder.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="ConfigEditor.MainWindow">
-    <Position X="4" Y="7.25" Width="1.5" />
+  <Class Name="ConfigEditor.MainWindow" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAIAIgoQAAQABEACQAAAAQgAAIAAABIAAsAAAAI4AAA=</HashCode>
+      <HashCode>AAAAAAQQBAAgAAAQABAAAABQAAAAABFAAQAAAgAEEBA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ConfigEditor.Match">
-    <Position X="3.75" Y="0.5" Width="1.5" />
+  <Class Name="ConfigEditor.MatchSet" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Match.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConfigEditor.MatchSet">
-    <Position X="9.25" Y="7.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAI=</HashCode>
+      <HashCode>AAAAAgAAAAAAAIAAAAAAIAQAgAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MatchSet.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="ConfigEditor.moveAction">
-    <Position X="5" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>moveAction.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConfigEditor.OrRule">
-    <Position X="0.5" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACCAA=</HashCode>
-      <FileName>OrRule.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConfigEditor.PasswordEncoder">
-    <Position X="2.25" Y="10" Width="1.5" />
+  <Class Name="ConfigEditor.PasswordEncoder" Collapsed="true">
+    <Position X="18.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAAAAAICAAAAQAAAAAIAAAQAABAAAAAAAAAAAAAA=</HashCode>
       <FileName>PasswordEncoder.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ConfigEditor.regexMatch">
-    <Position X="2.75" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>regexMatch.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="ConfigEditor.rules">
-    <Position X="7.5" Y="11.75" Width="1.5" />
+  <Class Name="ConfigEditor.rules" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgA=</HashCode>
       <FileName>rules.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ConfigEditor.RulesCollection">
-    <Position X="5.75" Y="10" Width="1.5" />
+    <Position X="12.5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="ConfigEditor.RulesCollection.ActionKinds" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>RulesCollection.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="ConfigEditor.RulesCollection.MatchKinds" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>RulesCollection.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIQAAAAAAAAAAAAAAAhAAAACBAJAAAACAAA=</HashCode>
+      <HashCode>AAAAAAABAIAAAABAABIAAAAAAAgAAAACRABAAAAAIAA=</HashCode>
       <FileName>RulesCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ConfigEditor.ruleset">
-    <Position X="7.5" Y="7.25" Width="1.5" />
+  <Class Name="ConfigEditor.ruleset" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>ruleset.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ConfigEditor.settings">
-    <Position X="9.25" Y="9.25" Width="1.5" />
+  <Class Name="ConfigEditor.ucAction" Collapsed="true">
+    <Position X="3" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAARAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
-      <FileName>settings.xaml.cs</FileName>
+      <HashCode>AAAAAIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAQ=</HashCode>
+      <FileName>ucAction.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ConfigEditor.Properties.Resources">
-    <Position X="2.25" Y="7.25" Width="1.5" />
+  <Class Name="ConfigEditor.ucMatch" Collapsed="true">
+    <Position X="10" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAABAAAA=</HashCode>
+      <FileName>ucMatch.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.ucRuleSet" Collapsed="true">
+    <Position X="10.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIQAAAACAAACACAAAUggAAAAAAAAAAgAIAAABAAAA=</HashCode>
+      <FileName>ucRuleSet.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.ucCmdAction" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAABAAAAAAAAABAAAAAAAAAgAAAAABAAAAAA=</HashCode>
+      <FileName>UserControls\ActionUC\ucCmdAction.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ConfigEditor.ucCopyAction" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAABAAAAAAAAAAAAQAAAAABhEAAAABAAAAAA=</HashCode>
+      <FileName>UserControls\ActionUC\ucCopyAction.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ConfigEditor.ucDeleteAction" BaseTypeListCollapsed="true">
+    <Position X="4" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAABAAAAAAAAAAAAAAAAAAAgAAAAABAAAAAA=</HashCode>
+      <FileName>UserControls\ActionUC\ucDeleteAction.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ConfigEditor.ucMetaEditorAction" BaseTypeListCollapsed="true">
+    <Position X="11" Y="7.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="ConfigEditor.ucMetaEditorAction.metaAction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>UserControls\ActionUC\ucMetaEditorAction.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAEBIAAAABAAAAAAAQAAAAAAAAAACgAAAAABQDAAAA=</HashCode>
+      <FileName>UserControls\ActionUC\ucMetaEditorAction.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ConfigEditor.ucMoveAction" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAABAAAAAAAAAAAAQAAAAABhEAAAABAAAAAA=</HashCode>
+      <FileName>UserControls\ActionUC\ucMoveAction.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ConfigEditor.ucPackageAction" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAABAAAAAAAAAAAAQAAAAABpEAAAABAAAACA=</HashCode>
+      <FileName>UserControls\ActionUC\ucPackageAction.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ConfigEditor.ucUnpackAction" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAABAAAAAAAAAAAAAAAAAAAgAAAAABAAAAAA=</HashCode>
+      <FileName>UserControls\ActionUC\ucUnpackAction.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ConfigEditor.EditActionSets">
+    <Position X="16" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgAAADCCAAAQAAAAABEAAIAQAAAAAABAAEAAAAAAABA=</HashCode>
+      <FileName>Windows\EditActionSets.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.EditMatchSets" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACABAAAAAAAAAQABEAAIBQAAAAAABBAAAAAACAAJA=</HashCode>
+      <FileName>Windows\EditMatchSets.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.settings">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAFCAAAARAAAAABBAAQAAAAAAABAAAAAgAAAAABA=</HashCode>
+      <FileName>Windows\settings.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.Libraries.BrowseDialog" Collapsed="true">
+    <Position X="18.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAEAAAAAAAAAAAABBA=</HashCode>
+      <FileName>Libraries\BrowseDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.Properties.Resources" Collapsed="true">
+    <Position X="1.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="ConfigEditor.Properties.Settings">
-    <Position X="9.25" Y="11.25" Width="1.5" />
+    <Position X="16" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Class>
+  <Class Name="ConfigEditor.UserControls.ActionUC.SubActionUC.ucMetaBool" BaseTypeListCollapsed="true">
+    <Position X="11" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAQAAQAA=</HashCode>
+      <FileName>UserControls\ActionUC\SubActionUC\ucMetaBool.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ConfigEditor.UserControls.ActionUC.SubActionUC.ucMetaDateTime" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAACAAAAAAAQAAAAA=</HashCode>
+      <FileName>UserControls\ActionUC\SubActionUC\ucMetaDateTime.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ConfigEditor.MatchClasses.ucExtensionMatch" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAABAAAAAAAAAAAAAAAAAAQgAAAAABAAAAAA=</HashCode>
+      <FileName>UserControls\MatchUC\ucExtensionMatch.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ConfigEditor.MatchClasses.ucMatchAnd" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABIAAIAAAABAAAAAAAAAQAAQAAAACAhAAAAABABIAAA=</HashCode>
+      <FileName>UserControls\MatchUC\ucMatchAnd.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ConfigEditor.MatchClasses.ucMatchOr" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABIAAIAAAABAAAAAAAAAQAAQAAAACAhAAAAABABIAAA=</HashCode>
+      <FileName>UserControls\MatchUC\ucMatchOr.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ConfigEditor.MatchClasses.ucRegexMatch" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAABAAAAAAAAAAAAQAAAAAAgAAAAABAAAAAA=</HashCode>
+      <FileName>UserControls\MatchUC\ucRegexMatch.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ConfigEditor.MatchClasses.ucUnsetMatch" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAABAAAAAAAAAAAAAAAAAAAgAAAAABAAAAAA=</HashCode>
+      <FileName>UserControls\MatchUC\ucUnsetMatch.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ConfigEditor.Windows.EditActionSet" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\EditActionSet.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.Windows.EditFolder" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAQAAAAABBQAAAAAIAAAAA=</HashCode>
+      <FileName>Windows\EditFolder.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigEditor.Windows.EditMatchSet" Collapsed="true">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Windows\EditMatchSet.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ConfigEditor.Action">
+    <Position X="12" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAABAAAAAAAAAAAAAAAAAAAgAAAAABAAAAAA=</HashCode>
+      <FileName>ActionClasses\Action.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ConfigEditor.Match">
+    <Position X="7.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAABAAAAAAAAAAAAAAAAAAAgAAAAABAAAAAA=</HashCode>
+      <FileName>MatchClasses\Match.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ConfigEditor.MatchCollection">
+    <Position X="9" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABIAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAABIAAA=</HashCode>
+      <FileName>MatchClasses\MatchCollection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ConfigEditor.UserControls.ActionUC.SubActionUC.meta">
+    <Position X="11" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAQAAAAA=</HashCode>
+      <FileName>UserControls\ActionUC\SubActionUC\meta.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

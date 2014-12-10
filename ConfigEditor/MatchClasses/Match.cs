@@ -14,5 +14,6 @@ namespace ConfigEditor
         UserControl GetUC();
         Match Save();
         void WriteToConfig(XmlWriter Writer);
+
     }
 }

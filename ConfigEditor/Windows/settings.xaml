@@ -1,27 +1,18 @@
 ﻿<Window x:Class="ConfigEditor.settings"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="settings" Height="206" Width="199.6"
-        ResizeMode="NoResize">
+        Title="settings" Height="181" Width="196.6"
+        ResizeMode="NoResize" Closing="Window_Closing">
     <Grid>
         <Image Source="../Pictures/tools_icon.png" Opacity="0.15" HorizontalAlignment="Left" Height="132" Margin="30,4,0,0" VerticalAlignment="Top" Width="138"/>
-        <Image x:Name="btnSave" Source="../Pictures/save-icon.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Width="30" Opacity="0.45" MouseDown="btnSave_MouseDown" MouseEnter="btnSave_MouseEnter" MouseLeave="btnSave_MouseLeave" />
-        <!--<Button x:Name="btnSave" BorderThickness="0" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="34" Margin="0,0,10,10" Click="btnSave_Click">
-            <StackPanel>
-                <Image Source="../Pictures/save-icon.png" Width="30" Opacity="0.75" />
-            </StackPanel>
-        </Button>-->
-        <TextBox x:Name="tbPath" HorizontalAlignment="Left" Height="23" Margin="18,53,0,0" TextWrapping="Wrap" Text="Path to config" VerticalAlignment="Top" Width="120" Opacity="0.75" Initialized="tbPath_Initialized"/>
+        <Image x:Name="btnSave" Source="../Pictures/save-icon.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Width="30" Opacity="0.45" MouseDown="btnSave_MouseDown" MouseEnter="img_MouseEnter" MouseLeave="img_MouseLeave" />
+        <TextBox x:Name="tbPath" HorizontalAlignment="Left"  Height="23" Margin="18,53,0,0" TextWrapping="NoWrap" Text="Path to config" VerticalAlignment="Top" Width="120" Opacity="0.75" Initialized="tbPath_Initialized"/>
         <Label x:Name="lblSource" Content="Source" HorizontalAlignment="Left" Margin="18,22,0,0" VerticalAlignment="Top"/>
 
 
-        <Image x:Name="browseImg" Source="../Pictures/download.png" Margin="143,53,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25" Opacity="0.45" MouseDown="browseImg_MouseDown" MouseEnter="browseImg_MouseEnter" MouseLeave="browseImg_MouseLeave" />
-        <!--<Button x:Name="browseBtn" BorderThickness="0" HorizontalAlignment="Left" Margin="143,53,0,0" VerticalAlignment="Top" Width="25" Height="25" Background="Transparent" RenderTransformOrigin="-10.45,2" Click="browseBtn_Click">
-            <StackPanel>
-                <Image x:Name="browseImg" Source="../Pictures/download.png" Width="25" Opacity="0.7" />
-            </StackPanel>
-        </Button>-->
-        <CheckBox x:Name="cbCreds" Content="Specify user" HorizontalAlignment="Left" Margin="85,28,0,0" VerticalAlignment="Top" Checked="cbCreds_Checked" Unchecked="cbCreds_Unchecked"/>
+        <Image x:Name="browseImg" Source="../Pictures/download.png" Margin="143,53,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25" Opacity="0.45" MouseDown="browseImg_MouseDown" MouseEnter="img_MouseEnter" MouseLeave="img_MouseLeave" />
+
+        <CheckBox x:Name="cbCreds" Visibility="Hidden" Content="Specify user" HorizontalAlignment="Left" Margin="85,28,0,0" VerticalAlignment="Top" Checked="cbCreds_Checked" Unchecked="cbCreds_Unchecked"/>
         <StackPanel x:Name="spCreds" HorizontalAlignment="Left" Visibility="Hidden" Height="100" Margin="18,81,0,0" VerticalAlignment="Top" Width="100">
             <Label Content="Username" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <TextBox x:Name="tbUsername" />

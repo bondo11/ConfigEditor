@@ -13,7 +13,7 @@
         </DockPanel>
         <DockPanel DockPanel.Dock="Top" VerticalAlignment="Stretch" 
         Height="Auto" Width="auto">
-            <CheckBox x:Name="cbBool" DockPanel.Dock="left" VerticalAlignment="Stretch" Height="Auto"/>
+            <CheckBox x:Name="cbBool" DockPanel.Dock="left" VerticalAlignment="Stretch" Height="Auto" Unchecked="cbBool_checked_change" Checked="cbBool_checked_change"/>
         </DockPanel>
     </DockPanel>
 </UserControl>

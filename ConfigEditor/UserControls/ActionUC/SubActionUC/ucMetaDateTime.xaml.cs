@@ -19,9 +19,11 @@ namespace ConfigEditor.UserControls.ActionUC.SubActionUC
     /// <summary>
     /// Interaction logic for ucMetaDateTime.xaml
     /// </summary>
-    public partial class ucMetaDateTime : UserControl
+    public partial class ucMetaDateTime : UserControl, meta
     {
-        DateTime date;
+        public DateTime date{ get; set; }
+
+        public bool value { get; set; }
         public ucMetaDateTime()
         {
             InitializeComponent();
@@ -30,25 +32,14 @@ namespace ConfigEditor.UserControls.ActionUC.SubActionUC
             : this()
         {
             this.date = date;
+            dpDate.DisplayDate = date;
         }
-        public new UserControl GetUC()
-        {
-            return this;
-        }
-        public void Save(ActionSet ActionSet)
-        {
-            //Destination = tbPath.Text;
-            //ActionSet.Add(this);
-        }
-        public void WriteToConfig(System.Xml.XmlWriter Writer)
-        {
-            Writer.WriteStartElement("element");
-            Writer.WriteValue("copy");
-            Writer.WriteEndElement();
 
-            Writer.WriteStartElement("destination");
-            Writer.WriteValue(date);
-            Writer.WriteEndElement();
+        private void dpDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            date = dpDate.SelectedDate.Value;
         }
+
+        
     }
 }

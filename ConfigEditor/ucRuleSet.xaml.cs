@@ -95,18 +95,5 @@ namespace ConfigEditor
             }
 
         }
-        /*
-        private void cbActionSet_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (rule != null && cbMatchSet.SelectedIndex >= 0)
-            {
-                (RulesCollection.Folders[MainWindow.folderList.SelectedIndex].RuleSets[rulesetindex]).actionSet = RulesCollection.ActionSets[cbActionSet.SelectedIndex];
-            }
-            else if (cbMatchSet.SelectedIndex >= 0 && cbActionSet.SelectedIndex >= 0)
-            {
-                rule = new ruleset(RulesCollection.MatchSets[cbMatchSet.SelectedIndex], RulesCollection.ActionSets[cbActionSet.SelectedIndex]);
-                (RulesCollection.Folders[MainWindow.folderList.SelectedIndex]).RuleSets.Add(rule);
-            }
-        }*/
     }
 }
