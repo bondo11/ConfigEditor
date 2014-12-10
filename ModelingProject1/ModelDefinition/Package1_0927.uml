@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="09cd6c9d-eb48-4967-b134-dc6047b4b16d"
+  name="Input"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="acf18876-269f-4c5a-a836-dceee2016457"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DSystem.Windows.Input"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="0e6757dd-b00e-4802-bfb0-0537e93fd383"
+        name="MouseEventArgs"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="a5708ae9-2bf7-404c-9c93-8611562edb75"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows.Input Type%3DMouseEventArgs"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="5a0ae073-cd67-4aa4-9bb0-b86968f463e3"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fcc9e89c-da11-48c8-a42a-2f9c4f48b4e2">
+                <propertyInstance
+                  Id="9202a36c-ba76-45da-9e04-3a190c8fb5ec"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cf720d60-ae2c-410e-80c6-a0d92e610ac5">
+                <propertyInstance
+                  Id="41fc6a74-2174-472a-bbbf-cae9c8cccf15"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2fb2d266-4e2e-42bb-b290-827356bfd91f">
+                <propertyInstance
+                  Id="c8ca4892-64d4-4633-aecf-a684774fc8e3"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9b7ad421-4dab-4388-98be-147c1cb44ed8">
+                <propertyInstance
+                  Id="ba4ed524-be73-4f2c-b96d-5bc5222e56a2"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f0eb0e0f-cdcb-4613-816f-427c8e9b9698">
+                <propertyInstance
+                  Id="8a2dc6f9-298f-4a85-8fe0-2fd8c75bf571"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7a9343bc-3741-4a47-8c4b-8e2d93d5721e"
+        name="MouseButtonEventArgs"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="dddebda8-bf64-496d-83ce-4148c5566429"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows.Input Type%3DMouseButtonEventArgs"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="c7f75fd1-f67f-4450-97f2-ab0476e8e7ec"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4b244261-4aa9-42e4-9ed1-115203f788ce">
+                <propertyInstance
+                  Id="c61a2533-32ae-4ff3-a836-37be916545fb"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e9b80989-93b3-4c2f-a4ed-baef49ec979a">
+                <propertyInstance
+                  Id="65e21b15-02bd-438e-bc46-ebe905bc6295"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a1e079ae-6135-47ac-825a-8510c49edacc">
+                <propertyInstance
+                  Id="615ff0f8-bfa5-4969-876b-108215accd82"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="43e08750-8b54-4356-83cd-2e800f4e7881">
+                <propertyInstance
+                  Id="652456b7-3143-43a9-aaf8-f81d0eec444a"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c623f828-5a21-44be-9257-d2c96bebee86">
+                <propertyInstance
+                  Id="bf51d463-bac2-4118-809b-dcd8f34b9bb2"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="799e69d5-59c5-4cb4-9993-e38f9022a89f"
+            isSubstitutable="false">
+            <classMoniker
+              Id="0e6757dd-b00e-4802-bfb0-0537e93fd383"
+              LastKnownName="MouseEventArgs"
+              LastKnownLocation="Package1_0927.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
