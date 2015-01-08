@@ -85,7 +85,10 @@ namespace ConfigEditor
         }
         public static void setSource(string path)
         {
-            ConfigurationManager.AppSettings["source"] = path;
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["source"].Value = path;
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
             source = path;
         }
         public static void setPort(int Port)
